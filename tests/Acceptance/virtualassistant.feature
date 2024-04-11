@@ -6,5 +6,6 @@ I need access to a virtual assistant or FAQ bot
 
 Scenario: Interacting with the virtual assistant/FAQ bot
 Given I am on the website
-When I interact with the virtual assistant/FAQ bot
+When I click on the virtual assistant/FAQ bot 
+And enter a valid text query
 Then it should provide instant answers to my queries
