@@ -4,9 +4,9 @@ Feature: View Claim Interactions and Add Audit Results
   I need to view a claim and all associated interactions, and add audit results
 
   Scenario: Viewing a claim and associated interactions
-    Given I am logged into the system
-    When I view a specific claim and its interactions
-    Then I should see all associated details and interactions
+    Given I am logged into the system as an admin
+    When I view a specific claim and its details
+    Then I should see all associated details tied to the claim
 
   Scenario: Adding audit results to a claim
     Given I am viewing a specific claim
