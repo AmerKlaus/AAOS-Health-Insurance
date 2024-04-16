@@ -101,3 +101,181 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
+
+/* Set default font family and remove default margin, padding */
+body {
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #f8f9fa; 
+}
+
+/* Main container */
+.container {
+    width: 80%; 
+    margin: 0 auto; 
+}
+
+/* Header styles */
+header {
+    background-color: #007bff; 
+    color: #fff; 
+    text-align: center; 
+    padding: 20px 0; 
+}
+
+/* Navigation styles */
+nav {
+    background-color: #f8f9fa; 
+    padding: 10px 0; 
+}
+
+nav ul {
+    list-style-type: none; 
+    text-align: center; 
+    margin: 0; 
+    padding: 0; 
+}
+
+nav ul li {
+    display: inline; 
+    margin-right: 20px; 
+}
+
+nav ul li a {
+    text-decoration: none; 
+    color: #333; 
+}
+
+/* Section styles */
+section {
+    padding: 20px 0; 
+}
+
+/* Footer styles */
+footer {
+    background-color: #333; 
+    color: #fff; 
+    text-align: center; 
+    padding: 10px 0; 
+}
+
+/* FAQ section styles */
+#faq ul {
+    padding-left: 20px; 
+}
+
+#faq ul li {
+    margin-bottom: 10px; 
+}
+
+/* Form styles */
+form {
+    margin-top: 20px; 
+}
+
+label {
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; 
+    padding: 8px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+}
+
+button[type="submit"] {
+    background-color: #007bff; 
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; 
+}
+
+/* Login form styles */
+.login-form {
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    width: 300px; 
+    margin: 50px auto; 
+}
+
+.login-form h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+/* Register form styles */
+.register-form {
+    /* Same styles as login form */
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    width: 300px; 
+    margin: 50px auto; 
+}
+
+/* Claim form styles */
+.claim-form {
+    /* Same styles as login and register form */
+    background-color: #fff; 
+    padding: 20px; 
+    border-radius: 5px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    width: 400px; 
+    margin: 50px auto; 
+}
+
+.claim-form h2 {
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+/* Profile info styles */
+.profile-info {
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+.profile-info label {
+    font-weight: bold; 
+}
+
+.profile-info p {
+    margin-bottom: 10px; 
+}
+
+/* Claim info styles */
+.claim-info p {
+    margin-bottom: 10px; 
+}
+
+/* Back button styles */
+.back-button {
+    margin-top: 20px; 
+    text-align: center; 
+}
+
+.back-button a {
+    text-decoration: none; 
+    color: #007bff; 
+}
+
+.back-button a:hover {
+    text-decoration: underline; 
+}
