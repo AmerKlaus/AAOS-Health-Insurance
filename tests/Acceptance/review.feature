@@ -1,10 +1,11 @@
 Feature: Review Claim Documents
+
   In order to ensure completeness and accuracy of claim documents
   As an admin
   I need to review submitted claim documents
 
   Scenario: Reviewing claim documents
-    Given I am logged into the system
+    Given I am logged into the system as an admin
     When I navigate to the claims review section
     Then I should be able to view submitted claim documents
 
