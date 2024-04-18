@@ -1,11 +1,17 @@
-Feature: User-Friendly Claim Submission Interface
+Feature: Secure User Login
 
-In order to easily submit claims
-As a user
-I want a user-friendly interface to guide me through the process
+  In order to securely access the system
+  As a user
+  I want to log in with a valid username and password
 
-Scenario: Using the user-friendly interface for claim submission
-Given I am logged in as a user
-When I navigate to the claim submission section
-And follow the step-by-step instructions
-Then I should be able to submit my claim without difficulties
+  Scenario: Successful login with valid credentials
+    Given I am on the login page
+    When I enter a valid username and password
+    And click Login
+    Then I should be directed to the dashboard
+
+  Scenario: Failed login with invalid credentials
+    Given I am on the login page
+    When I enter an invalid username and password
+    And click Login
+    Then I should see an error message indicating invalid credentials
