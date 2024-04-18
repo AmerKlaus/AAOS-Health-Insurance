@@ -1,11 +1,12 @@
 Feature: Virtual Assistant/FAQ Bot
 
-In order to get instant answers to common queries
-As a user
-I need access to a virtual assistant or FAQ bot
+  In order to quickly obtain answers to common queries
+  As a user
+  I want to interact with a virtual assistant/FAQ bot on the website
 
-Scenario: Interacting with the virtual assistant/FAQ bot
-Given I am on the website
-When I click on the virtual assistant/FAQ bot 
-And enter a valid text query
-Then it should provide instant answers to my queries
+  Scenario: Providing instant answers
+  Given I am on the website
+  When I click on the virtual assistant/FAQ bot
+  And enter a valid text query
+  Then it should instantly respond with relevant answers
+
