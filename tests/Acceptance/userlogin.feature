@@ -1,17 +1,18 @@
 Feature: Secure User Login
 
-In order to access the system securely
+In order to securely access the system
 As a user
-I need to log in with valid credentials
+I want to log in with a valid username and password
 
 Scenario: Successful login with valid credentials
 Given I am on the login page
-When I enter valid user credentials
+When I enter a valid username and password
 And click Login
-Then I should be logged in and directed to the dashboard
+Then I should be directed to the dashboard
 
 Scenario: Failed login with invalid credentials
 Given I am on the login page
-When I enter invalid user credentials
+When I enter an invalid username and password
 And click Login
 Then I should see an error message indicating invalid credentials
+
