@@ -6,5 +6,8 @@ Feature: Streamlined Onboarding Process
 
   Scenario: Onboarding new claimants
     Given a new claimant accesses the onboarding process
-    When they follow the guided instructions
+    And they are provided with pre-filled forms and guided submission instructions
+    When they follow the guided instructions to complete the onboarding process
     Then they should be able to submit their claim easily
+    And the system should validate the submitted information for accuracy and completeness
+    And the claimant should receive confirmation of successful submission
