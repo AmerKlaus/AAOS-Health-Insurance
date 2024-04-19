@@ -6,5 +6,10 @@ Feature: Track Claim Status
 
   Scenario: Tracking claim status
     Given I am logged into the system as an admin
-    When I navigate to the claim status tracking page
-    Then I should be able to view the real-time status of all claims
+    And I have navigated to the claim status tracking page
+    When I view the page
+    Then I should see a list of all claims
+    And each claim should display its real-time status, such as "Pending," "In Progress," or "Resolved"
+    And I should be able to filter and search for specific claims based on various criteria, such as claim ID or status
+    And I should have the option to sort the claims based on different parameters, such as submission date or priority
+    And I should be able to click on a claim to view detailed information, including claim details, interactions, and any assigned tasks or notes
