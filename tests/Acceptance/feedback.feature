@@ -4,8 +4,9 @@ In order to provide feedback or complaints
 As a user
 I need to be able to do so directly through the web application
 
-Scenario: Submitting feedback or complaints
-Given I am logged into the system as a user
-When I navigate to the feedback/complaints section
-And submit my feedback or complaint
-Then it should be recorded and addressed by the appropriate team
+Scenario: Submitting feedback through the web application
+  Given I am logged into the system as a user
+  And I have navigated to the feedback/complaints section
+  When I provide detailed feedback or submit a complaint
+  Then the system should record my feedback/complaint along with relevant details such as timestamp and user information
+  And I should receive a confirmation message that my feedback/complaint has been successfully submitted
