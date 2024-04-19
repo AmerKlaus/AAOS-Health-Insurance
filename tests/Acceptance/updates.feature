@@ -1,11 +1,12 @@
-Feature: User-Friendly Claim Submission Interface
+Feature: Claim Status Updates
 
-  In order to easily submit claims
+  In order to stay informed about my claim status
   As a user
-  I want a user-friendly interface to guide me through the process
+  I need to receive updates via email or SMS
 
-  Scenario: Using the user-friendly interface for claim submission
-    Given I am logged in as a user
-    When I navigate to the claim submission section
-    And follow the step-by-step instructions
-    Then I should be able to submit my claim without difficulties
+  Scenario: Receiving claim status updates
+    Given I have submitted a claim
+    When there is a status change in my claim
+    Then I should receive an email or SMS notification with the updated status
+    And the notification should include details such as the claim ID, the previous status, the new status, and any additional relevant information
+    And the notification should be sent to the email address or phone number associated with my account
