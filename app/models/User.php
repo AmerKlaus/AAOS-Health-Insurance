@@ -4,7 +4,8 @@ namespace app\models;
 
 use PDO;
 
-class User {
+class User
+{
 
     public string $user_id;
     public string $username;
@@ -15,7 +16,8 @@ class User {
     public string $phone;
     public string $address;
 
-    public static function createUser(PDO $db_conn, string $username, string $password_hash, string $email, string $role_id, string $full_name, string $phone, string $address) {
+    public static function createUser(PDO $db_conn, string $username, string $password_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
+    {
         $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address)
                 VALUES (:username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
         $stmt = $db_conn->prepare($raw_sql);
@@ -31,19 +33,17 @@ class User {
         try {
             $stmt->execute($params);
             return User::getByUsername($db_conn, $username);
-        }
-
-        catch (\PDOException $e) {
+        } catch (\PDOException $e) {
             if ($e->getCode() == '23000') {
                 return null;
-            }
-            else {
+            } else {
                 throw $e;
             }
         }
     }
 
-    public static function getByUsername(PDO $db_conn, $username) {
+    public static function getByUsername(PDO $db_conn, $username)
+    {
         $raw_sql = 'SELECT * FROM User WHERE username = :username';
         $stmt = $db_conn->prepare($raw_sql);
         $stmt->execute(['username' => $username]);
@@ -51,7 +51,8 @@ class User {
         return $stmt->fetch();
     }
 
-    public static function getById(PDO $db_conn, $user_id) {
+    public static function getById(PDO $db_conn, $user_id)
+    {
         $SQL = 'SELECT * FROM User WHERE user_id = :user_id';
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['user_id' => $user_id]);

@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use PDO;
+
 class Home extends \app\core\Controller
 {
     //TESTING PURPOSES
@@ -46,7 +48,7 @@ class Home extends \app\core\Controller
 
             // Create a new Claim instance
             $claim = new \app\models\Claim();
-            $policy_id = \app\Models\Policy::getIdFromNumber($db_conn, $policyNumber);
+            $policy_id = \app\Models\Policy::getIdFromNumber($this->db_conn, $policy_number);
             $claim->policy_id = $policy_id;
             $claim->user_id = $user_id; // Assign current user's ID
             $claim->claim_type = $claim_type;
@@ -56,7 +58,7 @@ class Home extends \app\core\Controller
             $claim->health_card_number = $health_card_number;
 
             // Insert the claim into the database
-            $claim->insert();
+            $claim->insert($this->db_conn);
 
             // Optionally, redirect to a confirmation page or display a success message
             $this->view('Home/claimDetails');
