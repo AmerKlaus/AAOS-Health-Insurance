@@ -17,7 +17,7 @@ class User {
 
     // Create a new user
     public static function createUser(PDO $db_conn, $username, $password_hash, $email, $role_id, $full_name, $phone, $address) {
-        $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address) 
+        $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address)
                 VALUES (:username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
         $stmt = $db_conn->prepare($raw_sql);
         $data = [
@@ -60,17 +60,19 @@ class User {
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['user_id' => $user_id]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
-    return $STMT->fetch();
+        return $STMT->fetch();
 }
     // Update user information
-    public function update() {
+    public function update()
+    {
         $SQL = 'UPDATE User SET username = :username, password_hash = :password_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address WHERE user_id = :user_id';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute((array)$this);
+        $STMT->execute((array) $this);
     }
 
     // Delete a user 
-    public function delete() {
+    public function delete()
+    {
         $SQL = 'DELETE FROM User WHERE user_id = :user_id';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['user_id' => $this->user_id]);

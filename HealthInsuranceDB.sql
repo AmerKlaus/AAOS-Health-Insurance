@@ -3,7 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 11:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -62,10 +61,12 @@ DROP TABLE IF EXISTS `Claim`;
 CREATE TABLE `Claim` (
   `claim_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `policy_id` int(11) NOT NULL,
   `claim_type` varchar(50) NOT NULL,
   `submission_date` datetime NOT NULL,
   `status` varchar(50) NOT NULL,
-  `claim_details` text NOT NULL
+  `claim_details` text NOT NULL,
+  `health_insurance_number` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -210,6 +211,13 @@ CREATE TABLE `Policy` (
   `date_created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `Policy`
+--
+
+INSERT INTO `Policy` (`policy_id`, `user_id`, `policy_number`, `policy_type`, `coverage_amount`, `premium_amount`, `policy_start_date`, `policy_end_date`, `payment_method`, `renewal_date`, `policy_status`, `date_created`) VALUES
+(1, 1, 'POL001', 'Health Insurance', 50000, 1000, '2024-04-01 16:09:17', '2025-04-23 16:09:17', 'Credit Card', '2024-04-23 22:09:17', 'Active', '2024-04-23 22:09:17');
+
 -- --------------------------------------------------------
 
 --
@@ -268,9 +276,16 @@ CREATE TABLE `User` (
   `email` varchar(60) NOT NULL,
   `role_id` enum('1') NOT NULL,
   `full_name` varchar(100) NOT NULL,
-  `phone` varchar(10) NOT NULL,
+  `phone` varchar(12) NOT NULL,
   `address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `User`
+--
+
+INSERT INTO `User` (`user_id`, `username`, `password_hash`, `email`, `role_id`, `full_name`, `phone`, `address`) VALUES
+(1, 'amerklaus', '$2y$10$tsG/Ktrt7vhEHPW4VRWtM.wFx/kXxRntNAJ3ucxDrMkPFxyXO4jCy', 'amer1jawabra@gmail.com', 1, 'amer', '222-444-1111', '202 rue saint-marce');
 
 --
 -- Indexes for dumped tables
@@ -294,7 +309,8 @@ ALTER TABLE `Audit_Result`
 --
 ALTER TABLE `Claim`
   ADD PRIMARY KEY (`claim_id`),
-  ADD KEY `userId_foreignKey` (`user_id`);
+  ADD KEY `userId_foreignKey` (`user_id`),
+  ADD KEY `policyId_foreignKey` (`policy_id`);
 
 --
 -- Indexes for table `Claim_Assignment`
@@ -464,7 +480,7 @@ ALTER TABLE `Payment`
 -- AUTO_INCREMENT for table `Policy`
 --
 ALTER TABLE `Policy`
-  MODIFY `policy_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `policy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Profile`
@@ -504,6 +520,7 @@ ALTER TABLE `Audit_Result`
 -- Constraints for table `Claim`
 --
 ALTER TABLE `Claim`
+  ADD CONSTRAINT `policyId_foreignKey` FOREIGN KEY (`policy_id`) REFERENCES `Policy` (`policy_id`),
   ADD CONSTRAINT `userId_foreignKey` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`);
 
 --

@@ -8,8 +8,4 @@ $this->addRoute('Home/index', 'Home,index');
 $this->addRoute('Home/claimSubmission', 'Home,claimSubmission');
 $this->addRoute('Home/claimDetails', 'Home,claimDetails');
 $this->addRoute('Home/customerSupport', 'Home,customerSupport');
-
-
-
-
-
+$this->addRoute('Home/submitClaim', 'Home,submitClaim');
