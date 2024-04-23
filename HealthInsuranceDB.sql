@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 10:53 PM
+-- Generation Time: Apr 23, 2024 at 11:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `HealthInsuranceDB`
 --
+CREATE DATABASE IF NOT EXISTS `HealthInsuranceDB` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `HealthInsuranceDB`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `Admin`
 --
 
+DROP TABLE IF EXISTS `Admin`;
 CREATE TABLE `Admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -40,6 +43,7 @@ CREATE TABLE `Admin` (
 -- Table structure for table `Audit_Result`
 --
 
+DROP TABLE IF EXISTS `Audit_Result`;
 CREATE TABLE `Audit_Result` (
   `audit_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -54,6 +58,7 @@ CREATE TABLE `Audit_Result` (
 -- Table structure for table `Claim`
 --
 
+DROP TABLE IF EXISTS `Claim`;
 CREATE TABLE `Claim` (
   `claim_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -69,6 +74,7 @@ CREATE TABLE `Claim` (
 -- Table structure for table `Claim_Assignment`
 --
 
+DROP TABLE IF EXISTS `Claim_Assignment`;
 CREATE TABLE `Claim_Assignment` (
   `assignment_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -82,6 +88,7 @@ CREATE TABLE `Claim_Assignment` (
 -- Table structure for table `Claim_Category`
 --
 
+DROP TABLE IF EXISTS `Claim_Category`;
 CREATE TABLE `Claim_Category` (
   `category_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -95,6 +102,7 @@ CREATE TABLE `Claim_Category` (
 -- Table structure for table `Claim_Document`
 --
 
+DROP TABLE IF EXISTS `Claim_Document`;
 CREATE TABLE `Claim_Document` (
   `document_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -110,6 +118,7 @@ CREATE TABLE `Claim_Document` (
 -- Table structure for table `Claim_Interaction`
 --
 
+DROP TABLE IF EXISTS `Claim_Interaction`;
 CREATE TABLE `Claim_Interaction` (
   `interaction_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -125,6 +134,7 @@ CREATE TABLE `Claim_Interaction` (
 -- Table structure for table `Claim_Review`
 --
 
+DROP TABLE IF EXISTS `Claim_Review`;
 CREATE TABLE `Claim_Review` (
   `review_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -140,6 +150,7 @@ CREATE TABLE `Claim_Review` (
 -- Table structure for table `Feedback`
 --
 
+DROP TABLE IF EXISTS `Feedback`;
 CREATE TABLE `Feedback` (
   `feedback_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -153,6 +164,7 @@ CREATE TABLE `Feedback` (
 -- Table structure for table `Notification`
 --
 
+DROP TABLE IF EXISTS `Notification`;
 CREATE TABLE `Notification` (
   `notification_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -167,6 +179,7 @@ CREATE TABLE `Notification` (
 -- Table structure for table `Payment`
 --
 
+DROP TABLE IF EXISTS `Payment`;
 CREATE TABLE `Payment` (
   `payment_id` int(11) NOT NULL,
   `claim_id` int(11) NOT NULL,
@@ -181,6 +194,7 @@ CREATE TABLE `Payment` (
 -- Table structure for table `Policy`
 --
 
+DROP TABLE IF EXISTS `Policy`;
 CREATE TABLE `Policy` (
   `policy_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -202,6 +216,7 @@ CREATE TABLE `Policy` (
 -- Table structure for table `Profile`
 --
 
+DROP TABLE IF EXISTS `Profile`;
 CREATE TABLE `Profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -216,6 +231,7 @@ CREATE TABLE `Profile` (
 -- Table structure for table `Role`
 --
 
+DROP TABLE IF EXISTS `Role`;
 CREATE TABLE `Role` (
   `role_id` int(11) NOT NULL,
   `role_name` varchar(50) NOT NULL,
@@ -228,6 +244,7 @@ CREATE TABLE `Role` (
 -- Table structure for table `Ticket`
 --
 
+DROP TABLE IF EXISTS `Ticket`;
 CREATE TABLE `Ticket` (
   `ticket_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -243,6 +260,7 @@ CREATE TABLE `Ticket` (
 -- Table structure for table `User`
 --
 
+DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
