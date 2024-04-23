@@ -11,21 +11,27 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    </head>
+</head>
 
-    <body>
+<body>
     <header>
         <div class="container">
             <h1>AAOS Insurance</h1>
         </div>
     </header>
     <div class="container">
-        <form action="login" method="post" class="register-form">
+        <form action="/User/register" method="post" class="register-form">
             <h2>Register</h2>
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" required>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <label for="confirm_password">Confirm Password:</label>
@@ -43,4 +49,5 @@
         </div>
     </footer>
 </body>
+
 </html>

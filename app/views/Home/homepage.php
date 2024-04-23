@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -22,8 +23,8 @@
         <div class="container">
             <ul>
                 <li><a href="/Home/index">Home</a></li>
-                <li><a href="/User/profile">Profile</a></li>
-                <li><a href="/Home/claimSubmission">Claim Submission</a></li>
+                <li><a href="/Home/profile">Profile</a></li>
+                <li><a href="/Home/claimSubmission">Claim Submission</a></li> <!-- Updated the href -->
                 <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/User/login">Go to Login/Register</a></li>
@@ -42,20 +43,22 @@
                 <div class="container">
                     <h2>Your Profile</h2>
                     <p>Manage your personal information and policy details easily.</p>
-                    <a href="profile.html" class="btn">Go to Profile</a>
+                    <a href="/Home/profile" class="btn">Go to Profile</a> <!-- Updated the href -->
                 </div>
             </section>
             <section id="claims" class="section bg-light-orange">
                 <div class="container">
                     <h2>Claims</h2>
                     <p>Submit and track your health insurance claims with convenience.</p>
-                    <a href="claimSubmission.html" class="btn">Go to Claims</a>
+                    <a href="/Home/claimSubmission" class="btn">Go to Claims</a> <!-- Updated the href -->
                 </div>
             </section>
         </div>
         <div class="sidebar">
+            
             <!-- Banner Image -->
-            <img src="images/banner.jpg" alt="Banner Image">
+            <img src="../images/banner.jpg" alt="Banner Image">
+
         </div>
     </div>
     <footer>
@@ -70,5 +73,3 @@
 </body>
 
 </html>
-
-<!-- https://www.vecteezy.com/vector-art/14049145-flat-health-insurance-claim-form-and-protective-shield-concept-outline-design-style-minimal-vector-illustration-for-landing-page-web-banner-infographics-hero-images -->

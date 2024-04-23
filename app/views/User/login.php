@@ -20,18 +20,22 @@
         </div>
     </header>
     <div class="container">
-    <form action="/User/login" method="post" class="login-form">
-
+        <form action="/User/login" method="post" class="login-form">
             <h2>Login</h2>
+            <?php if(isset($errorMessage)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $errorMessage; ?>
+                </div>
+            <?php endif; ?>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required> <br> </br>
             <button type="submit">Login</button>
-            <a href='/User/forgotPassword'>Forgot Password?</a>
-
+            <a href="/User/forgotPassword">Forgot Password?</a>
+            <p>Don't have an account? <a href="/User/register">Sign up here</a>.</p>
         </form>
     </div>
-  
 </body>
+
 </html>
