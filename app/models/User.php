@@ -55,26 +55,26 @@ class User {
     }
 
    // Retrieve a user by user_id
-    public function getById($user_id) {
+    public static function getById(PDO $db_conn, $user_id) {
         $SQL = 'SELECT * FROM User WHERE user_id = :user_id';
-        $STMT = self::$_conn->prepare($SQL);
+        $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['user_id' => $user_id]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
         return $STMT->fetch();
 }
     // Update user information
-    public function update()
+    public function update(PDO $db_conn)
     {
         $SQL = 'UPDATE User SET username = :username, password_hash = :password_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address WHERE user_id = :user_id';
-        $STMT = self::$_conn->prepare($SQL);
+        $STMT = $db_conn->prepare($SQL);
         $STMT->execute((array) $this);
     }
 
     // Delete a user 
-    public function delete()
+    public function delete(PDO $db_conn)
     {
         $SQL = 'DELETE FROM User WHERE user_id = :user_id';
-        $STMT = self::$_conn->prepare($SQL);
+        $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['user_id' => $this->user_id]);
     }
 }

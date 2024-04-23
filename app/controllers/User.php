@@ -80,7 +80,7 @@ class User extends \app\core\Controller {
         
         // Retrieve the user details from the database using the user_id
         $user_id = $_SESSION['user_id'];
-        $user = \app\models\User::getById($user_id);
+        $user = \app\models\User::getById($this->db_conn, $user_id);
         
         // Display the user's profile
         $this->view('User/profile', ['user' => $user]);
