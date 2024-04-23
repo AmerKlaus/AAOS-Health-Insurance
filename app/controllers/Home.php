@@ -59,7 +59,7 @@ class Home extends \app\core\Controller
             $claim->insert();
 
             // Optionally, redirect to a confirmation page or display a success message
-            $this->view('Home/homepage');
+            $this->view('Home/claimDetails');
         } else {
             // Redirect or handle invalid requests
             header('Location: /Home/index');
