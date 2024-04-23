@@ -3,7 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 10:11 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -272,10 +271,10 @@ CREATE TABLE `Ticket` (
 DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `user_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `password_hash` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
-  `role_id` int(11) NOT NULL,
+  `role_id` enum('1') NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `phone` varchar(12) NOT NULL,
   `address` varchar(50) NOT NULL
@@ -404,7 +403,8 @@ ALTER TABLE `Ticket`
 -- Indexes for table `User`
 --
 ALTER TABLE `User`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -504,7 +504,7 @@ ALTER TABLE `Ticket`
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
