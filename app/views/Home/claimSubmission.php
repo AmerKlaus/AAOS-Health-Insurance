@@ -33,7 +33,7 @@
     <div class="container">
         <section id="claim-submission">
             <h2>Claim Submission</h2>
-            <form action="submit_claim.php" method="post" class="claim-form">
+            <form action="/Home/submitClaim" method="POST" class="claim-form">
                 <label for="policy_number">Policy Number:</label>
                 <input type="text" id="policy_number" name="policy_number" required>
 
@@ -44,9 +44,6 @@
 
                 <label for="claim_details">Claim Details:</label>
                 <textarea id="claim_details" name="claim_details" rows="4" required></textarea>
-
-                <label for="claim_amount">Claim Amount:</label>
-                <input type="number" id="claim_amount" name="claim_amount" required>
 
                 <label for="claim_date">Claim Date:</label>
                 <input type="date" id="claim_date" name="claim_date" required> <br> 
