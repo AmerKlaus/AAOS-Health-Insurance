@@ -35,10 +35,10 @@ class User extends \app\core\Controller {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Retrieve the username or email entered by the user
-            $usernameOrEmail = $_POST['username'];
+            $username_or_email = $_POST['username'];
 
             //message telling user a reset link got sent 
-            echo "A password reset link has been sent to $usernameOrEmail";
+            echo "A password reset link has been sent to $username_or_email";
             
         } else {
 
