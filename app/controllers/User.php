@@ -59,7 +59,7 @@ class User extends \app\core\Controller {
                 return;
             }
             else {
-                header('location:/User/login');
+                header('Location:/User/login');
             }
 
         } else {
@@ -74,7 +74,7 @@ class User extends \app\core\Controller {
         if (!isset($_SESSION['user_id'])) {
 
             // If the user is not logged in, redirect to the login page
-            header('location:/User/login');
+            header('Location:/User/login');
             exit;
         }
         
