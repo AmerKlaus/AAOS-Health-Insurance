@@ -4,53 +4,62 @@ namespace app\models;
 
 use PDO;
 
-class User extends \app\core\Model {
-    public $user_id;
-    public $username;
-    public $password_hash;
-    public $email;
-    public $role_id;
-    public $full_name;
-    public $phone;
-    public $address;
+class User {
+    public string $user_id;
+    public string $username;
+    public string $password_hash;
+    public string $email;
+    public string $role_id;
+    public string $full_name;
+    public string $phone;
+    public string $address;
 
-    // Establish database connection
-    public function __construct() {
-        parent::__construct();
-    }
 
     // Create a new user
-    public function insert() {
-        $SQL = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address) 
+    public static function createUser(PDO $db_conn, $username, $password_hash, $email, $role_id, $full_name, $phone, $address) {
+        $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address) 
                 VALUES (:username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
-        $STMT = self::$_conn->prepare($SQL);
+        $stmt = $db_conn->prepare($raw_sql);
         $data = [
-            'username' => $this->username,
-            'password_hash' => $this->password_hash,
-            'email' => $this->email,
-            'role_id' => $this->role_id,
-            'full_name' => $this->full_name,
-            'phone' => $this->phone,
-            'address' => $this->address
+            'username' => $username,
+            'password_hash' => $password_hash,
+            'email' => $email,
+            'role_id' => $role_id,
+            'full_name' => $full_name,
+            'phone' => $phone,
+            'address' => $address
         ];
-        $STMT->execute($data);
+        try {
+            $stmt->execute($data);
+            return User::getByUsername($db_conn, $username);
+        }
+
+        catch (\PDOException $e) {
+            if ($e->getCode() == '23000') {
+                return null;
+            }
+            else {
+                throw $e;
+                
+            }
+        }
     }
 
     // Retrieve a user by username
-    public static function get($username) {
-        $SQL = 'SELECT * FROM User WHERE username = :username';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['username' => $username]);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
-        return $STMT->fetch();
+    public static function getByUsername(PDO $db_conn, $username) {
+        $raw_sql = 'SELECT * FROM User WHERE username = :username';
+        $stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['username' => $username]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+        return $stmt->fetch();
     }
 
    // Retrieve a user by user_id
     public function getById($user_id) {
-    $SQL = 'SELECT * FROM User WHERE user_id = :user_id';
-    $STMT = self::$_conn->prepare($SQL);
-    $STMT->execute(['user_id' => $user_id]);
-    $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+        $SQL = 'SELECT * FROM User WHERE user_id = :user_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['user_id' => $user_id]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
     return $STMT->fetch();
 }
     // Update user information
