@@ -6,13 +6,7 @@
     <title>2FA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        /* Custom CSS for wrapping text into two lines */
-        .twofa-page p {
-            max-width: 400px; /* Adjust the maximum width as needed */
-            margin: 0 auto; /* Center the paragraph */
-        }
-    </style>
+    
 </head>
 <body class="twofa-page d-flex align-items-center justify-content-center">
     <div class="text-center">
