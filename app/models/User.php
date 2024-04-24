@@ -77,6 +77,16 @@ class User {
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['user_id' => $this->user_id]);
     }
+
+    public function add2FA() {
+        // Update the user record with the 2FA secret
+        $SQL = 'UPDATE user SET secret = :secret WHERE user_id = :user_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'user_id' => $this->user_id,
+            'secret' => $this->secret
+        ]);
+    }
 }
 
 ?>

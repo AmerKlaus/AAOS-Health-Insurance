@@ -21,6 +21,8 @@ class Model {
             echo $e->getMessage();
         }
     }
+
+  
 }
 
 ?>
