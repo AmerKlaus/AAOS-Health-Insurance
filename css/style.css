@@ -285,3 +285,9 @@ button[type="submit"]:hover {
     background-color: #0056b3;
     text-decoration: none;
 }
+
+.twofa-page p {
+    max-width: 400px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the paragraph */
+
+}
