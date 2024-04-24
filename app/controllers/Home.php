@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use PDO;
+
 class Home extends \app\core\Controller
 {
     //TESTING PURPOSES
@@ -28,14 +30,14 @@ class Home extends \app\core\Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Retrieve and sanitize form data
-            $policyNumber = $_POST['policy_number'];
-            $claimType = $_POST['claim_type'];
-            $claimDetails = $_POST['claim_details'];
-            $claimDate = $_POST['claim_date'];
-            $healthCardNumber = $_POST['health_card_number'];
+            $policy_number = $_POST['policy_number'];
+            $claim_type = $_POST['claim_type'];
+            $claim_details = $_POST['claim_details'];
+            $claim_date = $_POST['claim_date'];
+            $health_card_number = $_POST['health_card_number'];
 
             // Get the current user ID from session
-            $userId = $_SESSION['user_id'];
+            $user_id = $_SESSION['user_id'];
 
             // $policy_id = \app\models\Claim::getPolicyIdFromNumber($policyNumber);
             // if (!$policy_id) {
@@ -46,23 +48,23 @@ class Home extends \app\core\Controller
 
             // Create a new Claim instance
             $claim = new \app\models\Claim();
-            $policy_id = $claim::getPolicyIdFromNumber($policyNumber);
+            $policy_id = \app\Models\Policy::getIdFromNumber($this->db_conn, $policy_number);
             $claim->policy_id = $policy_id;
-            $claim->user_id = $userId; // Assign current user's ID
-            $claim->claim_type = $claimType;
-            $claim->claim_details = $claimDetails;
-            $claim->claim_date = $claimDate;
+            $claim->user_id = $user_id; // Assign current user's ID
+            $claim->claim_type = $claim_type;
+            $claim->claim_details = $claim_details;
+            $claim->claim_date = $claim_date;
             $claim->status = "Pending"; // Default status set to "Pending"
-            $claim->health_card_number = $healthCardNumber;
+            $claim->health_card_number = $health_card_number;
 
             // Insert the claim into the database
-            $claim->insert();
+            $claim->insert($this->db_conn);
 
             // Optionally, redirect to a confirmation page or display a success message
             $this->view('Home/claimDetails');
         } else {
             // Redirect or handle invalid requests
-            header('Location: /Home/index');
+            header('Location:/Home/index');
             exit;
         }
     }
