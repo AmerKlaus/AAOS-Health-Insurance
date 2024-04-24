@@ -277,7 +277,8 @@ CREATE TABLE `User` (
   `role_id` enum('1') NOT NULL,
   `full_name` varchar(100) NOT NULL,
   `phone` varchar(12) NOT NULL,
-  `address` varchar(50) NOT NULL
+  `address` varchar(50) NOT NULL,
+  `secret` varchar(32) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
