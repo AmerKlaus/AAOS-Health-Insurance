@@ -5,9 +5,32 @@ use \PDO;
 use chillerlan\Authenticator\Authenticator;
 use chillerlan\Authenticator\AuthenticatorOptions;
 use chillerlan\QRCode\QRCode;
-class User extends \app\core\Controller {
 
-    public function login() {
+class User extends \app\core\Controller
+{
+
+    public function logout()
+    {
+        // Check if the user is logged in
+        if (isset($_SESSION['user_id'])) {
+            // Unset all session variables
+            session_unset();
+
+            // Destroy the session
+            session_destroy();
+
+            // Redirect to the home page or any other desired page after logout
+            header('Location: /Home/index');
+            exit;
+        } else {
+            // Redirect to the home page or login page if the user is not logged in
+            header('Location: /User/login');
+            exit;
+        }
+    }
+
+    public function login()
+    {
         // Show the login form and log the user in
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -17,16 +40,16 @@ class User extends \app\core\Controller {
             // Get the user from the database
             $username = $_POST['username'];
             $user = \app\models\User::getByUsername($this->db_conn, $username);
-    
+
             // Check the password against the hash
             $password = $_POST['password'];
             if ($user && password_verify($password, $user->password_hash)) {
                 // Remember that this is the user logging in
                 $_SESSION['user_id'] = $user->user_id;
-    
+
                 // Store the user's 2FA secret in the session
                 $_SESSION['secret'] = $user->secret;
-    
+
                 // Check if the user has set up 2FA
                 if ($user->secret === null) {
 
@@ -39,7 +62,7 @@ class User extends \app\core\Controller {
                     header('location:/Home/index');
                 }
             } else {
-                
+
                 // Invalid credentials, redirect back to login page
                 header('location:/User/login');
             }
@@ -47,9 +70,10 @@ class User extends \app\core\Controller {
             $this->view('User/login');
         }
     }
-    
-     // Method to handle forgot password functionality
-    public function forgotPassword() {
+
+    // Method to handle forgot password functionality
+    public function forgotPassword()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Retrieve the username or email entered by the user
@@ -102,8 +126,9 @@ class User extends \app\core\Controller {
         // Display the user's profile
         $this->view('User/profile', ['user' => $user]);
     }
-     //Fix
-    public function setup2fa() {
+    //Fix
+    public function setup2fa()
+    {
         // Create AuthenticatorOptions object
         $options = new AuthenticatorOptions();
 
@@ -150,15 +175,16 @@ class User extends \app\core\Controller {
         }
     }
 
-    public function check2fa() {
+    public function check2fa()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $options = new AuthenticatorOptions();
             $authenticator = new Authenticator($options);
             $authenticator->setSecret($_SESSION['secret']);
-    
+
             if ($authenticator->verify($_POST['totp'])) {
                 unset($_SESSION['secret']);
-                header('location:/Home/index'); 
+                header('location:/Home/index');
             } else {
                 session_destroy();
                 header('location:/User/login');
@@ -167,7 +193,7 @@ class User extends \app\core\Controller {
             $this->view('User/check2fa');
         }
     }
-    
+
 
 }
 
