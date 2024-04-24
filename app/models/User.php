@@ -15,7 +15,6 @@ class User
     public string $full_name;
     public string $phone;
     public string $address;
-    public string $secret;
 
     public static function createUser(PDO $db_conn, string $username, string $password_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
     {
@@ -75,11 +74,11 @@ class User
         $STMT->execute(['user_id' => $this->user_id]);
     }
 
-    public function add2FA(PDO $db_conn)
+    public function add2FA()
     {
         // Update the user record with the 2FA secret
         $SQL = 'UPDATE User SET secret = :secret WHERE user_id = :user_id';
-        $STMT = $db_conn->prepare($SQL);
+        $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
             'user_id' => $this->user_id,
             'secret' => $this->secret
