@@ -102,7 +102,7 @@ class User extends \app\core\Controller {
         // Display the user's profile
         $this->view('User/profile', ['user' => $user]);
     }
-
+     //Fix
     public function setup2fa() {
         // Create AuthenticatorOptions object
         $options = new AuthenticatorOptions();
