@@ -85,9 +85,8 @@ class Admin extends \app\core\Controller
     {
         // Display detailed information about the claim for review
         // You can fetch claim details from the database based on $claimId
-        $claimModel = new \app\models\Claim();
-        $claimModel = $claimModel::getClaimById($this->db_conn, $claimId); // Implement getClaimById method in Claim model
-        $this->view('Admin/reviewClaim', $claimModel);
+        $claimObj = \app\models\Claim::getClaimById($this->db_conn, $claimId);
+        $this->view('Admin/reviewClaim', $claimObj);
     }
 
     public function submitReview($claimId)
@@ -109,9 +108,8 @@ class Admin extends \app\core\Controller
     public function requestInfo($claimId)
     {
         // Load the requestInfo view page
-        $claimModel = new \app\models\Claim();
-        $claimModel = $claimModel->getClaimById($this->db_conn, $claimId);
-        $this->view('Admin/requestInfo', $claimModel);
+        $claimObj = \app\models\Claim::getClaimById($this->db_conn, $claimId);
+        $this->view('Admin/requestInfo', $claimObj);
     }
 
     public function submitRequestInfo($claimId)
