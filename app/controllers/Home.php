@@ -74,10 +74,47 @@ class Home extends \app\core\Controller
         $this->view('Home/claimDetails');
     }
 
-    public function customerSupport()
+    public function insuranceClaimsInfo()
     {
-        $this->view('Home/customerSupport');
+        $this->view('Home/insuranceClaimsInfo');
     }
+
+    public function coverageOptions()
+    {
+        $this->view('Home/coverageOptions');
+    }
+
+    public function industryNews()
+    {
+        $this->view('Home/industryNews');
+    }
+
+
+  // Inside the customerSupport method in your controller
+public function customerSupport()
+{
+    // Check if the user is logged in
+    if (!isset($_SESSION['user_id'])) {
+        // If the user is not logged in, redirect to the login page
+        header('Location: /User/login');
+        exit;
+    }
+
+    // If the user is logged in, display the customer support page
+    $this->view('Home/customerSupport');
+}
+
+    
+    
+    
+    
+    
+
+
+
+    
+
+
 }
 
 ?>

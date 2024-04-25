@@ -193,7 +193,46 @@ class User extends \app\core\Controller
             $this->view('User/check2fa');
         }
     }
-
+    public function submitFeedback()
+    {
+        // Check if the user is logged in
+        if (!isset($_SESSION['user_id'])) {
+            // If the user is not logged in, redirect to the login page
+            header('Location: /User/login');
+            exit;
+        }
+    
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                // Retrieve and sanitize form data
+                $user_id = $_SESSION['user_id'];
+                $message = $_POST['message'];
+    
+                // Retrieve user information from the database using user_id
+                $user = \app\models\User::getById($this->db_conn, $user_id);
+    
+                // Create a new Feedback instance
+                $feedback = new \app\models\Feedback();
+                $feedback->user_id = $user_id;
+                $feedback->timestamp = date("Y-m-d H:i:s");
+                $feedback->message = $message;
+    
+                // Insert the feedback into the database
+                $feedback->insert($this->db_conn);
+            } catch (PDOException $e) {
+                // Handle database errors
+                echo "Database Error: " . $e->getMessage();
+            } catch (Exception $e) {
+                // Handle other exceptions
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // Redirect or handle invalid requests
+            header('Location:/Home/index');
+            exit;
+        }
+    }
+    
 
 }
 

@@ -24,7 +24,7 @@
             <ul>
                 <li><a href="/Home/index">Home</a></li>
                 <li><a href="/Home/profile">Profile</a></li>
-                <li><a href="/Home/claimSubmission">Claim Submission</a></li> <!-- Updated the href -->
+                <li><a href="/Home/claimSubmission">Claim Submission</a></li> 
                 <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/User/login">Go to Login/Register</a></li>
