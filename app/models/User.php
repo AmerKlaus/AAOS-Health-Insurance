@@ -105,8 +105,8 @@ class User
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'fatecasual@gmail.com'; // Your Gmail email address
-            $mail->Password   = 'foof dkpz taqn whfv';    // Your app password
+            $mail->Username   = 'aaos.coo@gmail.com'; // Your Gmail email address
+            $mail->Password   = 'rogk zfzu btfl rcwt';    // Your app password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption
             $mail->Port       = 587; // TCP port to connect to (google has two make sure its valid its the encryption)
 
