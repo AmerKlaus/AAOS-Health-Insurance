@@ -40,11 +40,11 @@ class Admin extends \app\core\Model
 
     public function insertReview(PDO $db_conn, $claimId, $notes)
     {
-        $SQL = 'INSERT INTO Claim_Review VALUES (DEFAULT, :claimId, :adminId, NOW(), :reviewOutcome, :notes)';
+        $SQL = 'INSERT INTO Claim_Review (claimId, adminId, review_date, review_outcome, notes) VALUES (:claimId, :adminId, NOW(), :review_outcome, :notes)';
         $STMT = $db_conn->prepare($SQL);
         $adminId = $_SESSION['admin_id']; // Assuming you have the admin ID stored in session
         $reviewOutcome = 'Pending'; // Set the review outcome as needed
-        $STMT->execute(['claimId' => $claimId, 'adminId' => $adminId, 'reviewOutcome' => $reviewOutcome, 'notes' => $notes]);
+        $STMT->execute(['claimId' => $claimId, 'adminId' => $adminId, 'review_outcome' => $reviewOutcome, 'notes' => $notes]);
     }
 
 
