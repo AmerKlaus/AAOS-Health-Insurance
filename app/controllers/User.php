@@ -167,10 +167,12 @@ class User extends \app\core\Controller
 
             if ($authenticator->verify($_POST['totp'])) {
                 unset($_SESSION['secret']);
-                header('location:/Home/index');
+                header('Location: /Home/index');
+                exit;
             } else {
                 session_destroy();
-                header('location:/User/login');
+                header('Location: /User/login');
+                exit;
             }
         } else {
             $this->view('User/check2fa');
@@ -209,10 +211,12 @@ class User extends \app\core\Controller
                 
                 // Handle database errors
                 echo "Database Error: " . $e->getMessage();
+                throw $e;
             } catch (Exception $e) {
 
                 // Handle other exceptions
                 echo "Error: " . $e->getMessage();
+                throw $e;
             }
         } else {
             // Redirect or handle invalid requests
