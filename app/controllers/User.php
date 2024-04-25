@@ -223,7 +223,6 @@ class User extends \app\core\Controller
 
     public function forgotPassword()
     {
-        $token = $_GET['token'];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Retrieve the email entered by the user
             $email = $_POST['email'];
@@ -251,9 +250,19 @@ class User extends \app\core\Controller
         }
     }
 
-    public function resetPasswordForm()
+    public function resetPassword()
     {
-        $this->view('Home/homepage');
+        $token =...
+        if(){
+            $token == token db
+            user == user
+            update
+            
+        }
+        else{
+        
+            $this->view('Home/homepage');
+        }
     }
     
 
