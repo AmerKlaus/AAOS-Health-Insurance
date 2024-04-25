@@ -12,6 +12,7 @@ class Admin extends \app\core\Model
     public string $password_hash;
     public string $email;
 
+    // TODO: Change to static method, like createUser()
     public function register($username, $email, $password)
     {
         // Hash the password
@@ -28,14 +29,10 @@ class Admin extends \app\core\Model
         $SQL = 'SELECT * FROM Admin WHERE username = :username';
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['username' => $username]);
-        $admin = $STMT->fetch(PDO::FETCH_ASSOC);
+        $admin = $STMT->fetch(PDO::FETCH_CLASS, 'app\models\Admin');
 
         if ($admin) {
-            $adminObj = new Admin();
-            $adminObj->admin_id = $admin['admin_id'];
-            $adminObj->username = $admin['username'];
-            $adminObj->password_hash = $admin['password_hash'];
-            return $adminObj;
+            return $admin;
         } else {
             return null;
         }
