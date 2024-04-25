@@ -33,6 +33,31 @@ class Claim
         $STMT->execute($data);
     }
 
+    public static function getClaimById(PDO $db_conn, $claimId)
+    {
+        $SQL = 'SELECT * FROM Claim WHERE claim_id = :claimId';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['claimId' => $claimId]);
+        $result = $STMT->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            // Create a new Claim instance and populate its attributes
+            $claim = new Claim();
+            $claim->claim_id = $result['claim_id'];
+            $claim->user_id = $result['user_id'];
+            $claim->policy_id = $result['policy_id'];
+            $claim->claim_type = $result['claim_type'];
+            $claim->submission_date = $result['submission_date'];
+            $claim->status = $result['status'];
+            $claim->claim_details = $result['claim_details'];
+            $claim->health_insurance_number = $result['health_insurance_number'];
+
+            return $claim;
+        } else {
+            return null; // Claim not found
+        }
+    }
+
 }
 
 ?>

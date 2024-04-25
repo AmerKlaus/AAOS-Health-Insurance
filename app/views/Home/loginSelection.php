@@ -5,7 +5,7 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>Login Selection</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -23,21 +23,15 @@
         </div>
     </header>
     <div class="container">
-        <form action="/User/login" method="post" class="login-form">
-            <h2>User Login</h2>
-            <?php if (isset($errorMessage)): ?>
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $errorMessage; ?>
-                </div>
-            <?php endif; ?>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required> <br> </br>
-            <button type="submit">Login</button>
-            <a href="/User/forgotPassword">Forgot Password?</a>
-            <p>Don't have an account? <a href="/User/register">Sign up here</a>.</p>
+        <form action="/Home/loginSelection" method="post">
+            <label>Login as:</label><br>
+            <input type="radio" id="user" name="role" value="user" required>
+            <label for="user">User</label><br>
+            <input type="radio" id="admin" name="role" value="admin" required>
+            <label for="admin">Admin</label><br>
+            <button type="submit">Next</button>
         </form>
+
     </div>
 </body>
 

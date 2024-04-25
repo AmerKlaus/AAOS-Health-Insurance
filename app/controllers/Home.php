@@ -78,6 +78,28 @@ class Home extends \app\core\Controller
     {
         $this->view('Home/customerSupport');
     }
+
+    public function loginSelection()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $role = $_POST['role'];
+            if ($role === 'user') {
+                header('Location: /User/login');
+                exit;
+            } elseif ($role === 'admin') {
+                header('Location: /Admin/login');
+                exit;
+            } else {
+                // Invalid role selected, redirect back to login selection
+                header('Location: Home/index');
+                exit;
+            }
+        } else {
+            // Display the login selection form
+            $this->view('Home/loginSelection');
+        }
+    }
+
 }
 
 ?>
