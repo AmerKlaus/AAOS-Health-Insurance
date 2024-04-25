@@ -94,6 +94,21 @@ class User
         return $token;
     }
     
+    public static function getUserByResetToken(PDO $db_conn, string $token)
+{
+    $raw_sql = 'SELECT * FROM User WHERE reset_token_hash = :token AND reset_token_expires_at > NOW()';
+    $stmt = $db_conn->prepare($raw_sql);
+    $stmt->execute(['token' => $token]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+    return $stmt->fetch();
+}
+
+public function isResetTokenValid(): bool
+{
+    return strtotime($this->reset_token_expires_at) > time();
+}
+
+
     
     public function sendResetEmail($recipient, $resetToken)
     {
