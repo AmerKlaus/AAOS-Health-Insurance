@@ -18,7 +18,7 @@ class Admin extends \app\core\Model
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert the admin record into the database
-        $SQL = 'INSERT INTO Admin (username, email, password_hash) VALUES (:username, :email, :password)';
+        $SQL = 'INSERT INTO Admin VALUES (DEFAULT, :username, :email, :password)';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['username' => $username, 'email' => $email, 'password' => $hashedPassword]);
     }
@@ -43,8 +43,7 @@ class Admin extends \app\core\Model
 
     public function insertReview(PDO $db_conn, $claimId, $notes)
     {
-        $SQL = 'INSERT INTO Claim_Review (claim_id, admin_id, review_date, review_outcome, notes)
-            VALUES (:claimId, :adminId, NOW(), :reviewOutcome, :notes)';
+        $SQL = 'INSERT INTO Claim_Review VALUES (DEFAULT, :claimId, :adminId, NOW(), :reviewOutcome, :notes)';
         $STMT = $db_conn->prepare($SQL);
         $adminId = $_SESSION['admin_id']; // Assuming you have the admin ID stored in session
         $reviewOutcome = 'Pending'; // Set the review outcome as needed

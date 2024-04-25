@@ -21,8 +21,7 @@ class Notification
         $userId = $this->getUserIdFromClaim($claimId);
 
         // Insert notification into the database
-        $SQL = 'INSERT INTO Notification (user_id, notification_content, notification_type, timestamp) 
-                    VALUES (:userId, :content, :type, :timestamp)';
+        $SQL = 'INSERT INTO Notification VALUES (DEFAULT, :userId, :content, :type, :timestamp)';
         $STMT = $this->db_conn->prepare($SQL);
         $STMT->execute([
             'userId' => $userId,
