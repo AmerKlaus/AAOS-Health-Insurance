@@ -17,7 +17,6 @@ $this->addRoute('User/setup2fa', 'User,setup2fa');
 $this->addRoute('User/check2fa', 'User,check2fa');
 $this->addRoute('User/check2fa', 'User,check2fa');
 $this->addRoute('Admin/dashboard', 'Admin,dashboard');
-$this->addRoute('Admin/pendingClaims', 'Admin,pendingClaims');
 $this->addRoute('Admin/reviewClaim/{claimId}', 'Admin,reviewClaim');
 $this->addRoute('Admin/requestInfo/{claimId}', 'Admin,requestInfo');
 $this->addRoute('Admin/approveClaim/{claimId}', 'Admin,approveClaim');
@@ -25,5 +24,5 @@ $this->addRoute('Admin/denyClaim/{claimId}', 'Admin,denyClaim');
 $this->addRoute('Admin/login', 'Admin,login');
 $this->addRoute('Admin/register', 'Admin,register');
 $this->addRoute('Home/loginSelection', 'Home,loginSelection');
-$this->addRoute('User/resetPasswordForm', 'User', 'resetPasswordForm');
-
+$this->addRoute('Admin/submitReview/{claimId}', 'Admin,submitReview');
+$this->addRoute('Admin/submitRequestInfo/{claimId}', 'Admin,submitRequestInfo');

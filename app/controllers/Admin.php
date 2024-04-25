@@ -8,8 +8,32 @@ class Admin extends \app\core\Controller
 {
     public function dashboard()
     {
-        // Display the admin dashboard
-        $this->view('Admin/dashboard');
+        // Retrieve and display pending claims for review
+        $claimModel = new \app\models\Claim();
+        $claimModel = $claimModel->getPendingClaimDocuments($this->db_conn);
+
+        $this->view('Admin/dashboard', $claimModel);
+
+    }
+
+    public function logout()
+    {
+        // Check if the user is logged in
+        if (isset($_SESSION['admin_id'])) {
+            // Unset all session variables
+            session_unset();
+
+            // Destroy the session
+            session_destroy();
+
+            // Redirect to the home page or any other desired page after logout
+            header('Location: /Home/index');
+            exit;
+        } else {
+            // Redirect to the home page or login page if the user is not logged in
+            header('Location: /Admin/login');
+            exit;
+        }
     }
 
     public function register()
@@ -57,44 +81,52 @@ class Admin extends \app\core\Controller
         }
     }
 
-    public function pendingClaims()
-    {
-        // Retrieve and display pending claims for review
-        $claimModel = new \app\models\Admin();
-        $pendingClaimDocuments = $claimModel->getPendingClaimDocuments();
-
-        // Convert object to array
-        $claims = [];
-        foreach ($pendingClaimDocuments as $claim) {
-            $claims[] = [
-                'claim_id' => $claim['claim_id'],
-                'user_id' => $claim['user_id'],
-                'policy_id' => $claim['policy_id'],
-                'claim_type' => $claim['claim_type'],
-                'submission_date' => $claim['submission_date'],
-                'status' => $claim['status'],
-                'claim_details' => $claim['claim_details'],
-            ];
-        }
-
-        var_dump($claims);
-
-        $this->view('Admin/dashboard', ['claimDetails' => $claims]);
-    }
-
     public function reviewClaim($claimId)
     {
         // Display detailed information about the claim for review
         // You can fetch claim details from the database based on $claimId
         $claimModel = new \app\models\Claim();
-        $claimDetails = $claimModel::getClaimById($this->db_conn, $claimId); // Implement getClaimById method in Claim model
-        $this->view('Admin/reviewClaim', ['claimDetails' => $claimDetails]);
+        $claimModel = $claimModel::getClaimById($this->db_conn, $claimId); // Implement getClaimById method in Claim model
+        $this->view('Admin/reviewClaim', $claimModel);
     }
+
+    public function submitReview($claimId)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Validate and sanitize input data
+            $notes = htmlspecialchars($_POST['notes']);
+
+            // Call the model method to insert the review into the database
+            $adminModel = new \app\models\Admin();
+            $adminModel->insertReview($this->db_conn, $claimId, $notes);
+
+            header('Location: /Admin/dashboard');
+            exit;
+        }
+    }
+
 
     public function requestInfo($claimId)
     {
-        // Display a form or page to request additional information
-        $this->view('Admin/requestInfo', ['claimId' => $claimId]);
+        // Load the requestInfo view page
+        $claimModel = new \app\models\Claim();
+        $claimModel = $claimModel->getClaimById($this->db_conn, $claimId);
+        $this->view('Admin/requestInfo', $claimModel);
+    }
+
+    public function submitRequestInfo($claimId)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Validate and sanitize input data
+            $info = htmlspecialchars($_POST['info']);
+
+            // Store the information in the notification table
+            $notificationModel = new \app\models\Notification($this->db_conn);
+            $notificationModel->createNotification($claimId, $info, 'Request Additional Info');
+
+            header('Location: /Admin/dashboard');
+            exit;
+        }
     }
 
     public function approveClaim($claimId)
