@@ -11,7 +11,7 @@ class User
 
     public string $user_id;
     public string $username;
-    public string $password_hash;
+    public string $pwd_hash;
     public string $email;
     public string $role_id;
     public string $full_name;
@@ -19,13 +19,13 @@ class User
     public string $address;
     public ?string $secret;
 
-    public static function createUser(PDO $db_conn, string $username, string $password_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
+    public static function createUser(PDO $db_conn, string $username, string $pwd_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
     {
-        $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address) VALUES (:username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
+        $raw_sql = 'INSERT INTO User (username, pwd_hash, email, role_id, full_name, phone, address) VALUES (:username, :pwd_hash, :email, :role_id, :full_name, :phone, :address)';
         $stmt = $db_conn->prepare($raw_sql);
         $params = [
             'username' => $username,
-            'password_hash' => $password_hash,
+            'pwd_hash' => $pwd_hash,
             'email' => $email,
             'role_id' => $role_id,
             'full_name' => $full_name,
@@ -64,7 +64,7 @@ class User
 
     public function update(PDO $db_conn)
     {
-        $SQL = 'UPDATE User SET username = :username, password_hash = :password_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';
+        $SQL = 'UPDATE User SET username = :username, pwd_hash = :pwd_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute((array)$this);
     }
@@ -140,10 +140,10 @@ public static function getByEmail(PDO $db_conn, $email)
 
 public function updatePasswordAndResetToken(PDO $db_conn)
 {
-    $SQL = 'UPDATE User SET password_hash = :password_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
+    $SQL = 'UPDATE User SET pwd_hash = :pwd_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
     $STMT = $db_conn->prepare($SQL);
     $STMT->execute([
-        'password_hash' => $this->password_hash,
+        'password_hash' => $this->pwd_hash,
         'reset_token_hash' => $this->reset_token_hash,
         'reset_token_expires_at' => $this->reset_token_expires_at,
         'user_id' => $this->user_id
