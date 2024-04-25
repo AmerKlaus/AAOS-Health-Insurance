@@ -117,7 +117,7 @@ class User
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';
            
-            $mail->Body = 'Dear user,<br><br>You have requested a password reset. Please click the following link to reset your password:<br>http://localhost/User/forgotPassword?token=' . $resetToken . '<br><br>If you did not request this reset, please ignore this email.<br><br>Best regards,<br>Your Company';
+            $mail->Body = 'Dear user,<br><br>You have requested a password reset. Please click the following link to reset your password:<br>http://localhost/User/resetPassword?token=' . $resetToken . '<br><br>If you did not request this reset, please ignore this email.<br><br>Best regards,<br>Your Company';
 
           
             // Send the email
