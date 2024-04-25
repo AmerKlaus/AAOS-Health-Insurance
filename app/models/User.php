@@ -21,7 +21,7 @@ class User
 
     public static function createUser(PDO $db_conn, string $username, string $password_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
     {
-        $raw_sql = 'INSERT INTO User VALUES (DEFAULT, :username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
+        $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address) VALUES (:username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
         $stmt = $db_conn->prepare($raw_sql);
         $params = [
             'username' => $username,
