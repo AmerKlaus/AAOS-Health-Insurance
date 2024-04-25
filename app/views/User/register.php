@@ -21,7 +21,7 @@
     </header>
     <div class="container">
         <form action="/User/register" method="post" class="register-form">
-            <h2>Register</h2>
+            <h2>User Register</h2>
             <label for="full_name">Full Name:</label>
             <input type="text" id="full_name" name="full_name" required>
             <label for="username">Username:</label>

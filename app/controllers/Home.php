@@ -74,46 +74,31 @@ class Home extends \app\core\Controller
         $this->view('Home/claimDetails');
     }
 
-    public function insuranceClaimsInfo()
+    public function customerSupport()
     {
-        $this->view('Home/insuranceClaimsInfo');
+        $this->view('Home/customerSupport');
     }
 
-    public function coverageOptions()
+    public function loginSelection()
     {
-        $this->view('Home/coverageOptions');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $role = $_POST['role'];
+            if ($role === 'user') {
+                header('Location: /User/login');
+                exit;
+            } elseif ($role === 'admin') {
+                header('Location: /Admin/login');
+                exit;
+            } else {
+                // Invalid role selected, redirect back to login selection
+                header('Location: Home/index');
+                exit;
+            }
+        } else {
+            // Display the login selection form
+            $this->view('Home/loginSelection');
+        }
     }
-
-    public function industryNews()
-    {
-        $this->view('Home/industryNews');
-    }
-
-
-  // Inside the customerSupport method in your controller
-public function customerSupport()
-{
-    // Check if the user is logged in
-    if (!isset($_SESSION['user_id'])) {
-        // If the user is not logged in, redirect to the login page
-        header('Location: /User/login');
-        exit;
-    }
-
-    // If the user is logged in, display the customer support page
-    $this->view('Home/customerSupport');
-}
-
-    
-    
-    
-    
-    
-
-
-
-    
-
 
 }
 
