@@ -71,15 +71,11 @@
             <h2>Send Message to Customer Support</h2>
             <p>If you need assistance or have any inquiries, please use the form below to send us a message:</p>
             <form action="/User/submitFeedback" method="post">
-                <label for="name">Your Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                <label for="email">Your Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="4" required></textarea><br>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" required></textarea><br>
+    <button type="submit">Send Message</button>
+</form>
+
     </section>
 
     <footer>

@@ -155,6 +155,7 @@ class User extends \app\core\Controller
             if ($authenticator->verify($totp)) {
 
                 // TOTP is correct, perform further actions like storing it in the user record
+                header('location:/Home/index');
                 echo 'yay!';
             } else {
 
@@ -204,12 +205,11 @@ class User extends \app\core\Controller
     
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
-                // Retrieve and sanitize form data
+                // Retrieve user ID from session
                 $user_id = $_SESSION['user_id'];
+                
+                // Retrieve feedback message from form
                 $message = $_POST['message'];
-    
-                // Retrieve user information from the database using user_id
-                $user = \app\models\User::getById($this->db_conn, $user_id);
     
                 // Create a new Feedback instance
                 $feedback = new \app\models\Feedback();
@@ -219,6 +219,10 @@ class User extends \app\core\Controller
     
                 // Insert the feedback into the database
                 $feedback->insert($this->db_conn);
+                
+                // Redirect after successful submission
+                header('Location:/Home/index');
+                exit;
             } catch (PDOException $e) {
                 // Handle database errors
                 echo "Database Error: " . $e->getMessage();
@@ -233,6 +237,7 @@ class User extends \app\core\Controller
         }
     }
     
+
 
 }
 
