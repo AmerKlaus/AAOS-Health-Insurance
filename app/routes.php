@@ -16,7 +16,6 @@ $this->addRoute('Home/coverageOptions', 'Home,coverageOptions');
 $this->addRoute('Home/industryNews', 'Home,industryNews');
 $this->addRoute('User/setup2fa', 'User,setup2fa');
 $this->addRoute('User/check2fa', 'User,check2fa');
-$this->addRoute('User/check2fa', 'User,check2fa');
 $this->addRoute('Admin/dashboard', 'Admin,dashboard');
 $this->addRoute('Admin/reviewClaim/{claimId}', 'Admin,reviewClaim');
 $this->addRoute('Admin/requestInfo/{claimId}', 'Admin,requestInfo');
