@@ -79,6 +79,21 @@ class Home extends \app\core\Controller
         $this->view('Home/customerSupport');
     }
 
+    public function insuranceClaimsInfo()
+    {
+        $this->view('Home/insuranceClaimsInfo');
+    }
+
+    public function coverageOptions()
+    {
+        $this->view('Home/coverageOptions');
+    }
+    
+    public function industryNews()
+    {
+        $this->view('Home/industryNews');
+    }
+
     public function loginSelection()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
