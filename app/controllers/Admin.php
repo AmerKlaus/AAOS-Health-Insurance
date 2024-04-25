@@ -108,8 +108,25 @@ class Admin extends \app\core\Controller
 
     public function requestInfo($claimId)
     {
-        // Display a form or page to request additional information
-        $this->view('Admin/requestInfo', ['claimId' => $claimId]);
+        // Load the requestInfo view page
+        $claimModel = new \app\models\Claim();
+        $claimModel = $claimModel->getClaimById($this->db_conn, $claimId);
+        $this->view('Admin/requestInfo', $claimModel);
+    }
+
+    public function submitRequestInfo($claimId)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Validate and sanitize input data
+            $info = htmlspecialchars($_POST['info']);
+
+            // Store the information in the notification table
+            $notificationModel = new \app\models\Notification($this->db_conn);
+            $notificationModel->createNotification($claimId, $info, 'Request Additional Info');
+
+            header('Location: /Admin/dashboard');
+            exit;
+        }
     }
 
     public function approveClaim($claimId)
