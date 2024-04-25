@@ -60,9 +60,26 @@ class Admin extends \app\core\Controller
     public function pendingClaims()
     {
         // Retrieve and display pending claims for review
-        $adminModel = new \app\models\Admin();
-        $pendingClaims = $adminModel->getPendingClaimDocuments();
-        $this->view('Admin/pendingClaims', ['pendingClaims' => $pendingClaims]);
+        $claimModel = new \app\models\Admin();
+        $pendingClaimDocuments = $claimModel->getPendingClaimDocuments();
+
+        // Convert object to array
+        $claims = [];
+        foreach ($pendingClaimDocuments as $claim) {
+            $claims[] = [
+                'claim_id' => $claim['claim_id'],
+                'user_id' => $claim['user_id'],
+                'policy_id' => $claim['policy_id'],
+                'claim_type' => $claim['claim_type'],
+                'submission_date' => $claim['submission_date'],
+                'status' => $claim['status'],
+                'claim_details' => $claim['claim_details'],
+            ];
+        }
+
+        var_dump($claims);
+
+        $this->view('Admin/dashboard', ['claimDetails' => $claims]);
     }
 
     public function reviewClaim($claimId)
