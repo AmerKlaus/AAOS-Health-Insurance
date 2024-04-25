@@ -16,7 +16,25 @@ class Admin extends \app\core\Controller
 
     }
 
+    public function logout()
+    {
+        // Check if the user is logged in
+        if (isset($_SESSION['admin_id'])) {
+            // Unset all session variables
+            session_unset();
 
+            // Destroy the session
+            session_destroy();
+
+            // Redirect to the home page or any other desired page after logout
+            header('Location: /Home/index');
+            exit;
+        } else {
+            // Redirect to the home page or login page if the user is not logged in
+            header('Location: /Admin/login');
+            exit;
+        }
+    }
 
     public function register()
     {
@@ -68,9 +86,25 @@ class Admin extends \app\core\Controller
         // Display detailed information about the claim for review
         // You can fetch claim details from the database based on $claimId
         $claimModel = new \app\models\Claim();
-        $claimDetails = $claimModel::getClaimById($this->db_conn, $claimId); // Implement getClaimById method in Claim model
-        $this->view('Admin/reviewClaim', ['claimDetails' => $claimDetails]);
+        $claimModel = $claimModel::getClaimById($this->db_conn, $claimId); // Implement getClaimById method in Claim model
+        $this->view('Admin/reviewClaim', $claimModel);
     }
+
+    public function submitReview($claimId)
+    {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Validate and sanitize input data
+            $notes = htmlspecialchars($_POST['notes']);
+
+            // Call the model method to insert the review into the database
+            $adminModel = new \app\models\Admin();
+            $adminModel->insertReview($this->db_conn, $claimId, $notes);
+
+            header('Location: /Admin/dashboard');
+            exit;
+        }
+    }
+
 
     public function requestInfo($claimId)
     {

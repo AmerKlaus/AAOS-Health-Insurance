@@ -46,8 +46,8 @@
                             <td><?php echo $claim->status; ?></td>
                             <td><?php echo $claim->claim_details; ?></td>
                             <td>
-                                <a href="/Admin/requestAdditionalInfo/<?php echo $claim->claim_id; ?>"
-                                    class="btn btn-primary">Request Additional Info</a>
+                                <a href="/Admin/requestInfo/<?php echo $claim->claim_id; ?>" class="btn btn-primary">Request
+                                    Additional Info</a>
                                 <a href="/Admin/reviewClaim/<?php echo $claim->claim_id; ?>" class="btn btn-info">Review
                                     Claim</a>
                             </td>

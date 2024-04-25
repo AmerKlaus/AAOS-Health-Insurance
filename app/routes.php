@@ -24,3 +24,4 @@ $this->addRoute('Admin/denyClaim/{claimId}', 'Admin,denyClaim');
 $this->addRoute('Admin/login', 'Admin,login');
 $this->addRoute('Admin/register', 'Admin,register');
 $this->addRoute('Home/loginSelection', 'Home,loginSelection');
+$this->addRoute('Admin/submitReview/{claimId}', 'Admin,submitReview');

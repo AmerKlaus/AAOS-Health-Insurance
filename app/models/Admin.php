@@ -23,7 +23,7 @@ class Admin extends \app\core\Model
         $STMT->execute(['username' => $username, 'email' => $email, 'password' => $hashedPassword]);
     }
 
-    public static function getByUsername($db_conn, $username)
+    public static function getByUsername(PDO $db_conn, $username)
     {
         $SQL = 'SELECT * FROM Admin WHERE username = :username';
         $STMT = $db_conn->prepare($SQL);
@@ -40,6 +40,17 @@ class Admin extends \app\core\Model
             return null;
         }
     }
+
+    public function insertReview(PDO $db_conn, $claimId, $notes)
+    {
+        $SQL = 'INSERT INTO Claim_Review (claim_id, admin_id, review_date, review_outcome, notes)
+            VALUES (:claimId, :adminId, NOW(), :reviewOutcome, :notes)';
+        $STMT = $db_conn->prepare($SQL);
+        $adminId = $_SESSION['admin_id']; // Assuming you have the admin ID stored in session
+        $reviewOutcome = 'Pending'; // Set the review outcome as needed
+        $STMT->execute(['claimId' => $claimId, 'adminId' => $adminId, 'reviewOutcome' => $reviewOutcome, 'notes' => $notes]);
+    }
+
 
     // public function requestAdditionalInformation($claimId, $additionalInfo)
     // {
