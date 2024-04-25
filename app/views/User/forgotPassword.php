@@ -19,14 +19,15 @@
         </div>
     </header>
     <div class="container">
-        <form action="reset_password_process.php" method="post" class="forgot-password-form">
-            <h2>Forgot Password</h2>
-            <p>Please enter your email address below to reset your password.</p>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Reset Password</button>
-            <button type="submit" id="backToLogin"> Back</button> <br> </br>
-        </form>
+    <form action="/User/forgotPassword" method="post" class="forgot-password-form">
+    <h2>Forgot Password</h2>
+    <p>Please enter your email address below to reset your password.</p>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="submit">Reset Password</button>
+    <button type="submit" id="backToLogin">Back</button> <br> </br>
+</form>
+
     </div>
     <footer>
         <div class="container">

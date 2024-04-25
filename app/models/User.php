@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use PDO;
 
 class User
@@ -74,6 +76,81 @@ class User
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['user_id' => $this->user_id]);
     }
+
+    public function generatePasswordResetToken(PDO $db_conn)
+    {
+        // Generate a random token
+        $token = bin2hex(random_bytes(16));
+    
+        // Hash the token
+        $token_hash = hash("sha256", $token);
+    
+        // Set the token and expiration time in the user object
+        $this->reset_token_hash = $token_hash;
+        $this->reset_token_expires_at = date("Y-m-d H:i:s", time() + 60 * 30); // 30 minutes from now
+    
+        // Update the user record in the database
+        $this->updatePasswordAndResetToken($db_conn); // Updated method call
+    
+        return $token;
+    }
+    
+    
+    public function sendResetEmail($recipient, $resetToken)
+    {
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'fatecasual@gmail.com'; // Your Gmail email address
+            $mail->Password   = 'foof dkpz taqn whfv';    // Your app password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption
+            $mail->Port       = 587; // TCP port to connect to (google has two make sure its valid its the encryption)
+
+            //Recipients
+            $mail->setFrom('AAOS@gmail.com', 'AAOS'); // Sender's email address and name
+            $mail->addAddress($recipient); // Recipient's email address
+            //Content
+            $mail->isHTML(true);
+            $mail->Subject = 'Password Reset Request';
+           
+            $mail->Body = 'Dear user,<br><br>You have requested a password reset. Please click the following link to reset your password:<br>http://localhost/User/resetPasswordForm.php?token=' . $resetToken . '<br><br>If you did not request this reset, please ignore this email.<br><br>Best regards,<br>Your Company';
+
+          
+            // Send the email
+            $mail->send();
+        } catch (Exception $e) {
+            // Log any errors
+            error_log("Error sending password reset email: {$mail->ErrorInfo}");
+        }
+    }
+
+
+public static function getByEmail(PDO $db_conn, $email)
+{
+    $raw_sql = 'SELECT * FROM User WHERE email = :email';
+    $stmt = $db_conn->prepare($raw_sql);
+    $stmt->execute(['email' => $email]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+    return $stmt->fetch();
 }
 
+public function updatePasswordAndResetToken(PDO $db_conn)
+{
+    $SQL = 'UPDATE User SET password_hash = :password_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
+    $STMT = $db_conn->prepare($SQL);
+    $STMT->execute([
+        'password_hash' => $this->password_hash,
+        'reset_token_hash' => $this->reset_token_hash,
+        'reset_token_expires_at' => $this->reset_token_expires_at,
+        'user_id' => $this->user_id
+    ]);
+}
+
+
+
+}
 ?>

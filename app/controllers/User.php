@@ -71,23 +71,6 @@ class User extends \app\core\Controller
         }
     }
 
-    // Method to handle forgot password functionality
-    public function forgotPassword()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            // Retrieve the username or email entered by the user
-            $username_or_email = $_POST['username'];
-
-            //message telling user a reset link got sent 
-            echo "A password reset link has been sent to $username_or_email";
-
-        } else {
-
-            // Display forgot password form
-            $this->view('User/forgotPassword');
-        }
-    }
     // Method to handle user registration
     public function register()
     {
@@ -155,8 +138,7 @@ class User extends \app\core\Controller
             if ($authenticator->verify($totp)) {
 
                 // TOTP is correct, perform further actions like storing it in the user record
-                header('location:/Home/index');
-                echo 'yay!';
+            header('location:/Home/index');
             } else {
 
                 // TOTP is incorrect
@@ -224,9 +206,11 @@ class User extends \app\core\Controller
                 header('Location:/Home/index');
                 exit;
             } catch (PDOException $e) {
+                
                 // Handle database errors
                 echo "Database Error: " . $e->getMessage();
             } catch (Exception $e) {
+
                 // Handle other exceptions
                 echo "Error: " . $e->getMessage();
             }
@@ -236,8 +220,41 @@ class User extends \app\core\Controller
             exit;
         }
     }
-    
 
+    public function forgotPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve the email entered by the user
+            $email = $_POST['email'];
+
+            // Check if the email exists in the database
+            $user = \app\models\User::getByEmail($this->db_conn, $email);
+
+            if ($user) {
+                // If the email exists, generate a password reset token
+                $resetToken = $user->generatePasswordResetToken($this->db_conn);
+
+                // Send the password reset email using the model method
+                $user->sendResetEmail($email, $resetToken);
+
+                // Display a success message to the user
+                $this->view('User/resetPasswordSuccess', ['email' => $email]);
+            } else {
+                // Email not found in the database
+                $errorMessage = "The email address provided is not associated with any account.";
+                $this->view('User/forgotPassword', ['errorMessage' => $errorMessage]);
+            }
+        } else {
+            // Display forgot password form
+            $this->view('User/forgotPassword');
+        }
+    }
+
+    public function resetPasswordForm()
+    {
+        $this->view('Home/homepage');
+    }
+    
 
 }
 

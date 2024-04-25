@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2024 at 03:33 AM
+-- Generation Time: Apr 25, 2024 at 07:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -69,6 +69,13 @@ CREATE TABLE `Claim` (
   `claim_details` text NOT NULL,
   `health_insurance_number` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Claim`
+--
+
+INSERT INTO `Claim` (`claim_id`, `user_id`, `policy_id`, `claim_type`, `submission_date`, `status`, `claim_details`, `health_insurance_number`) VALUES
+(1, 1, 1, 'health', '2024-04-24 00:00:00', 'Pending', 'dwwd', 'dwdw');
 
 -- --------------------------------------------------------
 
@@ -279,15 +286,18 @@ CREATE TABLE `User` (
   `full_name` varchar(100) NOT NULL,
   `phone` varchar(12) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `secret` varchar(32) DEFAULT NULL
+  `secret` varchar(32) DEFAULT NULL,
+  `reset_token_hash` varchar(64) DEFAULT NULL,
+  `reset_token_expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `User`
 --
 
-INSERT INTO `User` (`user_id`, `username`, `password_hash`, `email`, `role_id`, `full_name`, `phone`, `address`, `secret`) VALUES
-(1, 'amerklaus', '$2y$10$tsG/Ktrt7vhEHPW4VRWtM.wFx/kXxRntNAJ3ucxDrMkPFxyXO4jCy', 'amer1jawabra@gmail.com', '1', 'amer', '222-444-1111', '202 rue saint-marce', NULL);
+INSERT INTO `User` (`user_id`, `username`, `password_hash`, `email`, `role_id`, `full_name`, `phone`, `address`, `secret`, `reset_token_hash`, `reset_token_expires_at`) VALUES
+(1, 'amerklaus', '$2y$10$tsG/Ktrt7vhEHPW4VRWtM.wFx/kXxRntNAJ3ucxDrMkPFxyXO4jCy', 'amer1jawabra@gmail.com', '1', 'amer', '222-444-1111', '202 rue saint-marce', NULL, NULL, NULL),
+(6, 'Olivier', '$2y$10$5J.wsFOJsOwFQLQuE.htVOrSpIPNO4yiEeIVAdGJFdw6z1jqt0CCS', 'fatecasual@gmail.com', '1', 'Olivier', '450-377-8434', 'testingstreet', NULL, '5468920b44c0049a085202a0237f5cc15182570ef5a3488c60f73e21cc282687', '2024-04-25 07:24:22');
 
 --
 -- Indexes for dumped tables
@@ -406,7 +416,8 @@ ALTER TABLE `Ticket`
 --
 ALTER TABLE `User`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -428,7 +439,7 @@ ALTER TABLE `Audit_Result`
 -- AUTO_INCREMENT for table `Claim`
 --
 ALTER TABLE `Claim`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Claim_Assignment`
@@ -506,7 +517,7 @@ ALTER TABLE `Ticket`
 -- AUTO_INCREMENT for table `User`
 --
 ALTER TABLE `User`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
