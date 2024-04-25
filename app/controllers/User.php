@@ -227,6 +227,7 @@ class User extends \app\core\Controller
 
     public function forgotPassword()
     {
+      
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Retrieve the email entered by the user
             $email = $_POST['email'];
@@ -253,23 +254,51 @@ class User extends \app\core\Controller
             $this->view('User/forgotPassword');
         }
     }
-/*
+
     public function resetPassword()
     {
-        $token =...
-        if(){
-            $token == token db
-            user == user
-            update
-            
-        }
-        else{
-        
-            $this->view('Home/homepage');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve the token and new password from the form
+            $token = $_POST['token'];
+            $newPassword = $_POST['new_password'];
+            $confirmPassword = $_POST['confirm_password'];
+    
+            // Check if both passwords match
+            if ($newPassword !== $confirmPassword) {
+                // If passwords don't match, redirect with an error message
+                $errorMessage = "Passwords do not match.";
+                $this->view('User/resetPasswordForm', ['errorMessage' => $errorMessage]);
+                return; // Stop further execution
+            }
+    
+            // Retrieve the user associated with the token from the database
+            $user = \app\models\User::getUserByResetToken($this->db_conn, $token);
+    
+            // Check if the user exists and the token is valid
+            if ($user && $user->isResetTokenValid()) {
+                // Hash the new password
+                $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    
+                // Update the user's password in the database
+                $user->updatePassword($this->db_conn, $hashedPassword);
+    
+                // Redirect to login page with success message
+                header('Location: /User/login');
+                exit;
+            } else {
+                // Invalid token or token expired, redirect with error message
+                $errorMessage = "Invalid or expired token.";
+                $this->view('User/resetPasswordForm', ['errorMessage' => $errorMessage]);
+                return; // Stop further execution
+            }
+        } else {
+            // Display the reset password form
+            $token = $_GET['token'] ?? '';
+            $this->view('User/resetPasswordForm', ['token' => $token]);
         }
     }
     
-*/
+
 }
 
 ?>

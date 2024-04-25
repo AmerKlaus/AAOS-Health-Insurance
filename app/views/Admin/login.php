@@ -26,8 +26,8 @@
         <form action="/Admin/login" method="post" class="login-form">
             <h2>Admin Login</h2>
             <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <input type="password" name="password" placeholder="Password" required> <br> </br>
+            <button type="submit">Login</button> 
             <p>Don't have an account? <a href="/Admin/register">Sign up here</a>.</p>
         </form>
     </div>
