@@ -223,6 +223,7 @@ class User extends \app\core\Controller
 
     public function forgotPassword()
     {
+        $token = $_GET['token'];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Retrieve the email entered by the user
             $email = $_POST['email'];
