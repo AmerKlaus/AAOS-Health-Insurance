@@ -5,13 +5,13 @@ namespace app\models;
 use PDO;
 
 class User {
-    string $user_id;
-    string $username;
-    string $password_hash;
-    string $policy_id;
-    string $name;
-    string $email;
-    string $address;
+    public string $user_id;
+    public string $username;
+    public string $password_hash;
+    public string $policy_id;
+    public string $name;
+    public string $email;
+    public string $address;
 
     public static function create(PDO $db_conn, string $username, string $password_hash, string $policy_id, string $name, string $email, string $address) {
         $raw_sql = 'INSERT INTO `users` VALUES (DEFAULT, :username, :password_hash, :policy_id, :name, :email, :address)';

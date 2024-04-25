@@ -12,3 +12,4 @@ $db_conn = new \PDO("mysql:host=$host;dbname=$dbname;charset=$charset", $user, $
 $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 new App($db_conn);
+

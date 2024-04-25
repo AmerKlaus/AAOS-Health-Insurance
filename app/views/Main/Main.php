@@ -4,6 +4,9 @@
 	<body>
 		<p>This is the main page</p>
 
+		<a href="/User/login">Login</a>
+		<a href="/User/register">Register</a>
+
 	</body>
 
 </html>
