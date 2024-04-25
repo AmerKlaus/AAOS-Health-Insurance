@@ -4,17 +4,24 @@ namespace app\models;
 
 use PDO;
 
-class Policy
-{
-	public static function getIdFromNumber(PDO $db_conn, $policyNumber)
-	{
-		$SQL = 'SELECT policy_id FROM Policy WHERE policy_number = :policy_number';
-		$STMT = $db_conn->prepare($SQL);
-		$STMT->execute(['policy_number' => $policyNumber]);
-		$result = $STMT->fetch(PDO::FETCH_ASSOC);
-		return $result ? $result['policy_id'] : null;
-	}
+class Policy {
+	string $policy_id;
+	string $number;
+
+	public static function getByID(PDO $db_conn, $policy_id) {
+		$raw_sql = 'SELECT * FROM `policies` WHERE policy_id = :policy_id';
+    	$stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['user_id' => $user_id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\Policy');
+        return $stmt->fetch();
+    }
+
+    public static function getByNumber(PDO $db_conn, $number) {
+		$raw_sql = 'SELECT * FROM `policies` WHERE number = :number';
+    	$stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['number' => $number]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\Policy');
+        return $stmt->fetch();
+    }
 
 }
-
-?>

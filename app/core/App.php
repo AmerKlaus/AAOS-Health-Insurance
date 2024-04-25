@@ -6,7 +6,7 @@ use \PDO;
 class App {
     private $routes = [];
 
-    public function addRoute($url,$handler){
+    public function addRoute($url,$handler) {
         $url = preg_replace('/{([^\/]+)}/', '(?<$1>[^\/]+)', $url);
         $this->routes[$url] = $handler;
     }

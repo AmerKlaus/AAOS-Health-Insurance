@@ -1,44 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head><title>User Login</title></head>
 
-<head>
-    <!-- Meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+	<body>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet" type="text/css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+		<form method="post" action="/User/login">
+			<label>Username:<input type="text" name="username-input"></label>
+			
 
-</head>
+			<label>Password:<input type="password-input" name="password-input"></label>
+			
 
-<body>
-    <header>
-        <div class="container">
-            <h1>AAOS Insurance</h1>
-        </div>
-    </header>
-    <div class="container">
-        <form action="/User/login" method="post" class="login-form">
-            <h2>User Login</h2>
-            <?php if (isset($errorMessage)): ?>
-                <div class="alert alert-danger" role="alert">
-                    <?php echo $errorMessage; ?>
-                </div>
-            <?php endif; ?>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required> <br> </br>
-            <button type="submit">Login</button>
-            <a href="/User/forgotPassword">Forgot Password?</a>
-            <p>Don't have an account? <a href="/User/register">Sign up here</a>.</p>
-        </form>
-    </div>
-</body>
+			<button type="submit">Login</button>
+
+		</form>
+		<a href="/User/register">Go to registration page</a>
+
+	</body>
 
 </html>

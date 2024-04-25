@@ -4,76 +4,67 @@ namespace app\models;
 
 use PDO;
 
-class User
-{
+class User {
+    string $user_id;
+    string $username;
+    string $password_hash;
+    string $policy_id;
+    string $name;
+    string $email;
+    string $address;
 
-    public string $user_id;
-    public string $username;
-    public string $password_hash;
-    public string $email;
-    public string $role_id;
-    public string $full_name;
-    public string $phone;
-    public string $address;
-    public ?string $secret;
-
-    public static function createUser(PDO $db_conn, string $username, string $password_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
-    {
-        $raw_sql = 'INSERT INTO User (username, password_hash, email, role_id, full_name, phone, address)
-                VALUES (:username, :password_hash, :email, :role_id, :full_name, :phone, :address)';
+    public static function create(PDO $db_conn, string $username, string $password_hash, string $policy_id, string $name, string $email, string $address) {
+        $raw_sql = 'INSERT INTO `users` VALUES (DEFAULT, :username, :password_hash, :policy_id, :name, :email, :address)';
         $stmt = $db_conn->prepare($raw_sql);
         $params = [
             'username' => $username,
             'password_hash' => $password_hash,
+            'policy_id' => $policy_id,
+            'name' => $name,
             'email' => $email,
-            'role_id' => $role_id,
-            'full_name' => $full_name,
-            'phone' => $phone,
             'address' => $address
         ];
         try {
             $stmt->execute($params);
-            return User::getByUsername($db_conn, $username);
-        } catch (\PDOException $e) {
+            return true;
+        }
+        catch (\PDOException $e) {
             if ($e->getCode() == '23000') {
                 return null;
-            } else {
+            } 
+            else {
                 throw $e;
             }
         }
     }
 
-    public static function getByUsername(PDO $db_conn, $username)
-    {
-        $raw_sql = 'SELECT * FROM User WHERE username = :username';
+    public static function getByUsername(PDO $db_conn, $username) {
+        $raw_sql = 'SELECT * FROM `users` WHERE username = :username';
         $stmt = $db_conn->prepare($raw_sql);
         $stmt->execute(['username' => $username]);
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
         return $stmt->fetch();
     }
 
-    public static function getById(PDO $db_conn, $user_id)
-    {
-        $SQL = 'SELECT * FROM User WHERE user_id = :user_id';
-        $STMT = $db_conn->prepare($SQL);
-        $STMT->execute(['user_id' => $user_id]);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
-        return $STMT->fetch();
+    public static function getByID(PDO $db_conn, $user_id) {
+        $raw_sql = 'SELECT * FROM `users` WHERE user_id = :user_id';
+        $stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['user_id' => $user_id]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+        return $stmt->fetch();
     }
 
-    public function update(PDO $db_conn)
-    {
-        $SQL = 'UPDATE User SET username = :username, password_hash = :password_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';
-        $STMT = $db_conn->prepare($SQL);
-        $STMT->execute((array)$this);
+    public function update(PDO $db_conn) {
+        $raw_sql = 'UPDATE `users` SET username = :username, password_hash = :password_hash, policy_id = :policy_id, name = :name, email = :email, address = :address WHERE user_id = :user_id';
+        $stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute((array)$this);
+        return true;
     }
 
-    public function delete(PDO $db_conn)
-    {
-        $SQL = 'DELETE FROM User WHERE user_id = :user_id';
-        $STMT = $db_conn->prepare($SQL);
-        $STMT->execute(['user_id' => $this->user_id]);
+    public function delete(PDO $db_conn) {
+        $raw_sql = 'DELETE FROM `users` WHERE user_id = :user_id';
+        $stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['user_id' => $this->user_id]);
+        return true;
     }
 }
-
-?>
