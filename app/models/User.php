@@ -65,7 +65,7 @@ class User
     {
         $SQL = 'UPDATE User SET username = :username, password_hash = :password_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';
         $STMT = $db_conn->prepare($SQL);
-        $STMT->execute((array) $this);
+        $STMT->execute((array)$this);
     }
 
     public function delete(PDO $db_conn)
@@ -75,4 +75,5 @@ class User
         $STMT->execute(['user_id' => $this->user_id]);
     }
 }
+
 ?>
