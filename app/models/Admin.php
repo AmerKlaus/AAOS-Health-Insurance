@@ -12,16 +12,6 @@ class Admin extends \app\core\Model
     public string $password_hash;
     public string $email;
 
-    public function getPendingClaimDocuments()
-    {
-        // Implement logic to retrieve pending claim documents for review
-        $SQL = 'SELECT * FROM Claim WHERE status = :status';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['status' => 'Pending']);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\\models\\Admin');
-        return $STMT->fetchAll();
-    }
-
     public function register($username, $email, $password)
     {
         // Hash the password

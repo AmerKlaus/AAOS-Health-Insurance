@@ -33,6 +33,16 @@ class Claim
         $STMT->execute($data);
     }
 
+    public function getPendingClaimDocuments(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
+
     public static function getClaimById(PDO $db_conn, $claimId)
     {
         $SQL = 'SELECT * FROM Claim WHERE claim_id = :claimId';

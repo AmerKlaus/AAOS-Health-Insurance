@@ -36,19 +36,19 @@
                 </tr>
             </thead>
             <tbody>
-                <?php if ($claimDetails && is_array($claimDetails)): ?>
-                    <?php foreach ($claimDetails as $claim): ?>
+                <?php if (!empty($data)): ?>
+                    <?php foreach ($data as $claim): ?>
                         <tr>
-                            <td><?php echo $claim['claim_id']; ?></td>
-                            <td><?php echo $claim['user_id']; ?></td>
-                            <td><?php echo $claim['claim_type']; ?></td>
-                            <td><?php echo $claim['submission_date']; ?></td>
-                            <td><?php echo $claim['status']; ?></td>
-                            <td><?php echo $claim['claim_details']; ?></td>
+                            <td><?php echo $claim->claim_id; ?></td>
+                            <td><?php echo $claim->user_id; ?></td>
+                            <td><?php echo $claim->claim_type; ?></td>
+                            <td><?php echo $claim->submission_date; ?></td>
+                            <td><?php echo $claim->status; ?></td>
+                            <td><?php echo $claim->claim_details; ?></td>
                             <td>
-                                <a href="/Admin/requestAdditionalInfo/<?php echo $claim['claim_id']; ?>"
+                                <a href="/Admin/requestAdditionalInfo/<?php echo $claim->claim_id; ?>"
                                     class="btn btn-primary">Request Additional Info</a>
-                                <a href="/Admin/reviewClaim/<?php echo $claim['claim_id']; ?>" class="btn btn-info">Review
+                                <a href="/Admin/reviewClaim/<?php echo $claim->claim_id; ?>" class="btn btn-info">Review
                                     Claim</a>
                             </td>
                         </tr>

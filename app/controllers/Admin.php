@@ -8,9 +8,15 @@ class Admin extends \app\core\Controller
 {
     public function dashboard()
     {
-        // Display the admin dashboard
-        $this->view('Admin/dashboard');
+        // Retrieve and display pending claims for review
+        $claimModel = new \app\models\Claim();
+        $claimModel = $claimModel->getPendingClaimDocuments($this->db_conn);
+
+        $this->view('Admin/dashboard', $claimModel);
+
     }
+
+
 
     public function register()
     {
@@ -55,31 +61,6 @@ class Admin extends \app\core\Controller
             // Display the admin login form
             $this->view('Admin/login');
         }
-    }
-
-    public function pendingClaims()
-    {
-        // Retrieve and display pending claims for review
-        $claimModel = new \app\models\Admin();
-        $pendingClaimDocuments = $claimModel->getPendingClaimDocuments();
-
-        // Convert object to array
-        $claims = [];
-        foreach ($pendingClaimDocuments as $claim) {
-            $claims[] = [
-                'claim_id' => $claim['claim_id'],
-                'user_id' => $claim['user_id'],
-                'policy_id' => $claim['policy_id'],
-                'claim_type' => $claim['claim_type'],
-                'submission_date' => $claim['submission_date'],
-                'status' => $claim['status'],
-                'claim_details' => $claim['claim_details'],
-            ];
-        }
-
-        var_dump($claims);
-
-        $this->view('Admin/dashboard', ['claimDetails' => $claims]);
     }
 
     public function reviewClaim($claimId)
