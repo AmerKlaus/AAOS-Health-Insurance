@@ -58,14 +58,19 @@ class Admin extends \app\core\Controller
 
     public function login()
     {
+        echo '<pre>';
+        var_dump($_SERVER);
+        echo '</pre>';
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
             // Check admin credentials
             $admin = \app\models\Admin::getByUsername($this->db_conn, $username);
+            
 
-            if ($admin && password_verify($password, $admin->password_hash)) {
+            if ($admin && password_verify($password, $admin->pwd_hash)) {
                 // Admin login successful
                 $_SESSION['admin_id'] = $admin->admin_id;
                 header('Location: /Admin/dashboard');

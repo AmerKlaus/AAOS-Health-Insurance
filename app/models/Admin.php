@@ -9,7 +9,7 @@ class Admin extends \app\core\Model
 
     public string $admin_id;
     public string $username;
-    public string $password_hash;
+    public string $pwd_hash;
     public string $email;
 
     // TODO: Change to static method, like createUser()
@@ -19,9 +19,9 @@ class Admin extends \app\core\Model
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert the admin record into the database
-        $SQL = 'INSERT INTO Admin VALUES (DEFAULT, :username, :email, :password)';
+        $SQL = 'INSERT INTO Admin (admin_id, username, email, pwd_hash) VALUES (DEFAULT, :username, :email, :pwd_hash)';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['username' => $username, 'email' => $email, 'password' => $hashedPassword]);
+        $STMT->execute(['username' => $username, 'email' => $email, 'pwd_hash' => $hashedPassword]);
     }
 
     public static function getByUsername(PDO $db_conn, $username)
@@ -29,7 +29,8 @@ class Admin extends \app\core\Model
         $SQL = 'SELECT * FROM Admin WHERE username = :username';
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['username' => $username]);
-        $admin = $STMT->fetch(PDO::FETCH_CLASS, 'app\models\Admin');
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Admin');
+        $admin = $STMT->fetch();
 
         if ($admin) {
             return $admin;

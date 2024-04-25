@@ -43,7 +43,7 @@ class User extends \app\core\Controller
 
             // Check the password against the hash
             $password = $_POST['password'];
-            if ($user && password_verify($password, $user->password_hash)) {
+            if ($user && password_verify($password, $user->pwd_hash)) {
                 // Remember that this is the user logging in
                 $_SESSION['user_id'] = $user->user_id;
 
@@ -249,7 +249,7 @@ class User extends \app\core\Controller
             $this->view('User/forgotPassword');
         }
     }
-
+/*
     public function resetPassword()
     {
         $token =...
@@ -265,7 +265,7 @@ class User extends \app\core\Controller
         }
     }
     
-
+*/
 }
 
 ?>

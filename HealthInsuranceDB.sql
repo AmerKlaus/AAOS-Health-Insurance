@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 07:02 AM
+-- Generation Time: Apr 25, 2024 at 05:34 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `Admin`;
 CREATE TABLE `Admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password_hash` varchar(60) NOT NULL,
+  `pwd_hash` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -280,7 +280,7 @@ DROP TABLE IF EXISTS `User`;
 CREATE TABLE `User` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `password_hash` varchar(60) NOT NULL,
+  `pwd_hash` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
   `role_id` enum('1') NOT NULL,
   `full_name` varchar(100) NOT NULL,
@@ -295,7 +295,7 @@ CREATE TABLE `User` (
 -- Dumping data for table `User`
 --
 
-INSERT INTO `User` (`user_id`, `username`, `password_hash`, `email`, `role_id`, `full_name`, `phone`, `address`, `secret`, `reset_token_hash`, `reset_token_expires_at`) VALUES
+INSERT INTO `User` (`user_id`, `username`, `pwd_hash`, `email`, `role_id`, `full_name`, `phone`, `address`, `secret`, `reset_token_hash`, `reset_token_expires_at`) VALUES
 (1, 'amerklaus', '$2y$10$tsG/Ktrt7vhEHPW4VRWtM.wFx/kXxRntNAJ3ucxDrMkPFxyXO4jCy', 'amer1jawabra@gmail.com', '1', 'amer', '222-444-1111', '202 rue saint-marce', NULL, NULL, NULL),
 (6, 'Olivier', '$2y$10$5J.wsFOJsOwFQLQuE.htVOrSpIPNO4yiEeIVAdGJFdw6z1jqt0CCS', 'fatecasual@gmail.com', '1', 'Olivier', '450-377-8434', 'testingstreet', NULL, '5468920b44c0049a085202a0237f5cc15182570ef5a3488c60f73e21cc282687', '2024-04-25 07:24:22');
 

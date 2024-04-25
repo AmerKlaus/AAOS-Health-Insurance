@@ -21,6 +21,7 @@ class Model
             }
         } catch (\PDOException $e) {
             echo $e->getMessage();
+            throw $e;
         }
     }
 
