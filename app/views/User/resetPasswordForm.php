@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2>Reset Your Password</h2>
-    <form action="reset-password.php" method="POST">
+    <form action="/User/forgotPassword" method="POST">
         <label for="new-password">New Password:</label>
         <input type="password" id="new-password" name="new_password" required><br>
         <label for="confirm-password">Confirm Password:</label>
