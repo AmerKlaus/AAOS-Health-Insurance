@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -19,17 +20,17 @@
         </div>
     </header>
     <nav>
-    <div class="container">
-        <ul>
+        <div class="container">
+            <ul>
                 <li><a href="/Home/index">Home</a></li>
                 <li><a href="/User/profile">Profile</a></li>
                 <li><a href="/Home/claimSubmission">Claim Submission</a></li>
                 <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/User/login">Go to Login/Register</a></li>
-        </ul>
-    </div>
-</nav>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
         <section id="profile">
@@ -45,7 +46,6 @@
                 <p id="address">123 Main Street, Anytown, USA</p>
                 <label for="phone">Phone:</label>
                 <p id="phone">555-123-4567</p>
-                
             </div>
             <div class="profile-actions">
                 <a href="edit_profile.html">Edit Profile</a>
@@ -63,4 +63,5 @@
         </div>
     </footer>
 </body>
+
 </html>

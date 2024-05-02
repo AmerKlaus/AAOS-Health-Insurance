@@ -71,44 +71,58 @@ class User extends \app\core\Controller
         }
     }
 
-    // Method to handle user registration
     public function register()
     {
         // Display the registration form and process the registration
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Create a new User object
-            $created_user_obj = \app\models\User::createUser($this->db_conn, $_POST['username'], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST['email'], '1', $_POST['full_name'], $_POST['phone'], $_POST['address']);
-
+            $created_user_obj = \app\models\User::createUser(
+                $this->db_conn,
+                $_POST['username'],
+                password_hash($_POST['password'], PASSWORD_DEFAULT),
+                $_POST['email'],
+                '1',
+                $_POST['full_name'],
+                $_POST['phone'],
+                $_POST['address']
+            );
+    
             if (is_null($created_user_obj)) {
                 // Should redirect to an error page
                 return;
             } else {
+                // Create a profile for the newly registered user
+                \app\models\Profile::createProfile($this->db_conn, $created_user_obj->user_id);
                 header('Location:/User/login');
             }
-
+    
         } else {
             $this->view('User/register');
         }
     }
-
-    // Method to access the user's profile (requires login)
+    
     public function profile()
     {
         // Check if the user is logged in
         if (!isset($_SESSION['user_id'])) {
-
             // If the user is not logged in, redirect to the login page
             header('Location:/User/login');
             exit;
         }
-
         // Retrieve the user details from the database using the user_id
         $user_id = $_SESSION['user_id'];
         $user = \app\models\User::getById($this->db_conn, $user_id);
-
+        
+        // Retrieve the user's profile information
+        $profile = \app\models\Profile::getByUserId($this->db_conn, $user_id);
+    
+        // Retrieve phone number from the user if available, otherwise set it to "NA"
+        $phone = ($user && $user->phone) ? $user->phone : 'NA';
+    
         // Display the user's profile
-        $this->view('User/profile', ['user' => $user]);
+        $this->view('User/profile', ['user' => $user, 'phone' => $phone]);
     }
+    
     //Fix
     public function setup2fa()
     {
@@ -167,12 +181,10 @@ class User extends \app\core\Controller
 
             if ($authenticator->verify($_POST['totp'])) {
                 unset($_SESSION['secret']);
-                header('Location: /Home/index');
-                exit;
+                header('location:/Home/index');
             } else {
                 session_destroy();
-                header('Location: /User/login');
-                exit;
+                header('location:/User/login');
             }
         } else {
             $this->view('User/check2fa');
@@ -211,12 +223,10 @@ class User extends \app\core\Controller
                 
                 // Handle database errors
                 echo "Database Error: " . $e->getMessage();
-                throw $e;
             } catch (Exception $e) {
 
                 // Handle other exceptions
                 echo "Error: " . $e->getMessage();
-                throw $e;
             }
         } else {
             // Redirect or handle invalid requests
@@ -297,6 +307,7 @@ class User extends \app\core\Controller
             $this->view('User/resetPasswordForm', ['token' => $token]);
         }
     }
+    
     
 
 }
