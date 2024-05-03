@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 03, 2024 at 09:20 PM
+-- Generation Time: May 03, 2024 at 09:46 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -70,7 +70,6 @@ DROP TABLE IF EXISTS `Claim`;
 CREATE TABLE `Claim` (
   `claim_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `policy_id` int(11) NOT NULL,
   `claim_type` varchar(50) NOT NULL,
   `submission_date` datetime NOT NULL,
   `status` varchar(50) NOT NULL,
@@ -82,8 +81,8 @@ CREATE TABLE `Claim` (
 -- Dumping data for table `Claim`
 --
 
-INSERT INTO `Claim` (`claim_id`, `user_id`, `policy_id`, `claim_type`, `submission_date`, `status`, `claim_details`, `health_insurance_number`) VALUES
-(1, 1, 1, 'health', '2024-04-24 00:00:00', 'Pending', 'dwwd', 'dwdw');
+INSERT INTO `Claim` (`claim_id`, `user_id`, `claim_type`, `submission_date`, `status`, `claim_details`, `health_insurance_number`) VALUES
+(1, 1, 'health', '2024-04-24 00:00:00', 'Pending', 'dwwd', 'dwdw');
 
 -- --------------------------------------------------------
 
@@ -208,35 +207,6 @@ CREATE TABLE `Payment` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Policy`
---
-
-DROP TABLE IF EXISTS `Policy`;
-CREATE TABLE `Policy` (
-  `policy_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `policy_number` text NOT NULL,
-  `policy_type` varchar(50) NOT NULL,
-  `coverage_amount` decimal(10,0) NOT NULL,
-  `premium_amount` decimal(10,0) NOT NULL,
-  `policy_start_date` datetime NOT NULL,
-  `policy_end_date` datetime NOT NULL,
-  `payment_method` varchar(60) NOT NULL,
-  `renewal_date` datetime NOT NULL,
-  `policy_status` varchar(60) NOT NULL,
-  `date_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Policy`
---
-
-INSERT INTO `Policy` (`policy_id`, `user_id`, `policy_number`, `policy_type`, `coverage_amount`, `premium_amount`, `policy_start_date`, `policy_end_date`, `payment_method`, `renewal_date`, `policy_status`, `date_created`) VALUES
-(1, 1, 'POL001', 'Health Insurance', 50000, 1000, '2024-04-01 16:09:17', '2025-04-23 16:09:17', 'Credit Card', '2024-04-23 22:09:17', 'Active', '2024-04-23 22:09:17');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Profile`
 --
 
@@ -244,6 +214,7 @@ DROP TABLE IF EXISTS `Profile`;
 CREATE TABLE `Profile` (
   `profile_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `policy_number` text NOT NULL,
   `birthdate` date NOT NULL,
   `profile_picture` text NOT NULL,
   `date_created` datetime NOT NULL
@@ -329,8 +300,7 @@ ALTER TABLE `Audit_Result`
 --
 ALTER TABLE `Claim`
   ADD PRIMARY KEY (`claim_id`),
-  ADD KEY `userId_foreignKey` (`user_id`),
-  ADD KEY `policyId_foreignKey` (`policy_id`);
+  ADD KEY `userId_foreignKey` (`user_id`);
 
 --
 -- Indexes for table `Claim_Assignment`
@@ -390,13 +360,6 @@ ALTER TABLE `Notification`
 ALTER TABLE `Payment`
   ADD PRIMARY KEY (`payment_id`),
   ADD KEY `claimId_foreignKey3` (`claim_id`);
-
---
--- Indexes for table `Policy`
---
-ALTER TABLE `Policy`
-  ADD PRIMARY KEY (`policy_id`),
-  ADD KEY `userId_foreignKey8` (`user_id`);
 
 --
 -- Indexes for table `Profile`
@@ -498,12 +461,6 @@ ALTER TABLE `Payment`
   MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Policy`
---
-ALTER TABLE `Policy`
-  MODIFY `policy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `Profile`
 --
 ALTER TABLE `Profile`
@@ -541,7 +498,6 @@ ALTER TABLE `Audit_Result`
 -- Constraints for table `Claim`
 --
 ALTER TABLE `Claim`
-  ADD CONSTRAINT `policyId_foreignKey` FOREIGN KEY (`policy_id`) REFERENCES `Policy` (`policy_id`),
   ADD CONSTRAINT `userId_foreignKey` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`);
 
 --
@@ -594,12 +550,6 @@ ALTER TABLE `Notification`
 --
 ALTER TABLE `Payment`
   ADD CONSTRAINT `claimId_foreignKey3` FOREIGN KEY (`claim_id`) REFERENCES `Claim` (`claim_id`);
-
---
--- Constraints for table `Policy`
---
-ALTER TABLE `Policy`
-  ADD CONSTRAINT `userId_foreignKey8` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`);
 
 --
 -- Constraints for table `Profile`

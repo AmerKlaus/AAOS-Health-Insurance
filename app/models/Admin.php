@@ -12,18 +12,6 @@ class Admin extends \app\core\Model
     public string $pwd_hash;
     public string $email;
 
-    // TODO: Change to static method, like createUser()
-    public function register($username, $email, $password)
-    {
-        // Hash the password
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-        // Insert the admin record into the database
-        $SQL = 'INSERT INTO Admin (admin_id, username, email, pwd_hash) VALUES (DEFAULT, :username, :email, :pwd_hash)';
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['username' => $username, 'email' => $email, 'pwd_hash' => $hashedPassword]);
-    }
-
     public static function getByUsername(PDO $db_conn, $username)
     {
         $SQL = 'SELECT * FROM Admin WHERE username = :username';

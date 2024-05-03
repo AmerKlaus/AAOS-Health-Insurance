@@ -13,7 +13,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+    <style>
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
 
+        #profile_picture {
+            align-self: center;
+            margin-top: 10px;
+            max-width: 200px;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,7 +41,7 @@
                 <li><a href="/Home/claimSubmission">Claim Submission</a></li>
                 <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
-                <li><a href="/User/login">Go to Login/Register</a></li>
+                <li><a href="/User/loginSelection">Go to Login/Register</a></li>
             </ul>
         </div>
     </nav>
@@ -38,21 +49,26 @@
     <div class="container">
         <section id="profile">
             <h2>Profile</h2>
+            <img id="profile_picture" src="<?php echo $profile->profile_picture; ?>" alt="Profile Picture">
             <div class="profile-info">
                 <label for="username">Username:</label>
-                <p id="username">JohnDoe123</p>
+                <p id="username"><?php echo $user->username; ?></p>
+                <label for="fullname">Full Name:</label>
+                <p id="fullname"><?php echo $user->full_name; ?></p>
                 <label for="email">Email:</label>
-                <p id="email">johndoe@example.com</p>
+                <p id="email"><?php echo $user->email; ?></p>
                 <label for="policy_number">Policy Number:</label>
-                <p id="policy_number">123456789</p>
+                <p id="policy_number"><?php echo $profile->policy_number; ?></p>
                 <label for="address">Address:</label>
-                <p id="address">123 Main Street, Anytown, USA</p>
+                <p id="address"><?php echo $user->address; ?></p>
                 <label for="phone">Phone:</label>
-                <p id="phone">555-123-4567</p>
+                <p id="phone"><?php echo $user->phone; ?></p>
+                <label for="birthdate">Birthdate:</label>
+                <p id="birthdate"><?php echo $profile->birthdate; ?></p>
             </div>
             <div class="profile-actions">
-                <a href="edit_profile.html">Edit Profile</a>
-                <a href="change_password.html">Change Password</a>
+                <a href="/User/editProfile">Edit Profile</a>
+                <a href="/User/changePassword">Change Password</a>
             </div>
         </section>
     </div>

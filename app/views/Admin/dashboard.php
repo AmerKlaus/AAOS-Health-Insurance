@@ -60,6 +60,7 @@
                 <?php endif; ?>
             </tbody>
         </table>
+        <a href="/Home/index" class="btn btn-info">Go back to home page</a>
     </div>
 </body>
 

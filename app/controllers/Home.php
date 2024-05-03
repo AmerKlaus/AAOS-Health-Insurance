@@ -18,6 +18,7 @@ class Home extends \app\core\Controller
     }
 
     // Method to handle claim submission form submission
+    #[\app\filters\HasProfile]
     public function submitClaim()
     {
         // Check if the user is logged in
@@ -30,7 +31,6 @@ class Home extends \app\core\Controller
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Retrieve and sanitize form data
-            $policy_number = $_POST['policy_number'];
             $claim_type = $_POST['claim_type'];
             $claim_details = $_POST['claim_details'];
             $claim_date = $_POST['claim_date'];
@@ -48,8 +48,6 @@ class Home extends \app\core\Controller
 
             // Create a new Claim instance
             $claim = new \app\models\Claim();
-            $policy_id = \app\Models\Policy::getIdFromNumber($this->db_conn, $policy_number);
-            $claim->policy_id = $policy_id;
             $claim->user_id = $user_id; // Assign current user's ID
             $claim->claim_type = $claim_type;
             $claim->claim_details = $claim_details;

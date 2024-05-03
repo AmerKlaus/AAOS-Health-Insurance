@@ -30,7 +30,7 @@
                 <li><a href="/Home/claimSubmission">Claim Submission</a></li>
                 <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
-                <li><a href="/User/login">Go to Login/Register</a></li>
+                <li><a href="/User/loginSelection">Go to Login/Register</a></li>
             </ul>
         </div>
     </nav>
@@ -38,9 +38,6 @@
         <section id="claim-submission">
             <h2>Claim Submission</h2>
             <form action="/Home/submitClaim" method="POST" class="claim-form">
-                <label for="policy_number">Policy Number:</label>
-                <input type="text" id="policy_number" name="policy_number" required>
-
                 <label for="claim_type">Claim Type:</label>
                 <select id="claim_type" name="claim_type" required>
                     <option value="health">Health</option>

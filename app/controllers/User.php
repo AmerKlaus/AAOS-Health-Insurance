@@ -101,28 +101,6 @@ class User extends \app\core\Controller
         }
     }
 
-    public function profile()
-    {
-        // Check if the user is logged in
-        if (!isset($_SESSION['user_id'])) {
-            // If the user is not logged in, redirect to the login page
-            header('Location:/User/login');
-            exit;
-        }
-        // Retrieve the user details from the database using the user_id
-        $user_id = $_SESSION['user_id'];
-        $user = \app\models\User::getById($this->db_conn, $user_id);
-
-        // Retrieve the user's profile information
-        $profile = \app\models\Profile::getByUserId($this->db_conn, $user_id);
-
-        // Retrieve phone number from the user if available, otherwise set it to "NA"
-        $phone = ($user && $user->phone) ? $user->phone : 'NA';
-
-        // Display the user's profile
-        $this->view('User/profile', ['user' => $user, 'phone' => $phone]);
-    }
-
     //Fix
     public function setup2fa()
     {
