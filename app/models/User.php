@@ -66,7 +66,7 @@ class User
     {
         $SQL = 'UPDATE User SET username = :username, pwd_hash = :pwd_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';
         $STMT = $db_conn->prepare($SQL);
-        $STMT->execute((array)$this);
+        $STMT->execute((array) $this);
     }
 
     public function delete(PDO $db_conn)
@@ -80,36 +80,36 @@ class User
     {
         // Generate a random token
         $token = bin2hex(random_bytes(16));
-    
+
         // Hash the token
         $token_hash = hash("sha256", $token);
-    
+
         // Set the token and expiration time in the user object
         $this->reset_token_hash = $token_hash;
         $this->reset_token_expires_at = date("Y-m-d H:i:s", time() + 60 * 30); // 30 minutes from now
-    
+
         // Update the user record in the database
         $this->updatePasswordAndResetToken($db_conn); // Updated method call
-    
+
         return $token;
     }
-    
+
     public static function getUserByResetToken(PDO $db_conn, string $token)
-{
-    $raw_sql = 'SELECT * FROM User WHERE reset_token_hash = :token AND reset_token_expires_at > NOW()';
-    $stmt = $db_conn->prepare($raw_sql);
-    $stmt->execute(['token' => $token]);
-    $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
-    return $stmt->fetch();
-}
+    {
+        $raw_sql = 'SELECT * FROM User WHERE reset_token_hash = :token AND reset_token_expires_at > NOW()';
+        $stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['token' => $token]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+        return $stmt->fetch();
+    }
 
-public function isResetTokenValid(): bool
-{
-    return strtotime($this->reset_token_expires_at) > time();
-}
+    public function isResetTokenValid(): bool
+    {
+        return strtotime($this->reset_token_expires_at) > time();
+    }
 
 
-    
+
     public function sendResetEmail($recipient, $resetToken)
     {
         // o7
@@ -118,12 +118,12 @@ public function isResetTokenValid(): bool
         try {
             //Server settings
             $mail->isSMTP();
-            $mail->Host       = 'smtp.gmail.com';
-            $mail->SMTPAuth   = true;
-            $mail->Username   = 'aaos.coo@gmail.com'; // Your Gmail email address
-            $mail->Password   = 'rogk zfzu btfl rcwt';    // Your app password
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'aaos.coo@gmail.com'; // Your Gmail email address
+            $mail->Password = 'rogk zfzu btfl rcwt';    // Your app password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption
-            $mail->Port       = 587; // TCP port to connect to (google has two make sure its valid its the encryption)
+            $mail->Port = 587; // TCP port to connect to (google has two make sure its valid its the encryption)
 
             //Recipients
             $mail->setFrom('AAOS@gmail.com', 'AAOS'); // Sender's email address and name
@@ -131,10 +131,10 @@ public function isResetTokenValid(): bool
             //Content
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';
-           
+
             $mail->Body = 'Dear user,<br><br>You have requested a password reset. Please click the following link to reset your password:<br>http://localhost/User/resetPassword?token=' . $resetToken . '<br><br>If you did not request this reset, please ignore this email.<br><br>Best regards,<br>Your Company';
 
-          
+
             // Send the email
             $mail->send();
         } catch (Exception $e) {
@@ -144,26 +144,26 @@ public function isResetTokenValid(): bool
     }
 
 
-public static function getByEmail(PDO $db_conn, $email)
-{
-    $raw_sql = 'SELECT * FROM User WHERE email = :email';
-    $stmt = $db_conn->prepare($raw_sql);
-    $stmt->execute(['email' => $email]);
-    $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
-    return $stmt->fetch();
-}
+    public static function getByEmail(PDO $db_conn, $email)
+    {
+        $raw_sql = 'SELECT * FROM User WHERE email = :email';
+        $stmt = $db_conn->prepare($raw_sql);
+        $stmt->execute(['email' => $email]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
+        return $stmt->fetch();
+    }
 
-public function updatePasswordAndResetToken(PDO $db_conn)
-{
-    $SQL = 'UPDATE User SET pwd_hash = :pwd_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
-    $STMT = $db_conn->prepare($SQL);
-    $STMT->execute([
-        'pwd_hash' => $this->pwd_hash,
-        'reset_token_hash' => $this->reset_token_hash,
-        'reset_token_expires_at' => $this->reset_token_expires_at,
-        'user_id' => $this->user_id
-    ]);
-}
+    public function updatePasswordAndResetToken(PDO $db_conn)
+    {
+        $SQL = 'UPDATE User SET pwd_hash = :pwd_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute([
+            'pwd_hash' => $this->pwd_hash,
+            'reset_token_hash' => $this->reset_token_hash,
+            'reset_token_expires_at' => $this->reset_token_expires_at,
+            'user_id' => $this->user_id
+        ]);
+    }
 
 
 

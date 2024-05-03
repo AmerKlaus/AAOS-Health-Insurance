@@ -49,22 +49,23 @@
     <div class="container">
         <section id="profile">
             <h2>Profile</h2>
-            <img id="profile_picture" src="<?php echo $profile->profile_picture; ?>" alt="Profile Picture">
+            <img id="profile_picture" src="<?php var_dump($data);
+            echo $data->profile_picture; ?>" alt="Profile Picture">
             <div class="profile-info">
                 <label for="username">Username:</label>
-                <p id="username"><?php echo $user->username; ?></p>
+                <p id="username"><?php echo $data->username; ?></p>
                 <label for="fullname">Full Name:</label>
-                <p id="fullname"><?php echo $user->full_name; ?></p>
+                <p id="fullname"><?php echo $data->full_name; ?></p>
                 <label for="email">Email:</label>
-                <p id="email"><?php echo $user->email; ?></p>
+                <p id="email"><?php echo $data->email; ?></p>
                 <label for="policy_number">Policy Number:</label>
-                <p id="policy_number"><?php echo $profile->policy_number; ?></p>
+                <p id="policy_number"><?php echo $data->policy_number; ?></p>
                 <label for="address">Address:</label>
-                <p id="address"><?php echo $user->address; ?></p>
+                <p id="address"><?php echo $data->address; ?></p>
                 <label for="phone">Phone:</label>
-                <p id="phone"><?php echo $user->phone; ?></p>
+                <p id="phone"><?php echo $data->phone; ?></p>
                 <label for="birthdate">Birthdate:</label>
-                <p id="birthdate"><?php echo $profile->birthdate; ?></p>
+                <p id="birthdate"><?php echo $data->birthdate; ?></p>
             </div>
             <div class="profile-actions">
                 <a href="/User/editProfile">Edit Profile</a>

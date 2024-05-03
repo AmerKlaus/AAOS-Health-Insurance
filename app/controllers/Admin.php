@@ -44,7 +44,7 @@ class Admin extends \app\core\Controller
 
             // Check admin credentials
             $admin = \app\models\Admin::getByUsername($this->db_conn, $username);
-            
+
 
             if ($admin && password_verify($password, $admin->pwd_hash)) {
                 // Admin login successful

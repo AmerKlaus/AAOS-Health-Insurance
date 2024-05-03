@@ -15,17 +15,19 @@ class Profile
     public static function getByUserId(PDO $db_conn, $user_id)
     {
         $SQL = 'SELECT * FROM Profile WHERE user_id = :user_id';
-        $stmt = $db_conn->prepare($SQL);
-        $stmt->execute(['user_id' => $user_id]);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\Profile');
-        return $stmt->fetch();
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['user_id' => $user_id]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Profile');
+        $profile = $STMT->fetch();
+
+        return $profile;
     }
 
     public static function createProfile(PDO $db_conn, $user_id, $birthdate, $profile_picture, $policy_number)
     {
         $SQL = 'INSERT INTO Profile (user_id, birthdate, profile_picture, policy_number, date_created) VALUES (:user_id, :birthdate, :profile_picture, :policy_number, NOW())';
-        $stmt = $db_conn->prepare($SQL);
-        $stmt->execute([
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute([
             'user_id' => $user_id,
             'birthdate' => $birthdate,
             'profile_picture' => $profile_picture,

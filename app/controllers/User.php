@@ -91,8 +91,6 @@ class User extends \app\core\Controller
                 // Should redirect to an error page
                 return;
             } else {
-                // Create a profile for the newly registered user
-                \app\models\Profile::createProfile($this->db_conn, $created_user_obj->user_id);
                 header('Location:/User/login');
             }
 

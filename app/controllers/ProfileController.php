@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\models\Profile;
 
 use PDO;
 
@@ -15,12 +14,14 @@ class ProfileController extends Controller
             header('location:/User/login');
         }
         $user_id = $_SESSION['user_id'];
-        $profile = Profile::getByUserId($this->db_conn, $user_id);
+        $profile = new \app\models\Profile;
+        $profile = $profile->getByUserId($this->db_conn, $user_id);
         //redirect a user that has no profile to the profile creation URL
         if ($profile) {
-            $user = \app\models\User::getById($this->db_conn, $user_id);
-            $data = ['profile' => $profile, 'user' => $user]; // Merge both profile and user data into one array
-            $this->view('Profile/index', $data); // Pass the merged data array to the view
+            $user = new \app\models\User;
+            $user = $user->getById($this->db_conn, $user_id);
+            $model = [$profile, $user]; // Merge both profile and user data into one array
+            $this->view('Profile/index', $model); // Pass the merged data array to the view
         } else {
             header('location:/ProfileController/create');
             exit;
@@ -45,7 +46,8 @@ class ProfileController extends Controller
 
                 // Update profile creation with profile picture path
                 $profile_picture = $file_dest;
-                Profile::createProfile($this->db_conn, $user_id, $birthdate, $profile_picture, $policy_number);
+                $profile = new \app\models\Profile;
+                $profile->createProfile($this->db_conn, $user_id, $birthdate, $profile_picture, $policy_number);
 
                 // Redirect or show success message
                 header('Location: /ProfileController/index');
