@@ -86,7 +86,7 @@ class User extends \app\core\Controller
                 $_POST['phone'],
                 $_POST['address']
             );
-    
+
             if (is_null($created_user_obj)) {
                 // Should redirect to an error page
                 return;
@@ -95,12 +95,12 @@ class User extends \app\core\Controller
                 \app\models\Profile::createProfile($this->db_conn, $created_user_obj->user_id);
                 header('Location:/User/login');
             }
-    
+
         } else {
             $this->view('User/register');
         }
     }
-    
+
     public function profile()
     {
         // Check if the user is logged in
@@ -112,17 +112,17 @@ class User extends \app\core\Controller
         // Retrieve the user details from the database using the user_id
         $user_id = $_SESSION['user_id'];
         $user = \app\models\User::getById($this->db_conn, $user_id);
-        
+
         // Retrieve the user's profile information
         $profile = \app\models\Profile::getByUserId($this->db_conn, $user_id);
-    
+
         // Retrieve phone number from the user if available, otherwise set it to "NA"
         $phone = ($user && $user->phone) ? $user->phone : 'NA';
-    
+
         // Display the user's profile
         $this->view('User/profile', ['user' => $user, 'phone' => $phone]);
     }
-    
+
     //Fix
     public function setup2fa()
     {
@@ -152,7 +152,7 @@ class User extends \app\core\Controller
             if ($authenticator->verify($totp)) {
 
                 // TOTP is correct, perform further actions like storing it in the user record
-            header('location:/Home/index');
+                header('location:/Home/index');
             } else {
 
                 // TOTP is incorrect
@@ -189,55 +189,12 @@ class User extends \app\core\Controller
         } else {
             $this->view('User/check2fa');
         }
-    }
-    public function submitFeedback()
-    {
-        // Check if the user is logged in
-        if (!isset($_SESSION['user_id'])) {
-            // If the user is not logged in, redirect to the login page
-            header('Location: /User/login');
-            exit;
-        }
-    
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            try {
-                // Retrieve user ID from session
-                $user_id = $_SESSION['user_id'];
-                
-                // Retrieve feedback message from form
-                $message = $_POST['message'];
-    
-                // Create a new Feedback instance
-                $feedback = new \app\models\Feedback();
-                $feedback->user_id = $user_id;
-                $feedback->timestamp = date("Y-m-d H:i:s");
-                $feedback->message = $message;
-    
-                // Insert the feedback into the database
-                $feedback->insert($this->db_conn);
-                
-                // Redirect after successful submission
-                header('Location:/Home/index');
-                exit;
-            } catch (PDOException $e) {
-                
-                // Handle database errors
-                echo "Database Error: " . $e->getMessage();
-            } catch (Exception $e) {
 
-                // Handle other exceptions
-                echo "Error: " . $e->getMessage();
-            }
-        } else {
-            // Redirect or handle invalid requests
-            header('Location:/Home/index');
-            exit;
-        }
     }
 
     public function forgotPassword()
     {
-      
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Retrieve the email entered by the user
             $email = $_POST['email'];
@@ -272,7 +229,7 @@ class User extends \app\core\Controller
             $token = $_POST['token'];
             $newPassword = $_POST['new_password'];
             $confirmPassword = $_POST['confirm_password'];
-    
+
             // Check if both passwords match
             if ($newPassword !== $confirmPassword) {
                 // If passwords don't match, redirect with an error message
@@ -280,18 +237,18 @@ class User extends \app\core\Controller
                 $this->view('User/resetPasswordForm', ['errorMessage' => $errorMessage]);
                 return; // Stop further execution
             }
-    
+
             // Retrieve the user associated with the token from the database
             $user = \app\models\User::getUserByResetToken($this->db_conn, $token);
-    
+
             // Check if the user exists and the token is valid
             if ($user && $user->isResetTokenValid()) {
                 // Hash the new password
                 $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-    
+
                 // Update the user's password in the database
                 $user->updatePassword($this->db_conn, $hashedPassword);
-    
+
                 // Redirect to login page with success message
                 header('Location: /User/login');
                 exit;
@@ -307,8 +264,8 @@ class User extends \app\core\Controller
             $this->view('User/resetPasswordForm', ['token' => $token]);
         }
     }
-    
-    
+
+
 
 }
 

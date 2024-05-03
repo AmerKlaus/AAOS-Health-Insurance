@@ -8,7 +8,8 @@
     <title>Customer Support</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link href="../css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -58,9 +59,11 @@
                 <li><strong>How do I renew my policy?</strong><br>
                     You can renew your policy online through our website or by contacting our customer support.</li>
                 <li><strong>What is covered under my policy?</strong><br>
-                    Coverage varies depending on the type of policy you have. Please refer to your policy documents for details.</li>
+                    Coverage varies depending on the type of policy you have. Please refer to your policy documents for
+                    details.</li>
                 <li><strong>How do I update my personal information?</strong><br>
-                    You can update your personal information by logging into your account on our website or by contacting customer support.</li>
+                    You can update your personal information by logging into your account on our website or by
+                    contacting customer support.</li>
             </ul>
         </div>
     </section>
@@ -70,11 +73,17 @@
         <div class="container">
             <h2>Send Message to Customer Support</h2>
             <p>If you need assistance or have any inquiries, please use the form below to send us a message:</p>
-            <form action="/User/submitFeedback" method="post">
-    <label for="message">Message:</label><br>
-    <textarea id="message" name="message" rows="4" required></textarea><br>
-    <button type="submit">Send Message</button>
-</form>
+            <section id="feedback-submission">
+                <h2>Customer Support</h2>
+                <form action="/Home/customerSupport" method="POST" class="feedback-form">
+                    <label for="feedback_text">Your Feedback:</label>
+                    <textarea id="feedback_text" name="feedback_text" rows="4" required></textarea>
+
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </section>
+
+
 
     </section>
 
@@ -89,7 +98,9 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

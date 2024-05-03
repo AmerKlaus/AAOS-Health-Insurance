@@ -76,8 +76,43 @@ class Home extends \app\core\Controller
 
     public function customerSupport()
     {
-        $this->view('Home/customerSupport');
+        // Check if the user is logged in
+        if (!isset($_SESSION['user_id'])) {
+
+            // If the user is not logged in, redirect to the login page
+            header('Location: /User/login');
+            exit;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            // Retrieve user ID from session
+            $user_id = $_SESSION['user_id'];
+
+            // Retrieve feedback text from form
+            $feedback_text = $_POST['feedback_text'];
+
+            try {
+                // Create a new feedback message
+                \app\models\Feedback::createFeedback($this->db_conn, $user_id, $feedback_text);
+
+                // Redirect after successful submission
+                header('Location:/Home/index');
+                exit;
+            } catch (PDOException $e) {
+
+                // Handle database errors
+                echo "Database Error: " . $e->getMessage();
+            } catch (Exception $e) {
+                // Handle other exceptions
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            // Display the customer support form
+            $this->view('Home/customerSupport');
+        }
     }
+
 
     public function insuranceClaimsInfo()
     {
@@ -88,7 +123,7 @@ class Home extends \app\core\Controller
     {
         $this->view('Home/coverageOptions');
     }
-    
+
     public function industryNews()
     {
         $this->view('Home/industryNews');

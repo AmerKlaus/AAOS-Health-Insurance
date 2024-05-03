@@ -26,3 +26,4 @@ $this->addRoute('Admin/register', 'Admin,register');
 $this->addRoute('Home/loginSelection', 'Home,loginSelection');
 $this->addRoute('Admin/submitReview/{claimId}', 'Admin,submitReview');
 $this->addRoute('Admin/submitRequestInfo/{claimId}', 'Admin,submitRequestInfo');
+//$this->addRoute('Home/submitFeedback', 'Home,submitFeedback');
