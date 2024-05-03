@@ -36,26 +36,6 @@ class Admin extends \app\core\Controller
         }
     }
 
-    public function register()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            // Create a new Admin instance
-            $admin = new \app\models\Admin();
-            $admin->register($username, $email, $password);
-
-            // Optionally, redirect to a confirmation page or login page
-            header('Location: /Admin/login');
-            exit;
-        } else {
-            // Display the registration form
-            $this->view('Admin/register');
-        }
-    }
-
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

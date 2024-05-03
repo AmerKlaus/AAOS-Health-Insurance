@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2024 at 05:34 PM
+-- Generation Time: May 03, 2024 at 09:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,6 +36,14 @@ CREATE TABLE `Admin` (
   `pwd_hash` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Admin`
+--
+
+INSERT INTO `Admin` (`admin_id`, `username`, `pwd_hash`, `email`) VALUES
+(1, 'amer', '$2y$10$/nfS3NhEt1P2PsgnU6fQv.9xI4mLALl.gMw4ygWjj3g2SY/XrgRTG', 'amer@gmail.com'),
+(2, 'test', '$2y$10$euFxt2J4U.QH0EH340BvRezryk2PnwO.UzxyllPnwCRT0Rp7VyeUm', 'test@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -427,7 +435,7 @@ ALTER TABLE `User`
 -- AUTO_INCREMENT for table `Admin`
 --
 ALTER TABLE `Admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Audit_Result`
