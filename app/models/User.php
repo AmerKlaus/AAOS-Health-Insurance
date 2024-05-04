@@ -153,6 +153,7 @@ class User
         return $stmt->fetch();
     }
 
+    /*
     public function updatePasswordAndResetToken(PDO $db_conn)
     {
         $SQL = 'UPDATE User SET pwd_hash = :pwd_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
@@ -165,7 +166,7 @@ class User
         ]);
     }
 
-
+*/
 
 }
 ?>

@@ -1,0 +1,24 @@
+msgid "User Login"
+msgstr "Connexion utilisateur"
+
+msgid "AAOS Insurance"
+msgstr "Assurance AAOS"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Login"
+msgstr "Connexion"
+
+msgid "Forgot Password?"
+msgstr "Mot de passe oublié ?"
+
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte ?"
+
+msgid "Sign up here"
+msgstr "Inscrivez-vous ici"
+
