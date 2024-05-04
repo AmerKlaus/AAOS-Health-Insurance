@@ -43,7 +43,7 @@
                 <div class="container">
                     <h2>Your Profile</h2>
                     <p>Manage your personal information and policy details easily.</p>
-                    <a href="/Home/profile" class="btn">Go to Profile</a> <!-- Updated the href -->
+                    <a href="/ProfileController/index" class="btn">Go to Profile</a> <!-- Updated the href -->
                 </div>
             </section>
             <section id="claims" class="section bg-light-orange">

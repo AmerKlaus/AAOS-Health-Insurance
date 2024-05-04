@@ -19,8 +19,8 @@
     </header>
     <div class="container">
         <div class="content">
-            <form action="/ProfileController/create" method="POST" enctype="multipart/form-data" class="needs-validation"
-                novalidate>
+            <form action="/ProfileController/create" method="POST" enctype="multipart/form-data"
+                class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="birthdate">Birthdate:</label>
                     <input type="date" class="form-control" id="birthdate" name="birthdate" required>
@@ -37,8 +37,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="profile_picture">Profile Picture:</label>
-                    <input type="file" class="form-control" id="profile_picture" name="profile_picture"
-                        accept="image/*" required>
+                    <input type="file" class="form-control" id="profile_picture" name="profile_picture" accept="image/*"
+                        required>
                     <div class="invalid-feedback">
                         Please upload a profile picture.
                     </div>
