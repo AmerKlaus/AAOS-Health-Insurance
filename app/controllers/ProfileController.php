@@ -40,11 +40,11 @@ class ProfileController extends Controller
                 $file_tmp = $_FILES['profile_picture']['tmp_name'];
                 $file_name = $_FILES['profile_picture']['name'];
                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                $file_dest = '/app/uploads/' . $user_id . '_profile.' . $file_ext; // Adjust the destination path as needed
+                $file_dest = 'uploads/' . $user_id . '_profile.' . $file_ext; // Adjust the destination path as needed
                 move_uploaded_file($file_tmp, $file_dest);
 
                 // Update profile creation with profile picture path
-                $profile_picture = $file_dest;
+                $profile_picture = '/' . $file_dest;
                 $profile = new Profile;
                 $profile->createProfile($this->db_conn, $user_id, $birthdate, $profile_picture, $policy_number);
 
