@@ -46,5 +46,29 @@ class Profile
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\profile');//set the type of data returned by fetches
         return $STMT->fetch();//return (what should be) the only record
     }
+    public static function updateProfile(PDO $db_conn, $newProfileData)
+    {
+        $user_id = $newProfileData['user_id'];
+        $birthdate = $newProfileData['birthdate'];
+        $policy_number = $newProfileData['policy_number'];
+        $profile_picture = $newProfileData['profile_picture'];
+
+        // Update profile data in the database
+        $SQL = 'UPDATE Profile SET birthdate = :birthdate, policy_number = :policy_number, profile_picture = :profile_picture WHERE user_id = :user_id';
+        $stmt = $db_conn->prepare($SQL);
+        $stmt->execute([
+            'birthdate' => $birthdate,
+            'policy_number' => $policy_number,
+            'profile_picture' => $profile_picture,
+            'user_id' => $user_id
+        ]);
+
+        // Check if the update was successful
+        if ($stmt->rowCount() > 0) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
 }
 ?>

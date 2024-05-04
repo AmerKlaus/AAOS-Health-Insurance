@@ -62,6 +62,35 @@ class User
         return $STMT->fetch();
     }
 
+    public static function updateUser(PDO $db_conn, $newProfileData)
+    {
+        $user_id = $newProfileData['user_id'];
+        $username = $newProfileData['username'];
+        $full_name = $newProfileData['full_name'];
+        $email = $newProfileData['email'];
+        $address = $newProfileData['address'];
+        $phone = $newProfileData['phone'];
+
+        // Update user data in the database
+        $SQL = 'UPDATE User SET username = :username, full_name = :full_name, email = :email, address = :address, phone = :phone WHERE user_id = :user_id';
+        $stmt = $db_conn->prepare($SQL);
+        $stmt->execute([
+            'username' => $username,
+            'full_name' => $full_name,
+            'email' => $email,
+            'address' => $address,
+            'phone' => $phone,
+            'user_id' => $user_id
+        ]);
+
+        // Check if the update was successful
+        if ($stmt->rowCount() > 0) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
+
     public function update(PDO $db_conn)
     {
         $SQL = 'UPDATE User SET username = :username, pwd_hash = :pwd_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';

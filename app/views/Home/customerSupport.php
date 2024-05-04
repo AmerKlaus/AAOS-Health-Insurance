@@ -29,7 +29,7 @@
                 <li><a href="/Home/claimSubmission">Claim Submission</a></li>
                 <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
-                <li><a href="/User/loginSelection">Go to Login/Register</a></li>
+                <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
             </ul>
         </div>
     </nav>

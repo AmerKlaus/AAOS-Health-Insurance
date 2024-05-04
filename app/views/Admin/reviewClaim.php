@@ -27,7 +27,6 @@
             <thead>
                 <tr>
                     <th>Claim ID</th>
-                    <th>Policy ID</th>
                     <th>User ID</th>
                     <th>Claim Type</th>
                     <th>Submission Date</th>
@@ -40,7 +39,6 @@
                 <?php if (!empty($data)): ?>
                     <tr>
                         <td><?php echo $data->claim_id; ?></td>
-                        <td><?php echo $data->policy_id; ?></td>
                         <td><?php echo $data->user_id; ?></td>
                         <td><?php echo $data->claim_type; ?></td>
                         <td><?php echo $data->submission_date; ?></td>
