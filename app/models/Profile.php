@@ -64,11 +64,7 @@ class Profile
         ]);
 
         // Check if the update was successful
-        if ($stmt->rowCount() > 0) {
-            return true; // Update successful
-        } else {
-            return false; // Update failed
-        }
+        return $stmt->rowCount() > 0;
     }
 }
 ?>

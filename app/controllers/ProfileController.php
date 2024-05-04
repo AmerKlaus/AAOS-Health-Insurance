@@ -40,7 +40,7 @@ class ProfileController extends Controller
                 $file_tmp = $_FILES['profile_picture']['tmp_name'];
                 $file_name = $_FILES['profile_picture']['name'];
                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
-                $file_dest = 'uploads/' . $user_id . '_profile.' . $file_ext; // Adjust the destination path as needed
+                $file_dest = 'uploads/' . $user_id . '_profile.' . $file_ext;
                 move_uploaded_file($file_tmp, $file_dest);
 
                 // Update profile creation with profile picture path
@@ -90,7 +90,7 @@ class ProfileController extends Controller
             exit;
         }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_picture'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Handle form submission
             $newProfileData = [
                 'user_id' => $user_id,
@@ -99,13 +99,24 @@ class ProfileController extends Controller
                 'address' => $_POST['address'],
                 'phone' => $_POST['phone'],
                 'birthdate' => $_POST['birthdate'],
-                'policy_number' => $_POST['policy_number'],
-                'profile_picture' => $_FILES['profile_picture']
+                'policy_number' => $_POST['policy_number']
             ];
+
+            $newProfileData['profile_picture'] = '';
+            // Check if a new profile picture was uploaded
+            if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
+                $file_tmp = $_FILES['profile_picture']['tmp_name'];
+                $file_name = $_FILES['profile_picture']['name'];
+                $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                $file_dest = 'uploads/' . $user_id . '_profile.' . $file_ext;
+                move_uploaded_file($file_tmp, $file_dest);
+                $newProfileData['profile_picture'] = '/' . $file_dest;
+            }
 
             // Update profile data
             $profile->updateProfile($this->db_conn, $newProfileData);
 
+            // Update user data
             $user = new \app\models\User;
             $user->updateUser($this->db_conn, $newProfileData);
 
@@ -113,8 +124,9 @@ class ProfileController extends Controller
             header('location:/ProfileController/index');
             exit;
         } else {
-            // Render editProfile view
-            $this->view('Profile/index');
+            // Render editProfile view with current profile data
+            $data = ['profile' => $profile];
+            $this->view('Profile/editProfile', $data);
         }
     }
 
