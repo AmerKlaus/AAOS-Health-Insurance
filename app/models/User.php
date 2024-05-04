@@ -140,6 +140,7 @@ class User
         } catch (Exception $e) {
             // Log any errors
             error_log("Error sending password reset email: {$mail->ErrorInfo}");
+            throw $e;
         }
     }
 
