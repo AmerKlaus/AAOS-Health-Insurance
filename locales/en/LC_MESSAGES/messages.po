@@ -21,3 +21,45 @@ msgstr "Don't have an account?"
 
 msgid "Sign up here"
 msgstr "Sign up here"
+
+msgid "User Register"
+msgstr "User Register"
+
+msgid "Full Name:"
+msgstr "Full Name:"
+
+msgid "Username:"
+msgstr "Username:"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "Phone:"
+msgstr "Phone:"
+
+msgid "Address:"
+msgstr "Address:"
+
+msgid "Password:"
+msgstr "Password:"
+
+msgid "Confirm Password:"
+msgstr "Confirm Password:"
+
+msgid "Register"
+msgstr "Register"
+
+msgid "Contact Us"
+msgstr "Contact Us"
+
+msgid "If you have any questions or need assistance, our support team is here to help."
+msgstr "If you have any questions or need assistance, our support team is here to help."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "2024 AAOS Insurance. All rights reserved."
+msgstr "2024 AAOS Insurance. All rights reserved."

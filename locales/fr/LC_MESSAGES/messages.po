@@ -22,3 +22,26 @@ msgstr "Vous n'avez pas de compte ?"
 msgid "Sign up here"
 msgstr "Inscrivez-vous ici"
 
+msgid "Register"
+msgstr "Inscription"
+
+msgid "Full Name"
+msgstr "Nom complet"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Confirm Password"
+msgstr "Confirmez le mot de passe"
+
+msgid "Contact Us"
+msgstr "Contactez-nous"
+
+msgid "If you have any questions or need assistance, our support team is here to help."
+msgstr "Si vous avez des questions ou avez besoin d'aide, notre équipe de support est là pour vous aider."
