@@ -29,3 +29,4 @@ $this->addRoute('ProfileController/index', 'ProfileController,index');
 $this->addRoute('ProfileController/create', 'ProfileController,create');
 $this->addRoute('ProfileController/editProfile', 'ProfileController,editProfile');
 $this->addRoute('ProfileController/changeProfile', 'ProfileController,changeProfile');
+$this->addRoute('Admin/logout', 'Admin,logout');

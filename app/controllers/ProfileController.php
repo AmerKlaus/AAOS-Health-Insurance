@@ -29,6 +29,9 @@ class ProfileController extends Controller
 
     public function create()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('location:/User/login');
+        }
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Handle form submission
             $user_id = $_SESSION['user_id'];
@@ -99,18 +102,22 @@ class ProfileController extends Controller
                 'address' => $_POST['address'],
                 'phone' => $_POST['phone'],
                 'birthdate' => $_POST['birthdate'],
-                'policy_number' => $_POST['policy_number']
+                'policy_number' => $_POST['policy_number'],
+                'profile_picture' => $profile->profile_picture
             ];
 
-            $newProfileData['profile_picture'] = '';
-            // Check if a new profile picture was uploaded
             if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
                 $file_tmp = $_FILES['profile_picture']['tmp_name'];
                 $file_name = $_FILES['profile_picture']['name'];
                 $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
                 $file_dest = 'uploads/' . $user_id . '_profile.' . $file_ext;
-                move_uploaded_file($file_tmp, $file_dest);
-                $newProfileData['profile_picture'] = '/' . $file_dest;
+                if (move_uploaded_file($file_tmp, $file_dest)) {
+                    // Update profile picture path only if the file was successfully uploaded
+                    $newProfileData['profile_picture'] = '/' . $file_dest;
+                } else {
+                    // Handle file upload error
+                    echo 'Error uploading file.';
+                }
             }
 
             // Update profile data

@@ -61,6 +61,7 @@
             </tbody>
         </table>
         <a href="/Home/index" class="btn btn-info">Go back to home page</a>
+        <a href="/Admin/logout" class="btn btn-info">Logout</a>
     </div>
 </body>
 

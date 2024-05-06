@@ -18,11 +18,7 @@ class Admin extends \app\core\Controller
 
     public function logout()
     {
-        // Check if the user is logged in
         if (isset($_SESSION['admin_id'])) {
-            // Unset all session variables
-            session_unset();
-
             // Destroy the session
             session_destroy();
 
