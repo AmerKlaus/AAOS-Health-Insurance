@@ -287,8 +287,38 @@ button[type="submit"]:hover {
 }
 
 .twofa-page p {
-    max-width: 400px; /* Adjust the maximum width as needed */
-    margin: 0 auto; /* Center the paragraph */
+    max-width: 400px; 
+    margin: 0 auto; 
 
 }
+
+.profile-container {
+    display: flex;
+    align-items: flex-start; 
+}
+
+#profile_picture {
+    max-width: 100px; 
+    height: auto; 
+    margin-right: 0px; 
+}
+
+.profile-info {
+    flex: 0; 
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    #profile_picture {
+        margin-right: 0;
+        margin-bottom: 0px; 
+    }
+}
+
+
+
+
 
