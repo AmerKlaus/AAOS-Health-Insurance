@@ -86,7 +86,7 @@
             </div>
             <div class="profile-actions">
                 <a href="/ProfileController/changeProfile">Edit Profile</a>
-                <a href="/User/resetPassword">Change Password</a>
+                <a href="/User/forgotPassword">Forgot Password</a>
             </div>
         </section>
     </div>

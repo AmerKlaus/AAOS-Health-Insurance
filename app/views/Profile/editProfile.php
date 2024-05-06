@@ -24,7 +24,8 @@
 
     <div class="container">
         <section id="edit-profile">
-            <form action="/ProfileController/editProfile" method="POST">
+            <form action="/ProfileController/editProfile" method="POST" enctype="multipart/form-data"
+                class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="full_name" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="full_name" name="full_name"
@@ -56,8 +57,9 @@
                         value="<?php echo $data['profile']->policy_number; ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="profile_picture" class="form-label">Profile Picture</label>
-                    <input type="file" class="form-control" id="profile_picture" name="profile_picture">
+                    <label for="profile_picture">Profile Picture:</label>
+                    <input type="file" class="form-control" id="profile_picture" name="profile_picture"
+                        accept="image/*">
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
             </form>

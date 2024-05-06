@@ -65,17 +65,15 @@ class User
     public static function updateUser(PDO $db_conn, $newProfileData)
     {
         $user_id = $newProfileData['user_id'];
-        $username = $newProfileData['username'];
         $full_name = $newProfileData['full_name'];
         $email = $newProfileData['email'];
         $address = $newProfileData['address'];
         $phone = $newProfileData['phone'];
 
         // Update user data in the database
-        $SQL = 'UPDATE User SET username = :username, full_name = :full_name, email = :email, address = :address, phone = :phone WHERE user_id = :user_id';
+        $SQL = 'UPDATE User SET full_name = :full_name, email = :email, address = :address, phone = :phone WHERE user_id = :user_id';
         $stmt = $db_conn->prepare($SQL);
         $stmt->execute([
-            'username' => $username,
             'full_name' => $full_name,
             'email' => $email,
             'address' => $address,
@@ -84,11 +82,7 @@ class User
         ]);
 
         // Check if the update was successful
-        if ($stmt->rowCount() > 0) {
-            return true; // Update successful
-        } else {
-            return false; // Update failed
-        }
+        return $stmt->rowCount() > 0;
     }
 
     public function update(PDO $db_conn)
