@@ -313,8 +313,7 @@ button[type="submit"]:hover {
     }
 
     #profile_picture {
-        margin-right: 0;
-        margin-bottom: 0px; 
+        max-width: 150px; 
     }
 }
 
