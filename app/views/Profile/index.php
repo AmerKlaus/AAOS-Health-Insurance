@@ -57,7 +57,6 @@
                 <li><a href="/Home/index">Home</a></li>
                 <li><a href="/ProfileController/index">Profile</a></li>
                 <li><a href="/Home/claimSubmission">Claim Submission</a></li>
-                <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
             </ul>

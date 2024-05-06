@@ -28,7 +28,6 @@
                 <li><a href="/Home/index">Home</a></li>
                 <li><a href="/ProfileController/index">Profile</a></li>
                 <li><a href="/Home/claimSubmission">Claim Submission</a></li>
-                <li><a href="/Home/claimDetails">Claim Details</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
             </ul>
@@ -39,19 +38,19 @@
             <h2>Claim Submission</h2>
             <form action="/Home/submitClaim" method="POST" class="claim-form">
                 <label for="claim_type">Claim Type:</label>
-                <select id="claim_type" name="claim_type" required>
+                <select id="claim_type" class="form-control" name="claim_type" required>
                     <option value="health">Health</option>
                 </select>
 
                 <label for="claim_details">Claim Details:</label>
-                <textarea id="claim_details" name="claim_details" rows="4" required></textarea>
+                <textarea id="claim_details" class="form-control" name="claim_details" rows="4" required></textarea>
 
                 <label for="claim_date">Claim Date:</label>
-                <input type="date" id="claim_date" name="claim_date" required> <br>
+                <input type="datetime-local" class="form-control" id="claim_date" name="claim_date" required>
 
-                <br>
                 <label for="health_card_number">Health Insurance Card Number:</label>
-                <input type="text" id="health_card_number" name="health_card_number" class="health-card-input" required>
+                <input type="text" class="form-control" id="health_card_number" name="health_card_number"
+                    class="health-card-input" required>
 
                 <button type="submit">Submit Claim</button>
             </form>

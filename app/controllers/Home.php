@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Profile;
 use PDO;
 
 class Home extends \app\core\Controller
@@ -18,14 +19,19 @@ class Home extends \app\core\Controller
     }
 
     // Method to handle claim submission form submission
-    #[\app\filters\HasProfile]
     public function submitClaim()
     {
-        // Check if the user is logged in
         if (!isset($_SESSION['user_id'])) {
+            header('location:/User/login');
+            exit;
+        }
 
-            // If the user is not logged in, redirect to the login page
-            header('Location: /User/login');
+        $user_id = $_SESSION['user_id'];
+        $profile = Profile::getByUserId($this->db_conn, $user_id);
+
+        if (!$profile) {
+            // Handle if profile doesn't exist
+            header('location:/ProfileController/create');
             exit;
         }
 
@@ -39,19 +45,12 @@ class Home extends \app\core\Controller
             // Get the current user ID from session
             $user_id = $_SESSION['user_id'];
 
-            // $policy_id = \app\models\Claim::getPolicyIdFromNumber($policyNumber);
-            // if (!$policy_id) {
-
-            //     header('Location: /Home/index');
-            //     exit;
-            // }
-
             // Create a new Claim instance
             $claim = new \app\models\Claim();
             $claim->user_id = $user_id; // Assign current user's ID
             $claim->claim_type = $claim_type;
             $claim->claim_details = $claim_details;
-            $claim->claim_date = $claim_date;
+            $claim->submission_date = $claim_date;
             $claim->status = "Pending"; // Default status set to "Pending"
             $claim->health_card_number = $health_card_number;
 
@@ -59,7 +58,7 @@ class Home extends \app\core\Controller
             $claim->insert($this->db_conn);
 
             // Optionally, redirect to a confirmation page or display a success message
-            $this->view('Home/claimDetails');
+            $this->view('Home/claimDetails', ['claim' => $claim, 'profile' => $profile]);
         } else {
             // Redirect or handle invalid requests
             header('Location:/Home/index');

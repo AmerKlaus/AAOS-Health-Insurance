@@ -18,14 +18,14 @@ class Claim
     public function insert(PDO $db_conn)
     {
         // Could use SQL function CURDATE() as the submission date
-        $SQL = 'INSERT INTO Claim VALUES (DEFAULT, :user_id, :claim_type, :claim_details, :submission_date, :status, :health_insurance_number)';
+        $SQL = 'INSERT INTO Claim VALUES (DEFAULT, :user_id, :claim_type, :submission_date, :status, :claim_details, :health_insurance_number)';
         $STMT = $db_conn->prepare($SQL);
         $data = [
             'user_id' => $this->user_id,
             'claim_type' => $this->claim_type,
-            'claim_details' => $this->claim_details,
             'submission_date' => $this->submission_date,
             'status' => $this->status,
+            'claim_details' => $this->claim_details,
             'health_insurance_number' => $this->health_card_number
         ];
         $STMT->execute($data);

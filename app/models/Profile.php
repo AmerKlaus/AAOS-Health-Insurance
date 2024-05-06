@@ -8,6 +8,7 @@ class Profile
 {
     public string $profile_id;
     public string $user_id;
+    public string $policy_number;
     public string $birthdate;
     public string $profile_picture;
     public string $date_created;

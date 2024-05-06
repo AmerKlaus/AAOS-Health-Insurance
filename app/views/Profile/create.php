@@ -20,7 +20,7 @@
     <div class="container">
         <div class="content">
             <form action="/ProfileController/create" method="POST" enctype="multipart/form-data"
-                class="needs-validation" novalidate>
+                class="needs-validation">
                 <div class="mb-3">
                     <label for="birthdate">Birthdate:</label>
                     <input type="date" class="form-control" id="birthdate" name="birthdate" required>
