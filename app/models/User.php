@@ -103,17 +103,17 @@ class User
     {
         // Generate a random token
         $token = bin2hex(random_bytes(16));
-
+    
         // Hash the token
         $token_hash = hash("sha256", $token);
-
+    
         // Set the token and expiration time in the user object
         $this->reset_token_hash = $token_hash;
         $this->reset_token_expires_at = date("Y-m-d H:i:s", time() + 60 * 30); // 30 minutes from now
-
+    
         // Update the user record in the database
-        $this->updatePasswordAndResetToken($db_conn); // Updated method call
-
+        $this->updatePasswordAndResetToken($db_conn); 
+    
         return $token;
     }
 
@@ -125,11 +125,11 @@ class User
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\User');
         return $stmt->fetch();
     }
-
     public function isResetTokenValid(): bool
     {
         return strtotime($this->reset_token_expires_at) > time();
     }
+    
 
 
 
@@ -177,7 +177,7 @@ class User
         return $stmt->fetch();
     }
 
-    /*
+    
     public function updatePasswordAndResetToken(PDO $db_conn)
     {
         $SQL = 'UPDATE User SET pwd_hash = :pwd_hash, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
@@ -190,7 +190,7 @@ class User
         ]);
     }
 
-*/
+
 
 }
 ?>

@@ -137,7 +137,7 @@ class ProfileController extends Controller
         }
     }
 
-    // Other profile-related methods...
+    
 }
 
 ?>
