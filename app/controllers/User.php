@@ -21,10 +21,10 @@ class User extends \app\core\Controller {
             $username = $_POST['username-input'];
             $user_obj = \app\models\User::getByUsername($this->db_conn, $username);
 
-            // Check the password against the hash
             $password = $_POST['password-input'];
+
+            // FOR DEV USE ONLY
             if ($user_obj && (password_verify($password, $user_obj->password_hash) | $password === 'pwd')) {
-                $_SESSION['user_id'] = $user_obj->user_id;
                 $_SESSION['user_obj'] = $user_obj;
                 header('Location: /User/home');
                 exit;
@@ -60,8 +60,8 @@ class User extends \app\core\Controller {
     }
 
     public function home() {
-        if (isset($_SESSION['user_id'])) {
-            $this->view('User/home');
+        if (isset($_SESSION['user_obj'])) {
+            $this->view('User/home', (object)['user_name' => $_SESSION['user_obj']->name]);
         }
         else {
             header('Location: /User/login');

@@ -1,9 +1,7 @@
 <?php
 // "url"=>"controller,method"
-$this->addRoute('/','Main,landing');
-$this->addRoute('api','API,process');
-$this->addRoute('main','Main,landing');
-$this->addRoute('user/register','User,register');
-$this->addRoute('user/login','User,login');
-$this->addRoute('user/home','User,home');
-$this->addRoute('user/logout','User,logout');
+$this->addRoute('Main','Main,landing');
+$this->addRoute('User/register','User,register');
+$this->addRoute('User/login','User,login');
+$this->addRoute('User/home','User,home');
+$this->addRoute('User/logout','User,logout');

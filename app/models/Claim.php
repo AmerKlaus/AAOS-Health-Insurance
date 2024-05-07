@@ -8,11 +8,9 @@ class Claim {
     string $claim_id;
     string $date_submitted;
     string $user_id;
-    string $number;
     string $expense_date;
     string $status;
   
-
     public static function create(PDO $db_conn, string $user_id, string $expense_date) {
         $raw_sql = 'INSERT INTO `claims` VALUES (DEFAULT, CURDATE(), :user_id, :expense_date, DEFAULT)';
         $stmt = $db_conn->prepare($raw_sql);
@@ -29,6 +27,4 @@ class Claim {
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
         return $stmt->fetchAll();
     }
-
 }
-
