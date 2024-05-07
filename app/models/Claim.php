@@ -66,6 +66,18 @@ class Claim
         return $STMT->fetchAll();
     }
 
+    public function update(PDO $db_conn)
+    {
+        $SQL = 'UPDATE Claim SET claim_type = :claim_type, claim_details = :claim_details, submission_date = :submission_date, health_insurance_number = :health_insurance_number WHERE claim_id = :claim_id';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute([
+            'claim_type' => $this->claim_type,
+            'claim_details' => $this->claim_details,
+            'submission_date' => $this->submission_date,
+            'health_insurance_number' => $this->health_card_number,
+            'claim_id' => $this->claim_id,
+        ]);
+    }
 
 }
 

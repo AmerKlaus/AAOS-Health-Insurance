@@ -36,7 +36,7 @@
         </div>
     </nav>
     <div class="container">
-        <section id="claim-details" class="claim-history">
+        <section id="claim-detail" class="claim-history">
             <h2>Notifications</h2>
             <div class="claim-card">
                 <?php foreach ($data['notifications'] as $notification): ?>
@@ -44,7 +44,8 @@
                         <p><strong>Type:</strong> <?php echo $notification->notification_type; ?></p>
                         <p><strong>Content:</strong> <?php echo $notification->notification_content; ?></p>
                         <p><strong>Timestamp:</strong> <?php echo $notification->timestamp; ?></p>
-                        <a href="/Claim/edit/<?php echo $notification->claim_id; ?>" class="btn btn-primary">Edit Claim</a>
+                        <a href="/Claim/changeClaim/<?php echo $notification->claim_id; ?>" class="btn btn-primary">Edit
+                            Claim</a>
                     </div><br>
                     <hr>
                 <?php endforeach; ?>

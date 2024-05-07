@@ -50,5 +50,12 @@ class Notification
         return $STMT->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public function removeNotification(PDO $db_conn, $claim_id)
+    {
+        $SQL = 'DELETE FROM Notification WHERE claim_id = :claim_id';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['claim_id' => $claim_id]);
+    }
+
 }
 ?>

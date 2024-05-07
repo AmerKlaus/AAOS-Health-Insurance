@@ -17,49 +17,33 @@
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1>AAOS Insurance</h1>
-        </div>
-    </header>
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="/Home/index">Home</a></li>
-                <li><a href="/ProfileController/index">Profile</a></li>
-                <li><a href="/Claim/claimSubmission">Claim Submission</a></li>
-                <li><a href="/Claim/claimHistory">Claim History</a></li>
-                <li><a href="/User/notification">Notifications</a></li>
-                <li><a href="/Home/customerSupport">Customer Support</a></li>
-                <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
-            </ul>
-        </div>
-    </nav>
     <div class="container">
-        <section id="claim-details">
-            <h2>Claim Details</h2>
-            <div class="claim-info">
-                <p><strong>Claim ID:</strong> CLM123456</p>
-                <p><strong>Policy Number:</strong> <?php echo $data['profile']->policy_number; ?></p>
-                <p><strong>Claim Type:</strong> <?php echo $data['claim']->claim_type; ?></p>
-                <p><strong>Claim Details:</strong> <?php echo $data['claim']->claim_details; ?></p>
-                <p><strong>Claim Amount:</strong> $1000</p>
-                <p><strong>Claim Date:</strong> <?php echo $data['claim']->submission_date; ?></p>
+        <h1>Edit Claim</h1>
+        <form action="/Claim/edit/<?php echo $data['claim']->claim_id; ?>" method="POST" class="claim-form">
+            <div class="mb-3">
+                <label for="claim_type">Claim Type:</label>
+                <select id="claim_type" class="form-control" name="claim_type" required>
+                    <option value="health"><?php echo $data['claim']->claim_type; ?></option>
+                </select>
             </div>
-            <div class="back-button">
-                <a href="/Home/index">Back to Dashboard</a>
+            <div class="mb-3">
+                <label for="claim_details">Claim Details:</label>
+                <textarea class="form-control" id="claim_details" name="claim_details"
+                    required><?php echo $data['claim']->claim_details; ?></textarea>
             </div>
-        </section>
+            <div class="mb-3">
+                <label for="claim_date">Claim Date:</label>
+                <input type="datetime-local" class="form-control" id="claim_date" name="claim_date"
+                    value="<?php echo $data['claim']->submission_date; ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="health_card_number">Health Card Number:</label>
+                <input type="text" class="form-control" id="health_card_number" name="health_card_number"
+                    value="<?php echo $data['claim']->health_card_number; ?>" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
     </div>
-    <footer>
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or need assistance, our support team is here to help.</p>
-            <p>Email: support@aaosinsurance.com</p>
-            <p>Phone: 1-800-555-1234</p>
-            <p>&copy; 2024 AAOS Insurance. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 
 </html>

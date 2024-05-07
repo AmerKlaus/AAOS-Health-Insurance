@@ -2,6 +2,7 @@
 namespace app\controllers;
 
 use \PDO;
+use app\models\Profile;
 use chillerlan\Authenticator\Authenticator;
 use chillerlan\Authenticator\AuthenticatorOptions;
 use chillerlan\QRCode\QRCode;
@@ -240,6 +241,19 @@ class User extends \app\core\Controller
 
     public function notification()
     {
+        if (!isset($_SESSION['user_id'])) {
+            header('location:/User/login');
+            exit;
+        }
+
+        $user_id = $_SESSION['user_id'];
+        $profile = Profile::getByUserId($this->db_conn, $user_id);
+
+        if (!$profile) {
+            // Handle if profile doesn't exist
+            header('location:/ProfileController/create');
+            exit;
+        }
         // Assuming you have a Notification model
         $notificationModel = new \app\models\Notification($this->db_conn);
         $notifications = $notificationModel->getNotificationsByUserId($_SESSION['user_id']);

@@ -93,9 +93,72 @@ class Claim extends Controller
         $this->view('Claim/history', ['claims' => $claims, 'profile' => $profile]);
     }
 
+    public function changeClaim($claimId)
+    {
+        // Check if claim ID is provided
+        if (!$claimId) {
+            header('Location: /Home/index');
+            exit;
+        }
+        // Get the claim by ID
+        $claimModel = new \app\models\Claim();
+        $claim = $claimModel->getClaimById($this->db_conn, $claimId);
+
+        if (!$claim) {
+            // Handle if claim not found
+            header('Location: /Home/index');
+            exit;
+        }
+
+        $this->view('Claim/edit', ['claim' => $claim]);
+    }
+
     public function edit($claimId)
     {
+        // Check if claim ID is provided
+        if (!$claimId) {
+            header('Location: /Home/index');
+            exit;
+        }
 
+        // Get the claim by ID
+        $claimModel = new \app\models\Claim();
+        $claim = $claimModel->getClaimById($this->db_conn, $claimId);
+
+        // Get user ID from session
+        $user_id = $_SESSION['user_id'];
+        $profile = Profile::getByUserId($this->db_conn, $user_id);
+
+        if (!$claim) {
+            // Handle if claim not found
+            header('Location: /Home/index');
+            exit;
+        }
+
+        // Process form submission
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve and sanitize form data
+            $claim_type = $_POST['claim_type'];
+            $claim_details = $_POST['claim_details'];
+            $claim_date = $_POST['claim_date'];
+            $health_card_number = $_POST['health_card_number'];
+
+            // Update the claim data
+            $claim->claim_type = $claim_type;
+            $claim->claim_details = $claim_details;
+            $claim->claim_date = $claim_date;
+            $claim->health_card_number = $health_card_number;
+
+            // Save changes to the database
+            $claim->update($this->db_conn);
+
+            $notificationModel = new \app\models\Notification($this->db_conn);
+            $notificationModel->removeNotification($this->db_conn, $claimId);
+
+            // Redirect to claim details page
+            $this->view('/Claim/details', ['claim' => $claim, 'profile' => $profile]);
+            exit;
+        }
     }
 
 }

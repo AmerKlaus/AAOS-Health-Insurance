@@ -39,7 +39,7 @@
         <section id="claim-details">
             <h2>Claim Details</h2>
             <div class="claim-info">
-                <p><strong>Claim ID:</strong> CLM123456</p>
+                <p><strong>Claim ID:</strong> <?php echo $data['claim']->claim_id; ?></p>
                 <p><strong>Policy Number:</strong> <?php echo $data['profile']->policy_number; ?></p>
                 <p><strong>Claim Type:</strong> <?php echo $data['claim']->claim_type; ?></p>
                 <p><strong>Claim Details:</strong> <?php echo $data['claim']->claim_details; ?></p>

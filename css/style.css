@@ -342,11 +342,11 @@ button[type="submit"]:hover {
     margin-bottom: 5px;
 }
 
-.claim-card .claim-details {
+.claim-card .claim-detail {
     margin-top: 10px;
 }
 
-.claim-card .claim-details p {
+.claim-card .claim-detail p {
     margin-bottom: 5px;
 }
 

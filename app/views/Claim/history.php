@@ -36,7 +36,7 @@
         </div>
     </nav>
     <div class="container">
-        <section id="claim-details" class="claim-history">
+        <section id="claim-detail" class="claim-history">
             <h2>Claim History</h2>
             <div class="claim-card">
                 <?php foreach ($data['claims'] as $claim): ?>
