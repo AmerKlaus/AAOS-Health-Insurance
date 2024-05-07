@@ -58,7 +58,7 @@
         <div id="claim-history" class="container">
             <h2>Contact Us</h2>
             <p>If you have any questions or need assistance, our support team is here to help.</p>
-            <p>Email: support@aaosinsurance.com</p>
+            <p>Email: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
             <p>Phone: 1-800-555-1234</p>
             <p>&copy; 2024 AAOS Insurance. All rights reserved.</p>
         </div>
