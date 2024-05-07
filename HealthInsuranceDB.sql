@@ -184,6 +184,7 @@ DROP TABLE IF EXISTS `Notification`;
 CREATE TABLE `Notification` (
   `notification_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `claim_id` int(11) NOT NULL,
   `timestamp` datetime NOT NULL,
   `notification_type` varchar(50) NOT NULL,
   `notification_content` text NOT NULL
@@ -352,7 +353,8 @@ ALTER TABLE `Feedback`
 --
 ALTER TABLE `Notification`
   ADD PRIMARY KEY (`notification_id`),
-  ADD KEY `userId_foreignKey3` (`user_id`);
+  ADD KEY `userId_foreignKey3` (`user_id`),
+  ADD KEY `claimId_foreignKey8` (`claim_id`);
 
 --
 -- Indexes for table `Payment`

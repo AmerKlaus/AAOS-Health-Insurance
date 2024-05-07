@@ -29,28 +29,24 @@ class Admin extends \app\core\Model
 
     public function insertReview(PDO $db_conn, $claimId, $notes)
     {
-        $SQL = 'INSERT INTO Claim_Review (claimId, adminId, review_date, review_outcome, notes) VALUES (:claimId, :adminId, NOW(), :review_outcome, :notes)';
+        $SQL = 'INSERT INTO Claim_Review (claim_Id, admin_Id, review_date, review_outcome, notes) VALUES (:claim_Id, :admin_Id, NOW(), :review_outcome, :notes)';
         $STMT = $db_conn->prepare($SQL);
         $adminId = $_SESSION['admin_id']; // Assuming you have the admin ID stored in session
         $reviewOutcome = 'Pending'; // Set the review outcome as needed
-        $STMT->execute(['claimId' => $claimId, 'adminId' => $adminId, 'review_outcome' => $reviewOutcome, 'notes' => $notes]);
+        $STMT->execute(['claim_Id' => $claimId, 'admin_Id' => $adminId, 'review_outcome' => $reviewOutcome, 'notes' => $notes]);
     }
 
+    public function updateClaimStatus(PDO $db_conn, $claimId, $status)
+    {
+        // Update claim status in the database
+        $SQL = 'UPDATE Claim SET status = :status WHERE claim_id = :claimId';
+        $stmt = $db_conn->prepare($SQL);
+        $stmt->execute([
+            'status' => $status,
+            'claimId' => $claimId
+        ]);
 
-    // public function requestAdditionalInformation($claimId, $additionalInfo)
-    // {
-    //     // Implement logic to update claim status and request additional information
-    //     $SQL = 'INSERT INTO claim_review (claim_id, admin_id, review_date, review_outcome, notes) 
-    //     VALUES (:claimId, :adminId, :reviewDate, :reviewOutcome, :notes)';
-    //     $STMT = self::$_conn->prepare($SQL);
-    //     $STMTReview->execute([
-    //         'claimId' => $claimId,
-    //         'adminId' => $adminId,
-    //         'reviewDate' => $reviewDate,
-    //         'reviewOutcome' => $reviewOutcome,
-    //         'notes' => $additionalInfo
-    //     ]);
-    // }
-
-    // Other admin-related methods...
+        // Check if the update was successful
+        return $stmt->rowCount() > 0;
+    }
 }

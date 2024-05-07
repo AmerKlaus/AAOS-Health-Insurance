@@ -111,20 +111,20 @@ class Admin extends \app\core\Controller
     public function approveClaim($claimId)
     {
         // Approve the claim and update its status
-        $claimModel = new \app\models\Claim();
-        $claimModel->updateClaimStatus($claimId, 'Approved'); // Implement updateClaimStatus method in Claim model
+        $claimModel = new \app\models\Admin();
+        $claimModel->updateClaimStatus($this->db_conn, $claimId, 'Approved'); // Implement updateClaimStatus method in Claim model
         // Redirect back to pending claims or dashboard
-        header('Location: /Admin/pendingClaims');
+        header('Location: /Admin/dashboard');
         exit;
     }
 
     public function denyClaim($claimId)
     {
         // Deny the claim and update its status
-        $claimModel = new \app\models\Claim();
-        $claimModel->updateClaimStatus($claimId, 'Denied'); // Implement updateClaimStatus method in Claim model
+        $claimModel = new \app\models\Admin();
+        $claimModel->updateClaimStatus($this->db_conn, $claimId, 'Denied'); // Implement updateClaimStatus method in Claim model
         // Redirect back to pending claims or dashboard
-        header('Location: /Admin/pendingClaims');
+        header('Location: /Admin/dashboard');
         exit;
     }
 }
