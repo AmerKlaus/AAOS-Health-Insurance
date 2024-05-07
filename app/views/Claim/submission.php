@@ -25,7 +25,8 @@
             <ul>
                 <li><a href="/Home/index">Home</a></li>
                 <li><a href="/ProfileController/index">Profile</a></li>
-                <li><a href="/Home/claimSubmission">Claim Submission</a></li>
+                <li><a href="/Claim/claimSubmission">Claim Submission</a></li>
+                <li><a href="/Claim/claimHistory">Claim History</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
             </ul>
@@ -34,7 +35,7 @@
     <div class="container">
         <section id="claim-submission">
             <h2>Claim Submission</h2>
-            <form action="/Home/submitClaim" method="POST" class="claim-form">
+            <form action="/Claim/submitClaim" method="POST" class="claim-form">
                 <label for="claim_type">Claim Type:</label>
                 <select id="claim_type" class="form-control" name="claim_type" required>
                     <option value="health">Health</option>

@@ -8,6 +8,10 @@ class Admin extends \app\core\Controller
 {
     public function dashboard()
     {
+        if (!isset($_SESSION['admin_id'])) {
+            header('Location: /Admin/login');
+            exit;
+        }
         // Retrieve and display pending claims for review
         $claimModel = new \app\models\Claim();
         $claimModel = $claimModel->getPendingClaimDocuments($this->db_conn);

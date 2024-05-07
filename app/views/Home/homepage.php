@@ -32,7 +32,8 @@
             <ul>
                 <li><a href="/Home/index">Home</a></li>
                 <li><a href="/ProfileController/index">Profile</a></li>
-                <li><a href="/Home/claimSubmission">Claim Submission</a></li>
+                <li><a href="/Claim/claimSubmission">Claim Submission</a></li>
+                <li><a href="/Claim/claimHistory">Claim History</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
             </ul>
@@ -57,7 +58,7 @@
                 <div class="container">
                     <h2>Claims</h2>
                     <p>Submit and track your health insurance claims with convenience.</p>
-                    <a href="/Home/claimSubmission" class="btn">Go to Claims</a>
+                    <a href="/Claim/claimSubmission" class="btn">Go to Claims</a>
                 </div>
             </section>
 
