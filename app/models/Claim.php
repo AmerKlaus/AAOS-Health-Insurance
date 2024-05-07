@@ -29,7 +29,7 @@ class Claim {
     }
 
     public static function getByUserID(PDO $db_conn, string $user_id) {
-        $raw_sql = 'SELECT * FROM `claims` WHERE user_id = :user_id ORDER BY date_submitted';
+        $raw_sql = 'SELECT * FROM `claims` WHERE user_id = :user_id ORDER BY date_submitted ASC';
         $stmt = $db_conn->prepare($raw_sql);
         $params = ['user_id' => $user_id];
         $stmt->execute($params);
