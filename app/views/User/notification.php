@@ -5,15 +5,15 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim History</title>
+    <title>Notifications</title>
 
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -37,32 +37,20 @@
     </nav>
     <div class="container">
         <section id="claim-details" class="claim-history">
-            <h2>Claim History</h2>
+            <h2>Notifications</h2>
             <div class="claim-card">
-                <?php foreach ($data['claims'] as $claim): ?>
-                    <div class="claim-info">
-                        <p><strong>Claim ID:</strong> <?php echo $claim->claim_id; ?></p>
-                        <p><strong>Policy Number:</strong> <?php echo $data['profile']->policy_number; ?></p>
-                        <p><strong>Claim Type:</strong> <?php echo $claim->claim_type; ?></p>
-                        <p><strong>Claim Status:</strong> <?php echo $claim->status; ?></p>
-                        <p><strong>Claim Details:</strong> <?php echo $claim->claim_details; ?></p>
-                        <p><strong>Claim Amount:</strong> $1000</p>
-                        <p><strong>Claim Date:</strong> <?php echo $claim->submission_date; ?></p>
-                        <hr>
-                    </div>
+                <?php foreach ($data['notifications'] as $notification): ?>
+                    <div class="notification">
+                        <p><strong>Type:</strong> <?php echo $notification->notification_type; ?></p>
+                        <p><strong>Content:</strong> <?php echo $notification->notification_content; ?></p>
+                        <p><strong>Timestamp:</strong> <?php echo $notification->timestamp; ?></p>
+                        <a href="/Claim/edit/<?php echo $notification->claim_id; ?>" class="btn btn-primary">Edit Claim</a>
+                    </div><br>
+                    <hr>
                 <?php endforeach; ?>
             </div>
         </section>
     </div>
-    <footer>
-        <div id="claim-history" class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or need assistance, our support team is here to help.</p>
-            <p>Email: support@aaosinsurance.com</p>
-            <p>Phone: 1-800-555-1234</p>
-            <p>&copy; 2024 AAOS Insurance. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 
 </html>

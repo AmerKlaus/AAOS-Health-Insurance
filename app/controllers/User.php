@@ -238,6 +238,15 @@ class User extends \app\core\Controller
         }
     }
 
+    public function notification()
+    {
+        // Assuming you have a Notification model
+        $notificationModel = new \app\models\Notification($this->db_conn);
+        $notifications = $notificationModel->getNotificationsByUserId($_SESSION['user_id']);
+
+        // Assuming you have a view file for notifications
+        $this->view('User/notification', ['notifications' => $notifications]);
+    }
 
 
 }

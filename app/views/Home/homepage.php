@@ -34,6 +34,7 @@
                 <li><a href="/ProfileController/index">Profile</a></li>
                 <li><a href="/Claim/claimSubmission">Claim Submission</a></li>
                 <li><a href="/Claim/claimHistory">Claim History</a></li>
+                <li><a href="/User/notification">Notifications</a></li>
                 <li><a href="/Home/customerSupport">Customer Support</a></li>
                 <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
             </ul>

@@ -41,5 +41,14 @@ class Notification
         $result = $STMT->fetch(PDO::FETCH_ASSOC);
         return $result['user_id'] ?? null;
     }
+
+    public function getNotificationsByUserId($user_id)
+    {
+        $SQL = 'SELECT * FROM Notification WHERE user_id = :user_id ORDER BY timestamp DESC';
+        $STMT = $this->db_conn->prepare($SQL);
+        $STMT->execute(['user_id' => $user_id]);
+        return $STMT->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }
 ?>

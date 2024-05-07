@@ -93,4 +93,9 @@ class Claim extends Controller
         $this->view('Claim/history', ['claims' => $claims, 'profile' => $profile]);
     }
 
+    public function edit($claimId)
+    {
+
+    }
+
 }
