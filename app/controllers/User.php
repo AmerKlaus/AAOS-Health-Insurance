@@ -179,7 +179,6 @@ class User extends \app\core\Controller
             if ($user) {
                 // If the email exists, generate a password reset token
                 $resetToken = $user->generatePasswordResetToken($this->db_conn);
-
                 // Send the password reset email using the model method
                 $user->sendResetEmail($email, $resetToken);
 
@@ -217,11 +216,12 @@ class User extends \app\core\Controller
 
             // Check if the user exists and the token is valid
             if ($user && $user->isResetTokenValid()) {
-                // Hash the new password
-                $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+                $user->pwd_hash = password_hash($newPassword, PASSWORD_DEFAULT);
+                $user->reset_token_hash = null;
+                $user->reset_token_expires_at = null;
 
                 // Update the user's password in the database
-                $user->updatePassword($this->db_conn, $hashedPassword);
+                $user->updatePasswordAndResetToken($this->db_conn);
 
                 // Redirect to login page with success message
                 header('Location: /User/login');

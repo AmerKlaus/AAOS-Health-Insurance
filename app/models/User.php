@@ -114,7 +114,7 @@ class User
         // Update the user record in the database
         $this->updatePasswordAndResetToken($db_conn); 
     
-        return $token;
+        return $token_hash;
     }
 
     public static function getUserByResetToken(PDO $db_conn, string $token)
