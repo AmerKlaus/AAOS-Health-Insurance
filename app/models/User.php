@@ -61,7 +61,7 @@ class User {
         return true;
     }
 
-    public function deactivate(PDO $db_conn) {
+    public function delete(PDO $db_conn) {
         $raw_sql = 'DELETE FROM `users` WHERE user_id = :user_id';
         $stmt = $db_conn->prepare($raw_sql);
         $stmt->execute(['user_id' => $this->user_id]);

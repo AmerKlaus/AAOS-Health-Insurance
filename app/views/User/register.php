@@ -5,17 +5,11 @@
 	<body>
 		<form method="post" action="/User/register">
 			<label>Name:<input type="text" name="name-input"></label>
-			<label>Policy Number:<input type="text" name="policy-number-input"></label>
+			<label>Policy ID:<input type="text" name="policy-id-input"></label>
 			<label>Email:<input type="email" name="email-input"></label>
 			<label>Address:<input type="text" name="address-input"></label>
 			<label>Username:<input type="text" name="username-input"></label>
-		
-
 			<label>Password:<input type="password-input" name="password-input"></label>
-
-
-		
-
 			<button type="submit">Register</button>
 
 		</form>

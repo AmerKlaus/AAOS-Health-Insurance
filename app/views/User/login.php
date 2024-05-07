@@ -15,6 +15,7 @@
 
 		</form>
 		<a href="/User/register">Go to registration page</a>
+		<a href="/User/forgotPassword">Forgot password?</a>
 
 	</body>
 
