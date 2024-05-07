@@ -56,6 +56,17 @@ class Claim
         }
     }
 
+    public function getAllClaims(PDO $db_conn, $user_id)
+    {
+        // Implement logic to retrieve all claims for the user
+        $SQL = 'SELECT * FROM Claim WHERE user_id = :user_id';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['user_id' => $user_id]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
+
+
 }
 
 ?>

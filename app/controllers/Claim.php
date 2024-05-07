@@ -64,4 +64,33 @@ class Claim extends Controller
     {
         $this->view('Claim/details');
     }
+
+    public function claimHistory()
+    {
+        // Check if the user is logged in
+        if (!isset($_SESSION['user_id'])) {
+            header('location:/User/login');
+            exit;
+        }
+
+        // Get user ID from session
+        $user_id = $_SESSION['user_id'];
+        $profile = Profile::getByUserId($this->db_conn, $user_id);
+
+        if (!$profile) {
+            // Handle if profile doesn't exist
+            header('location:/ProfileController/create');
+            exit;
+        }
+
+        // Load the Claim model
+        $claimModel = new \app\models\Claim();
+
+        // Get all claims for the user
+        $claims = $claimModel->getAllClaims($this->db_conn, $user_id);
+
+        // Load the view with the claims data
+        $this->view('Claim/history', ['claims' => $claims, 'profile' => $profile]);
+    }
+
 }

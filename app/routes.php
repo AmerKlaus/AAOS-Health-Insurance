@@ -30,3 +30,4 @@ $this->addRoute('Admin/logout', 'Admin,logout');
 $this->addRoute('Claim/claimSubmission', 'Claim,claimSubmission');
 $this->addRoute('Claim/claimDetails', 'Claim,claimDetails');
 $this->addRoute('Claim/submitClaim', 'Claim,submitClaim');
+$this->addRoute('Claim/claimHistory', 'Claim,claimHistory');
