@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+
 use app\core\App;
 require('app/core/init.php');
 

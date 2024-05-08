@@ -88,6 +88,12 @@ class Home extends \app\core\Controller
         }
     }
 
+    public function debug() {
+        echo '<pre>';
+        var_dump($_SESSION);
+        echo '</pre>';
+    }
+
 }
 
 ?>
