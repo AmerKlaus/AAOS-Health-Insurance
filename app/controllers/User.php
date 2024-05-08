@@ -101,7 +101,7 @@ class User extends \app\core\Controller
                 header('location:/Home/index');
                 exit;
             } else {
-                $this->view('Core/genericerrorpage', '2FA verification failed');
+                $this->view('Core/debugview', '2FA verification failed');
                 exit;
             }
         } else {
@@ -134,7 +134,7 @@ class User extends \app\core\Controller
             }
             else {
                 $_SESSION['2fa_verified'] = false;
-                $this->view('Core/genericerrorpage', '2FA verification failed');
+                $this->view('Core/debugview', '2FA verification failed');
                 exit;
             }
 
