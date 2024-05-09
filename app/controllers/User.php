@@ -12,41 +12,22 @@ class User extends \app\core\Controller
 
     public function logout()
     {
-        // Check if the user is logged in
-        if (isset($_SESSION['user_id'])) {
-            // Destroy the session
-            session_destroy();
-
-            // Redirect to the home page or any other desired page after logout
-            header('Location: /Home/index');
-            exit;
-        } else {
-            // Redirect to the home page or login page if the user is not logged in
-            header('Location: /User/login');
-            exit;
-        }
+        session_destroy();
+        header('Location: /Home/index');
+        exit;
     }
 
     public function login()
     {
         // Show the login form and log the user in
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            // Log the user in if the password is correct
-            // Get the user from the database
-            // Log the user in if the password is correct
-            // Get the user from the database
             $username = $_POST['username'];
             $user = \app\models\User::getByUsername($this->db_conn, $username);
 
-            // Check the password against the hash
-            $password = $_POST['password'];
-            if ($user && password_verify($password, $user->pwd_hash)) {
-                // Remember that this is the user logging in
+            if ($user && password_verify($_POST['password'], $user->pwd_hash)) {
                 $_SESSION['user_id'] = $user->user_id;
+                $_SESSION['2fa_verified'] = false;
 
-                // Store the user's 2FA secret in the session
-                $_SESSION['secret'] = $user->secret;
 
                 // Check if the user has set up 2FA
                 if ($user->secret === null) {
@@ -55,14 +36,13 @@ class User extends \app\core\Controller
                     header('location:/User/setup2fa');
                     exit; // Stop further execution
                 } else {
-
-                    // User has logged in successfully
-                    header('location:/Home/index');
+                    header('location:/User/check2fa');
+                    exit;
                 }
             } else {
-
-                // Invalid credentials, redirect back to login page
+                session_destroy();
                 header('location:/User/login');
+                exit;
             }
         } else {
             $this->view('User/login');
@@ -100,68 +80,67 @@ class User extends \app\core\Controller
     //Fix
     public function setup2fa()
     {
-        // Create AuthenticatorOptions object
         $options = new AuthenticatorOptions();
-
-        // Create Authenticator object
         $authenticator = new Authenticator($options);
 
-        // Check if the form was submitted
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // Check if the session secret is available
             if (isset($_SESSION['secret_setup'])) {
-
-                // Set the session secret to the Authenticator object
                 $authenticator->setSecret($_SESSION['secret_setup']);
             } else {
-
-                // Redirect to setup 2FA page if session secret is not available
                 header('location:/User/setup2fa');
-                exit; // Stop further execution
+                exit;
             }
 
-            // Check the TOTP provided by the user
-            $totp = $_POST['totp'];
-            if ($authenticator->verify($totp)) {
-
-                // TOTP is correct, perform further actions like storing it in the user record
+            // Ideally this would reuse/share code from the check2fa method
+            if ($authenticator->verify($_POST['totp'])) {
+                $user_obj = \app\models\User::getByID($this->db_conn, $_SESSION['user_id']);
+                $user_obj->secret = $_SESSION['secret_setup'];
+                $user_obj->update($this->db_conn);
+                $_SESSION['2fa_verified'] = true;
                 header('location:/Home/index');
+                exit;
             } else {
-
-                // TOTP is incorrect
-                echo 'Nope!';
+                $this->view('Core/debugview', '2FA verification failed');
+                exit;
             }
         } else {
+            $user_obj = \app\models\User::getByID($this->db_conn, $_SESSION['user_id']);
 
             // If the form was not submitted, generate the secret and QR code
             $_SESSION['secret_setup'] = $authenticator->createSecret();
 
-            // Generate the URI with the secret for the user
             $uri = $authenticator->getUri('AAOS', 'localhost');
             $QRCode = (new QRCode)->render($uri);
 
-            // Pass QR code to the view
             $this->view('User/setup2fa', ['QRCode' => $QRCode]);
+            exit;
         }
     }
 
     public function check2fa()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $user_obj = \app\models\User::getByID($this->db_conn, $_SESSION['user_id']);
             $options = new AuthenticatorOptions();
             $authenticator = new Authenticator($options);
-            $authenticator->setSecret($_SESSION['secret']);
+            $authenticator->setSecret($user_obj->secret);
 
             if ($authenticator->verify($_POST['totp'])) {
-                unset($_SESSION['secret']);
+                $_SESSION['2fa_verified'] = true;
                 header('location:/Home/index');
-            } else {
-                session_destroy();
-                header('location:/User/login');
+                exit;
             }
+            else {
+                $_SESSION['2fa_verified'] = false;
+                $this->view('Core/debugview', '2FA verification failed');
+                exit;
+            }
+
         } else {
             $this->view('User/check2fa');
+            exit;
         }
 
     }
@@ -184,58 +163,55 @@ class User extends \app\core\Controller
 
                 // Display a success message to the user
                 $this->view('User/resetPasswordSuccess', ['email' => $email]);
+                exit;
             } else {
                 // Email not found in the database
                 $errorMessage = "The email address provided is not associated with any account.";
                 $this->view('User/forgotPassword', ['errorMessage' => $errorMessage]);
+                exit;
             }
         } else {
             // Display forgot password form
             $this->view('User/forgotPassword');
+            exit;
         }
     }
 
     public function resetPassword()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Retrieve the token and new password from the form
             $token = $_POST['token'];
             $newPassword = $_POST['new_password'];
             $confirmPassword = $_POST['confirm_password'];
 
-            // Check if both passwords match
             if ($newPassword !== $confirmPassword) {
-                // If passwords don't match, redirect with an error message
                 $errorMessage = "Passwords do not match.";
                 $this->view('User/resetPasswordForm', ['errorMessage' => $errorMessage]);
-                return; // Stop further execution
+                exit;
             }
 
-            // Retrieve the user associated with the token from the database
+            // Should just include the user_id or username with the token
             $user = \app\models\User::getUserByResetToken($this->db_conn, $token);
 
-            // Check if the user exists and the token is valid
             if ($user && $user->isResetTokenValid()) {
                 $user->pwd_hash = password_hash($newPassword, PASSWORD_DEFAULT);
                 $user->reset_token_hash = null;
                 $user->reset_token_expires_at = null;
 
-                // Update the user's password in the database
                 $user->updatePasswordAndResetToken($this->db_conn);
 
-                // Redirect to login page with success message
                 header('Location: /User/login');
                 exit;
             } else {
                 // Invalid token or token expired, redirect with error message
                 $errorMessage = "Invalid or expired token.";
                 $this->view('User/resetPasswordForm', ['errorMessage' => $errorMessage]);
-                return; // Stop further execution
+                exit;
             }
         } else {
-            // Display the reset password form
             $token = $_GET['token'] ?? '';
             $this->view('User/resetPasswordForm', ['token' => $token]);
+            exit;
         }
     }
 
