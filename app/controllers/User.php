@@ -131,8 +131,7 @@ class User extends \app\core\Controller
                 $_SESSION['2fa_verified'] = true;
                 header('location:/Home/index');
                 exit;
-            }
-            else {
+            } else {
                 $_SESSION['2fa_verified'] = false;
                 $this->view('Core/debugview', '2FA verification failed');
                 exit;
@@ -230,9 +229,9 @@ class User extends \app\core\Controller
             header('location:/ProfileController/create');
             exit;
         }
-        // Assuming you have a Notification model
+
         $notificationModel = new \app\models\Notification($this->db_conn);
-        $notifications = $notificationModel->getNotificationsByUserId($_SESSION['user_id']);
+        $notifications = $notificationModel->getNotificationsByUserId($user_id);
 
         // Assuming you have a view file for notifications
         $this->view('User/notification', ['notifications' => $notifications]);

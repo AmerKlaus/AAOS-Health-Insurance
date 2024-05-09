@@ -39,7 +39,7 @@
             <div class="mb-3">
                 <label for="health_card_number">Health Card Number:</label>
                 <input type="text" class="form-control" id="health_card_number" name="health_card_number"
-                    value="<?php echo $data['claim']->health_card_number; ?>" required>
+                    value="<?php echo $data['claim']->health_insurance_number; ?>" required>
             </div>
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
