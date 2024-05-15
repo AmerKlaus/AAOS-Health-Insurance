@@ -43,14 +43,15 @@
         </form>
     </div>
     <footer>
-        <div class="container">
-            <h2><?= __('Contact Us') ?></h2>
-            <p><?= __('If you have any questions or need assistance, our support team is here to help.') ?></p>
-            <p><?= __('Email') ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-            <p><?= __('Phone') ?>: 1-800-555-1234</p>
-            <p>&copy; <?= __('2024 AAOS Insurance. All rights reserved.') ?></p>
-        </div>
-    </footer>
+            <div class="container">
+                <h2><?php echo __("Contact Us"); ?></h2>
+                <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
+                </p>
+                <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+                <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
+                <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
+            </div>
+        </footer>
 </body>
 
 </html>

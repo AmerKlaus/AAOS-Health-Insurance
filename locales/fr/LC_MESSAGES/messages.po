@@ -1,5 +1,5 @@
 msgid "User Login"
-msgstr "Connexion utilisateur"
+msgstr "Connexion Utilisateur"
 
 msgid "AAOS Insurance"
 msgstr "Assurance AAOS"
@@ -22,26 +22,429 @@ msgstr "Vous n'avez pas de compte ?"
 msgid "Sign up here"
 msgstr "Inscrivez-vous ici"
 
-msgid "Register"
-msgstr "Inscription"
+msgid "User Register"
+msgstr "Inscription Utilisateur"
 
 msgid "Full Name"
-msgstr "Nom complet"
+msgstr "Nom complet "
 
 msgid "Email"
-msgstr "Email"
+msgstr "Courriel"
 
 msgid "Phone"
-msgstr "Téléphone"
+msgstr "Téléphone "
 
 msgid "Address"
-msgstr "Adresse"
+msgstr "Adresse "
 
-msgid "Confirm Password"
-msgstr "Confirmez le mot de passe"
+msgid "Confirm Password:"
+msgstr "Confirmer le mot de passe :"
+
+msgid "Register"
+msgstr "S'inscrire"
 
 msgid "Contact Us"
-msgstr "Contactez-nous"
+msgstr "Nous contacter"
 
 msgid "If you have any questions or need assistance, our support team is here to help."
-msgstr "Si vous avez des questions ou avez besoin d'aide, notre équipe de support est là pour vous aider."
+msgstr "Si vous avez des questions ou besoin d'aide, notre équipe de support est là pour vous aider."
+
+msgid "2024 AAOS Insurance. All rights reserved."
+msgstr "2024 Assurance AAOS. Tous droits réservés."
+
+msgid "Please enter your email address below to reset your password."
+msgstr "Veuillez entrer votre adresse email ci-dessous pour réinitialiser votre mot de passe."
+
+msgid "Reset Password"
+msgstr "Réinitialiser le mot de passe"
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Claim Submission"
+msgstr "Soumission de réclamation"
+
+msgid "Claim History"
+msgstr "Historique des réclamations"
+
+msgid "Customer Support"
+msgstr "Support client"
+
+msgid "Go to Login/Register"
+msgstr "Aller à Connexion/Inscription"
+
+msgid "Type:"
+msgstr "Type :"
+
+msgid "Content:"
+msgstr "Contenu :"
+
+msgid "Timestamp:"
+msgstr "Horodatage :"
+
+msgid "Edit Claim"
+msgstr "Modifier la réclamation"
+
+msgid "Reset Your Password"
+msgstr "Réinitialiser votre mot de passe"
+
+msgid "New Password:"
+msgstr "Nouveau mot de passe :"
+
+msgid "Password Reset Success"
+msgstr "Réinitialisation du mot de passe réussie"
+
+msgid "A link has been sent to your email to reset your password."
+msgstr "Un lien a été envoyé à votre email pour réinitialiser votre mot de passe."
+
+msgid "You can now"
+msgstr "Vous pouvez maintenant"
+
+msgid "log in"
+msgstr "vous connecter"
+
+msgid "with your new password."
+msgstr "avec votre nouveau mot de passe."
+
+msgid "Setup 2FA"
+msgstr "Configurer la 2FA"
+
+msgid "Scan the above QR-code with your mobile Authenticator app, such as Google Authenticator. The authenticator app will generate codes that are valid for 30 seconds only. Enter such a code and submit it while it is still valid to apply the 2-factor authentication protection to your account."
+msgstr "Scannez le QR-code ci-dessus avec votre application d'authentification mobile, telle que Google Authenticator. L'application d'authentification générera des codes valides pendant seulement 30 secondes. Entrez un tel code et soumettez-le tant qu'il est encore valide pour appliquer la protection d'authentification à deux facteurs à votre compte."
+
+msgid "Current code:"
+msgstr "Code actuel :"
+
+msgid "Verify code"
+msgstr "Vérifier le code"
+
+msgid "Create Profile"
+msgstr "Créer un profil"
+
+msgid "Birthdate"
+msgstr "Date de naissance "
+
+msgid "Please provide a valid birthdate."
+msgstr "Veuillez fournir une date de naissance valide."
+
+msgid "Policy Number"
+msgstr "Numéro de police"
+
+msgid "Please provide a policy number."
+msgstr "Veuillez fournir un numéro de police."
+
+msgid "Profile Picture:"
+msgstr "Photo de profil :"
+
+msgid "Please upload a profile picture."
+msgstr "Veuillez télécharger une photo de profil."
+
+msgid "Edit Profile"
+msgstr "Modifier le profil"
+
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+msgid "Logout"
+msgstr "Déconnexion"
+
+msgid "Coverage Options - Knowledge Base"
+msgstr "Options de couverture - Base de connaissances"
+
+msgid "AAOS Insurance Customer Support"
+msgstr "Support client Assurance AAOS"
+
+msgid "Health Coverage:"
+msgstr "Couverture santé :"
+
+msgid "Doctor's visits and consultations:"
+msgstr "Visites et consultations médicales :"
+
+msgid "Hospital stays and surgeries:"
+msgstr "Séjours hospitaliers et interventions chirurgicales :"
+
+msgid "Prescription medications:"
+msgstr "Médicaments sur ordonnance :"
+
+msgid "Lab tests and diagnostic procedures:"
+msgstr "Analyses de laboratoire et procédures diagnostiques :"
+
+msgid "Preventive care services:"
+msgstr "Services de soins préventifs :"
+
+msgid "Knowledge Base"
+msgstr "Base de connaissances"
+
+msgid "Categories:"
+msgstr "Catégories :"
+
+msgid "Insurance Claims"
+msgstr "Réclamations d'assurance"
+
+msgid "Welcome to AAOS Health Insurance"
+msgstr "Bienvenue à l'Assurance Santé AAOS"
+
+msgid "Providing comprehensive health coverage for your peace of mind."
+msgstr "Offrant une couverture santé complète pour votre tranquillité d'esprit."
+
+msgid "Your Profile"
+msgstr "Votre profil"
+
+msgid "Manage your personal information and policy details easily."
+msgstr "Gérez facilement vos informations personnelles et les détails de votre police."
+
+msgid "Go to Profile"
+msgstr "Aller au profil"
+
+msgid "Submit and track your health insurance claims with convenience."
+msgstr "Soumettez et suivez vos réclamations d'assurance santé en toute commodité."
+
+msgid "Go to Claims"
+msgstr "Aller aux réclamations"
+
+msgid "Industry News - Knowledge Base"
+msgstr "Actualités de l'industrie - Base de connaissances"
+
+msgid "Welcome to our knowledge base! Here, you can find the latest news and updates related to the insurance industry."
+msgstr "Bienvenue dans notre base de connaissances ! Ici, vous pouvez trouver les dernières nouvelles et mises à jour concernant l'industrie de l'assurance."
+
+msgid "Recent Articles:"
+msgstr "Articles récents :"
+
+msgid "Stay up-to-date with the latest developments in the insurance sector through our curated articles:"
+msgstr "Restez à jour avec les derniers développements du secteur de l'assurance grâce à nos articles sélectionnés :"
+
+msgid "Explore how emerging technologies like artificial intelligence are transforming"
+msgstr "Découvrez comment les technologies émergentes comme l'intelligence artificielle transforment"
+
+msgid "Insurance Claims - Knowledge Base"
+msgstr "Réclamations d'assurance - Base de connaissances"
+
+msgid "Articles:"
+msgstr "Articles :"
+
+msgid "Here are some articles to help you understand insurance claims:"
+msgstr "Voici quelques articles pour vous aider à comprendre les réclamations d'assurance :"
+
+msgid "Understanding the Insurance Claims Process:"
+msgstr "Comprendre le processus de réclamation d'assurance :"
+
+msgid "Learn about the steps involved in filing an insurance claim and what to expect."
+msgstr "Apprenez les étapes de la soumission d'une réclamation d'assurance et à quoi vous attendre."
+
+msgid "Tips for Filing Insurance Claims:"
+msgstr "Conseils pour soumettre des réclamations d'assurance :"
+
+msgid "Discover useful tips and strategies to ensure a smooth and successful insurance claim process."
+msgstr "Découvrez des conseils et des stratégies utiles pour assurer un processus de réclamation d'assurance fluide et réussi."
+
+msgid "Common Mistakes to Avoid in Insurance Claims:"
+msgstr "Erreurs courantes à éviter dans les réclamations d'assurance :"
+
+msgid "Avoid pitfalls and mistakes that could jeopardize your insurance claim."
+msgstr "Évitez les pièges et les erreurs qui pourraient compromettre votre réclamation d'assurance."
+
+msgid "Resources:"
+msgstr "Ressources :"
+
+msgid "Check out these resources for more information:"
+msgstr "Consultez ces ressources pour plus d'informations :"
+
+msgid "Sample Claim Forms:"
+msgstr "Exemples de formulaires de réclamation :"
+
+msgid "Download sample claim forms to help you fill out your insurance claim accurately."
+msgstr "Téléchargez des exemples de formulaires de réclamation pour vous aider à remplir correctement votre réclamation d'assurance."
+
+msgid "Guide to Insurance Claim Documentation:"
+msgstr "Guide de la documentation des réclamations d'assurance :"
+
+msgid "Understand the documentation requirements for different types of insurance claims."
+msgstr "Comprenez les exigences en matière de documentation pour différents types de réclamations d'assurance."
+
+msgid "FAQs on Insurance Claims:"
+msgstr "FAQ sur les réclamations d'assurance :"
+
+msgid "Find answers to frequently asked questions about insurance claims."
+msgstr "Trouvez des réponses aux questions fréquemment posées sur les réclamations d'assurance."
+
+msgid "Login Selection"
+msgstr "Sélection de connexion"
+
+msgid "Login as:"
+msgstr "Se connecter en tant que :"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Claim Details"
+msgstr "Détails de la réclamation"
+
+msgid "Claim Type:"
+msgstr "Type de réclamation :"
+
+msgid "Claim Amount:"
+msgstr "Montant de la réclamation :"
+
+msgid "Claim Date:"
+msgstr "Date de la réclamation :"
+
+msgid "Back to Dashboard"
+msgstr "Retour au tableau de bord"
+
+msgid "All rights reserved."
+msgstr "Tous droits réservés."
+
+msgid "Submit Claim"
+msgstr "Soumettre la réclamation"
+
+msgid "Health Insurance Card Number:"
+msgstr "Numéro de carte d'assurance maladie :"
+
+msgid "Admin Dashboard"
+msgstr "Tableau de bord de l'administrateur"
+
+msgid "Pending Claims"
+msgstr "Réclamations en attente"
+
+msgid "Claim ID"
+msgstr "ID de réclamation"
+
+msgid "User ID"
+msgstr "ID utilisateur"
+
+msgid "Submission Date"
+msgstr "Date de soumission"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Welcome to our knowledge base! Here, you can find articles and resources related to insurance."
+msgstr "Bienvenue dans notre base de connaissances ! Ici, vous pouvez trouver des articles et des ressources liés à l'assurance."
+
+msgid "Coverage Options"
+msgstr "Options de couverture"
+
+msgid "Industry News"
+msgstr "Actualités de l'industrie"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Here are some frequently asked questions:"
+msgstr "Voici quelques questions fréquemment posées :"
+
+msgid "How do I renew my policy?"
+msgstr "Comment renouveler ma police ?"
+
+msgid "You can renew your policy online through our website or by contacting our customer support."
+msgstr "Vous pouvez renouveler votre police en ligne sur notre site Web ou en contactant notre service client."
+
+msgid "What is covered under my policy?"
+msgstr "Qu'est-ce qui est couvert par ma police ?"
+
+msgid "Coverage varies depending on the type of policy you have. Please refer to your policy documents for details."
+msgstr "La couverture varie en fonction du type de police que vous avez. Veuillez vous référer à vos documents de police pour plus de détails."
+
+msgid "How do I update my personal information?"
+msgstr "Comment mettre à jour mes informations personnelles ?"
+
+msgid "You can update your personal information by logging into your account on our website or by contacting customer support."
+msgstr "Vous pouvez mettre à jour vos informations personnelles en vous connectant à votre compte sur notre site Web ou en contactant le service client."
+
+msgid "Send Message to Customer Support"
+msgstr "Envoyer un message au support client"
+
+msgid "If you need assistance or have any inquiries, please use the form below to send us a message:"
+msgstr "Si vous avez besoin d'aide ou si vous avez des questions, veuillez utiliser le formulaire ci-dessous pour nous envoyer un message :"
+
+msgid "Your Feedback:"
+msgstr "Votre avis :"
+
+msgid "Submit Feedback"
+msgstr "Envoyer l'avis"
+
+msgid "Claim Details:"
+msgstr "Détails de la réclamation :"
+
+msgid "Forgot Password"
+msgstr "Mot de passe oublié "
+
+msgid "Profile Picture"
+msgstr "Photo de profil "
+
+msgid "Claim Status"
+msgstr "Statut de la réclamation"
+
+msgid "Welcome to our knowledge base! Here, you can find detailed information related to insurance claims."
+msgstr "Bienvenue dans notre base de connaissances ! Vous y trouverez des informations détaillées sur les réclamations d'assurance."
+
+msgid "Welcome to our knowledge base! Here, you can explore the coverage options provided by our insurance policies."
+msgstr "Bienvenue dans notre base de connaissances ! Ici, vous pouvez explorer les options de couverture fournies par nos polices d'assurance."
+
+msgid "Our health insurance policies typically cover"
+msgstr "Nos polices d'assurance santé couvrent généralement"
+
+msgid "This includes appointments with primary care physicians, specialists, and other healthcare providers for diagnosis, treatment, and preventive care."
+msgstr "Cela inclut les rendez-vous avec les médecins de soins primaires, les spécialistes et autres prestataires de soins de santé pour le diagnostic, le traitement et les soins préventifs."
+
+
+msgid "Coverage extends to expenses incurred during hospitalization, including room charges, surgical procedures, anesthesia, and related medical services."
+msgstr "La couverture s'étend aux dépenses engagées lors de l'hospitalisation, y compris les frais de chambre, les interventions chirurgicales, l'anesthésie et les services médicaux connexes."
+
+msgid "This covers the cost of prescription drugs prescribed by healthcare providers to manage acute or chronic conditions."
+msgstr "Cela couvre le coût des médicaments sur ordonnance prescrits par les fournisseurs de soins de santé pour traiter des conditions aiguës ou chroniques."
+
+msgid "Coverage includes laboratory tests, imaging studies, and other diagnostic procedures ordered by healthcare providers to assess health status and aid in diagnosis."
+msgstr "La couverture comprend les tests de laboratoire, les études d'imagerie et autres procédures diagnostiques prescrits par les fournisseurs de soins de santé pour évaluer l'état de santé et aider au diagnostic."
+
+msgid "This encompasses routine screenings, vaccinations, wellness exams, and other preventive measures aimed at maintaining optimal health and detecting health issues early."
+msgstr "Cela englobe les dépistages de routine, les vaccinations, les examens de bien-être et autres mesures préventives visant à maintenir une santé optimale et à détecter les problèmes de santé tôt."
+
+msgid ""
+"Explore how emerging technologies like artificial intelligence are transforming claims processing and underwriting. Stay informed about the latest trends shaping the insurance landscape and understand how these advancements impact policyholders."
+msgstr ""
+"Découvrez comment les technologies émergentes telles que l'intelligence artificielle transforment le traitement des réclamations et la tarification. Restez informé des dernières tendances façonnant le paysage de l'assurance et comprenez comment ces avancées impactent les assurés."
+
+msgid ""
+"Learn about the impact of regulatory changes on insurance policies and coverage options. Our articles provide insights into recent legislative updates and regulatory shifts affecting insurance providers and consumers, helping you navigate the evolving regulatory environment."
+msgstr ""
+"Apprenez l'impact des changements réglementaires sur les polices d'assurance et les options de couverture. Nos articles fournissent des informations sur les récentes mises à jour législatives et les changements réglementaires affectant les fournisseurs d'assurance et les consommateurs, vous aidant ainsi à naviguer dans l'environnement réglementaire en évolution."
+
+msgid ""
+"Discover trends in the insurance market, from innovative product offerings to shifts in consumer behavior. Our articles analyze market trends, emerging risks, and opportunities in the insurance sector, providing valuable insights for industry professionals and consumers alike."
+msgstr ""
+"Découvrez les tendances du marché de l'assurance, des offres de produits innovants aux changements de comportement des consommateurs. Nos articles analysent les tendances du marché, les risques émergents et les opportunités dans le secteur de l'assurance, fournissant des informations précieuses tant pour les professionnels de l'industrie que pour les consommateurs."
+
+msgid "Industry Updates"
+msgstr "Mises à jour de l'industrie"
+
+msgid "Keep informed about recent developments and trends shaping the insurance industry"
+msgstr "Restez informé des développements et tendances récents qui façonnent l'industrie de l'assurance"
+
+msgid "Get insights into the latest mergers and acquisitions in the insurance sector and their implications for policyholders. Our updates cover industry consolidation, partnership agreements, and strategic alliances, helping you understand how these developments may impact your insurance coverage and options."
+msgstr "Obtenez des informations sur les dernières fusions et acquisitions dans le secteur de l'assurance et leurs implications pour les assurés. Nos mises à jour couvrent la consolidation de l'industrie, les accords de partenariat et les alliances stratégiques, vous aidant à comprendre comment ces développements peuvent affecter votre couverture et vos options d'assurance."
+
+msgid "Stay informed about changes in healthcare legislation and their effects on insurance providers and consumers. We provide updates on healthcare policy reforms, regulatory initiatives, and legislative changes affecting health insurance coverage, ensuring you stay informed about important developments in the healthcare sector."
+msgstr "Restez informé des changements dans la législation sur les soins de santé et de leurs effets sur les fournisseurs d'assurance et les consommateurs. Nous fournissons des mises à jour sur les réformes politiques de santé, les initiatives réglementaires et les changements législatifs affectant la couverture d'assurance maladie, vous permettant de rester informé des développements importants dans le secteur de la santé."
+
+msgid "Find out about upcoming industry events and conferences where you can network and learn about the latest industry trends. Our updates highlight key industry events, conferences, and seminars, providing opportunities for industry professionals to connect, share insights, and stay ahead of the curve."
+msgstr "Renseignez-vous sur les prochains événements et conférences de l'industrie où vous pouvez réseauter et apprendre les dernières tendances de l'industrie. Nos mises à jour mettent en lumière les principaux événements de l'industrie, conférences et séminaires, offrant des opportunités aux professionnels de l'industrie de se connecter, de partager des idées et de rester en avance sur la courbe."
+
+msgid "© 2024 AAOS Insurance. All rights reserved."
+msgstr "© 2024 Assurance AAOS. Tous droits réservés."

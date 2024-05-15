@@ -5,7 +5,7 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title><?php echo __("Profile"); ?></title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -18,73 +18,70 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
-
 </head>
 
 <body>
     <header>
         <div class="container">
-            <h1>AAOS Insurance</h1>
+            <h1><?php echo __("AAOS Insurance"); ?></h1>
         </div>
     </header>
     <nav>
         <div class="container">
             <ul>
-                <li><a href="/Home/index">Home</a></li>
-                <li><a href="/ProfileController/index">Profile</a></li>
-                <li><a href="/Claim/claimSubmission">Claim Submission</a></li>
-                <li><a href="/Claim/claimHistory">Claim History</a></li>
-                <li><a href="/User/notification">Notifications</a></li>
-                <li><a href="/Home/customerSupport">Customer Support</a></li>
-                <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
+                <li><a href="/Home/index"><?php echo __("Home"); ?></a></li>
+                <li><a href="/ProfileController/index"><?php echo __("Profile"); ?></a></li>
+                <li><a href="/Claim/claimSubmission"><?php echo __("Claim Submission"); ?></a></li>
+                <li><a href="/Claim/claimHistory"><?php echo __("Claim History"); ?></a></li>
+                <li><a href="/User/notification"><?php echo __("Notifications"); ?></a></li>
+                <li><a href="/Home/customerSupport"><?php echo __("Customer Support"); ?></a></li>
+                <li><a href="/Home/loginSelection"><?php echo __("Go to Login/Register"); ?></a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
         <section id="profile">
-            <h2>Profile</h2>
+            <h2><?php echo __("Profile"); ?></h2>
             <div class="profile-container">
-                <img id="profile_picture" src="<?php echo $data['profile']->profile_picture; ?>" alt="Profile Picture">
+                <img id="profile_picture" src="<?php echo $data['profile']->profile_picture; ?>" alt="<?php echo __("Profile Picture"); ?>">
                 <div class="profile-info">
-                    <label for="username">Username:</label>
+                    <label for="username"><?php echo __("Username"); ?>:</label>
                     <p id="username"><?php echo $data['user']->username; ?></p>
-                    <label for="fullname">Full Name:</label>
+                    <label for="fullname"><?php echo __("Full Name"); ?>:</label>
                     <p id="fullname"><?php echo $data['user']->full_name; ?></p>
-                    <label for="email">Email:</label>
+                    <label for="email"><?php echo __("Email"); ?>:</label>
                     <p id="email"><?php echo $data['user']->email; ?></p>
-                    <label for="phone">Phone:</label>
+                    <label for="phone"><?php echo __("Phone"); ?>:</label>
                     <p id="phone"><?php echo $data['user']->phone; ?></p>
-                    <label for="address">Address:</label>
+                    <label for="address"><?php echo __("Address"); ?>:</label>
                     <p id="address"><?php echo $data['user']->address; ?></p>
-                    <label for="policy_number">Policy Number:</label>
+                    <label for="policy_number"><?php echo __("Policy Number"); ?>:</label>
                     <p id="policy_number"><?php echo $data['profile']->policy_number; ?></p>
-                    <label for="birthdate">Birthdate:</label>
+                    <label for="birthdate"><?php echo __("Birthdate"); ?>:</label>
                     <p id="birthdate"><?php echo $data['profile']->birthdate; ?></p>
                 </div>
             </div>
             <div class="profile-actions">
-                <a href="/ProfileController/changeProfile">Edit Profile</a>
-                <a href="/User/forgotPassword">Forgot Password</a>
-                <a href="/User/logout">Logout</a>
+                <a href="/ProfileController/changeProfile"><?php echo __("Edit Profile"); ?></a>
+                <a href="/User/forgotPassword"><?php echo __("Forgot Password"); ?></a>
+                <a href="/User/logout"><?php echo __("Logout"); ?></a>
             </div>
         </section>
-
-
-        <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-        <script src="https://mediafiles.botpress.cloud/9d85be25-4f92-441b-a9d8-9eba09ec2430/webchat/config.js"
-            defer></script>
     </div>
+
     <footer>
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or need assistance, our support team is here to help.</p>
-            <p>Email: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-            <p>Phone: 1-800-555-1234</p>
-            <p>&copy; 2024 AAOS Insurance. All rights reserved.</p>
-        </div>
-    </footer>
+            <div class="container">
+                <h2><?php echo __("Contact Us"); ?></h2>
+                <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
+                </p>
+                <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+                <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
+                <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
+            </div>
+        </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

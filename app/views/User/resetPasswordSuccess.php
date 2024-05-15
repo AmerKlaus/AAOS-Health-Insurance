@@ -4,7 +4,7 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Reset Success</title>
+    <title><?php echo __("Password Reset Success"); ?></title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -15,9 +15,9 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <h2 class="card-title text-center">Password Reset</h2>
-                        <p class="text-center">A link has been sent to your email to reset your password.</p>
-                        <p class="text-center">You can now <a href="/User/login">log in</a> with your new password.</p>
+                        <h2 class="card-title text-center"><?php echo __("Password Reset"); ?></h2>
+                        <p class="text-center"><?php echo __("A link has been sent to your email to reset your password."); ?></p>
+                        <p class="text-center"><?php echo __("You can now"); ?> <a href="/User/login"><?php echo __("log in"); ?></a> <?php echo __("with your new password."); ?></p>
                     </div>
                 </div>
             </div>
