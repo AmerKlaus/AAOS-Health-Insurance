@@ -5,11 +5,16 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo __("Claim Details"); ?></title>
+    <title><?php echo __("Home"); ?></title>
 
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
     <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -38,13 +43,26 @@
     <div class="container">
         <section id="claim-details">
             <h2><?php echo __("Claim Details"); ?></h2>
-            <div class="claim-info">
-                <p><strong><?php echo __("Policy Number:"); ?></strong> <?php echo $data['profile']->policy_number; ?></p>
-                <p><strong><?php echo __("Claim Type:"); ?></strong> <?php echo $data['claim']->claim_type; ?></p>
-                <p><strong><?php echo __("Claim Details:"); ?></strong> <?php echo $data['claim']->claim_details; ?></p>
-                <p><strong><?php echo __("Claim Amount:"); ?></strong> $1000</p>
-                <p><strong><?php echo __("Claim Date:"); ?></strong> <?php echo $data['claim']->submission_date; ?></p>
-            </div>
+
+            <form action="" method="POST" class="claim-form">
+                <label for="claim_type"><?php echo __("Claim Type:"); ?></label>
+                <select id="claim_type" class="form-control" name="claim_type" required>
+                    <option value="health"><?php echo __("Health"); ?></option>
+                </select>
+
+                <label for="claim_details"><?php echo __("Claim Details:"); ?></label>
+                <textarea id="claim_details" class="form-control" name="claim_details" rows="4"
+                    required><?php echo $data['claim']->claim_details; ?></textarea>
+
+                <label for="claim_date"><?php echo __("Claim Date:"); ?></label>
+                <input type="datetime-local" class="form-control" id="claim_date" name="claim_date" required>
+
+                <label for="health_card_number"><?php echo __("Health Insurance Card Number:"); ?></label>
+                <input type="text" class="form-control" id="health_card_number" name="health_card_number"
+                    class="health-card-input" required value= <?php echo $data['claim']->health_insurance_number; ?>>
+
+                <button type="submit"><?php echo __("Submit Claim"); ?></button>
+            </form>
             <div class="back-button">
                 <a href="/Home/index"><?php echo __("Back to Dashboard"); ?></a>
             </div>
