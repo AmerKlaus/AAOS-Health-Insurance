@@ -41,6 +41,33 @@ class Claim
         return $STMT->fetchAll();
     }
 
+    public function getPendingClaimDocumentsByID(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status order by claim_id';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
+    public function getPendingClaimDocumentsByType(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status order by claim_type';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
+    public function getPendingClaimDocumentsByDate(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status order by submission_date';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
     public static function getClaimById(PDO $db_conn, $claimId)
     {
         $SQL = 'SELECT * FROM Claim WHERE claim_id = :claimId';
