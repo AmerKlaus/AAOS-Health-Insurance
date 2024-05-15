@@ -39,19 +39,24 @@
         <section id="claim-detail" class="claim-history">
             <h2><?php echo __("Claim History"); ?></h2>
             <div class="claim-card">
-                <?php foreach ($data['claims'] as $claim): ?>
-                    <div class="claim-info">
-                        <p><strong><?php echo __("Claim ID:"); ?></strong> <?php echo $claim->claim_id; ?></p>
-                        <p><strong><?php echo __("Policy Number:"); ?></strong> <?php echo $data['profile']->policy_number; ?></p>
-                        <p><strong><?php echo __("Claim Type:"); ?></strong> <?php echo $claim->claim_type; ?></p>
-                        <p><strong><?php echo __("Claim Status:"); ?></strong> <?php echo $claim->status; ?></p>
-                        <p><strong><?php echo __("Claim Details:"); ?></strong> <?php echo $claim->claim_details; ?></p>
-                        <p><strong><?php echo __("Claim Amount:"); ?></strong> $1000</p>
-                        <p><strong><?php echo __("Claim Date:"); ?></strong> <?php echo $claim->submission_date; ?></p>
-                        <hr>
-                    </div>
-                <?php endforeach; ?>
+                <?php if (!empty($data['claims'])): ?>
+                    <?php foreach ($data['claims'] as $claim): ?>
+                        <div class="claim-info">
+                            <p><strong><?php echo __("Claim ID:"); ?></strong> <?php echo $claim->claim_id; ?></p>
+                            <p><strong><?php echo __("Policy Number:"); ?></strong> <?php echo $data['profile']->policy_number; ?></p>
+                            <p><strong><?php echo __("Claim Type:"); ?></strong> <?php echo $claim->claim_type; ?></p>
+                            <p><strong><?php echo __("Claim Status:"); ?></strong> <?php echo $claim->status; ?></p>
+                            <p><strong><?php echo __("Claim Details:"); ?></strong> <?php echo $claim->claim_details; ?></p>
+                            <p><strong><?php echo __("Claim Amount:"); ?></strong> $1000</p>
+                            <p><strong><?php echo __("Claim Date:"); ?></strong> <?php echo $claim->submission_date; ?></p>
+                            <hr>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                <p>No claims found.</p>
+                <?php endif; ?>
             </div>
+
         </section>
     </div>
     <footer>
