@@ -548,3 +548,13 @@ msgstr "Le mot de passe doit contenir au moins 8 caractères et comporter au moi
 msgid "Weak password"
 msgstr "Mot de passe faible"
 
+msgid "Email:"
+msgstr "Courriel: "
+
+msgid "Submit the 6-digit code for this site from your Authenticator app."
+msgstr "Soumettez le code à 6 chiffres pour ce site à partir de votre application d'authentification."
+
+msgid "Current code"
+msgstr "Code actuel "
+
+
