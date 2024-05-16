@@ -104,7 +104,7 @@ msgid "Password Reset Success"
 msgstr "Réinitialisation du mot de passe réussie"
 
 msgid "A link has been sent to your email to reset your password."
-msgstr "Un lien a été envoyé à votre email pour réinitialiser votre mot de passe."
+msgstr "Un lien a été envoyé à votre courriel  pour réinitialiser votre mot de passe."
 
 msgid "You can now"
 msgstr "Vous pouvez maintenant"
@@ -557,4 +557,5 @@ msgstr "Soumettez le code à 6 chiffres pour ce site à partir de votre applicat
 msgid "Current code"
 msgstr "Code actuel "
 
-
+msgid "Password Reset"
+msgstr "Réinitialisation du mot de passe"
