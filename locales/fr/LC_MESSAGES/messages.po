@@ -539,3 +539,12 @@ msgstr "État de la réclamation:"
 msgid "User"
 msgstr "Utilisateur"
 
+msgid "Strong password"
+msgstr "Mot de passe fort"
+
+msgid "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+msgstr "Le mot de passe doit contenir au moins 8 caractères et comporter au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial."
+
+msgid "Weak password"
+msgstr "Mot de passe faible"
+

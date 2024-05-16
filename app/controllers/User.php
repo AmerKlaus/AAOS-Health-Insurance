@@ -53,6 +53,16 @@ class User extends \app\core\Controller
     {
         // Display the registration form and process the registration
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Check if password meets strength criteria
+            $password = $_POST['password'];
+            if (!$this->isStrongPassword($password)) {
+                // Password is not strong enough
+                //redirect back to the registration form with an error message
+                $_SESSION['error'] = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                header('Location: /User/register');
+                return;
+            }
+
             // Create a new User object
             $created_user_obj = \app\models\User::createUser(
                 $this->db_conn,
@@ -66,18 +76,21 @@ class User extends \app\core\Controller
             );
 
             if (is_null($created_user_obj)) {
-                // Should redirect to an error page
+                
                 return;
             } else {
                 header('Location:/User/login');
             }
-
         } else {
             $this->view('User/register');
         }
     }
 
-    
+    private function isStrongPassword($password)
+    {
+        $strongRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/';
+        return preg_match($strongRegex, $password);
+    }
     public function setup2fa()
     {
         $options = new AuthenticatorOptions();

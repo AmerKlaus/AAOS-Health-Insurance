@@ -23,7 +23,7 @@
         </div>
     </header>
     <div class="container">
-        <form action="/User/register" method="post" class="register-form">
+        <form action="/User/register" method="post" class="register-form" onsubmit="return validateForm()">
             <h2><?= __('User Register') ?></h2>
             <label for="full_name"><?= __('Full Name') ?>:</label>
             <input type="text" id="full_name" name="full_name" required>
@@ -32,14 +32,14 @@
             <label for="email"><?= __('Email') ?>:</label>
             <input type="email" id="email" name="email" required>
             <label for="phone"><?= __('Phone') ?>:</label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="tel" id="phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" required
+                title="<?= __('Please enter a phone number in the format XXX-XXX-XXXX.') ?>">
             <label for="address"><?= __('Address') ?>:</label>
             <input type="text" id="address" name="address" required>
             <label for="password"><?= __('Password') ?>:</label>
             <input type="password" id="password" name="password" required>
-            <small id="passwordHelp" class="form-text text-muted">Password must be at least 8 characters long and
-                contain at least one uppercase letter, one lowercase letter, one number, and one special
-                character.</small>
+            <small id="passwordHelp"
+                class="form-text text-muted"><?= __('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.') ?></small>
             <label for="confirm_password"><?= __('Confirm Password') ?>:</label>
             <input type="password" id="confirm_password" name="confirm_password" required> <br> </br>
 
@@ -73,11 +73,11 @@
             var strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 
             if (strongRegex.test(password)) {
-                passwordHelp.innerHTML = "Strong password";
+                passwordHelp.innerHTML = "<?php echo __('Strong password'); ?>";
                 passwordHelp.classList.remove("text-danger");
                 passwordHelp.classList.add("text-success");
             } else {
-                passwordHelp.innerHTML = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+                passwordHelp.innerHTML = "<?php echo __('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.'); ?>";
                 passwordHelp.classList.remove("text-success");
                 passwordHelp.classList.add("text-danger");
             }
