@@ -93,26 +93,6 @@ class Claim extends Controller
         $this->view('Claim/history', ['claims' => $claims, 'profile' => $profile]);
     }
 
-    public function changeClaim($claimId)
-    {
-        // Check if claim ID is provided
-        if (!$claimId) {
-            header('Location: /Home/index');
-            exit;
-        }
-        // Get the claim by ID
-        $claimModel = new \app\models\Claim();
-        $claim = $claimModel->getClaimById($this->db_conn, $claimId);
-
-        if (!$claim) {
-            // Handle if claim not found
-            header('Location: /Home/index');
-            exit;
-        }
-
-        $this->view('Claim/edit', ['claim' => $claim]);
-    }
-
     public function edit($claimId)
     {
         // Check if claim ID is provided
@@ -159,6 +139,8 @@ class Claim extends Controller
             $this->view('/Claim/details', ['claim' => $claim, 'profile' => $profile]);
             exit;
         }
+
+        $this->view('Claim/edit', ['claim' => $claim]);
     }
 
 }

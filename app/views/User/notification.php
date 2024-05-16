@@ -44,7 +44,7 @@
                         <p><strong>Type:</strong> <?php echo $notification->notification_type; ?></p>
                         <p><strong>Content:</strong> <?php echo $notification->notification_content; ?></p>
                         <p><strong>Timestamp:</strong> <?php echo $notification->timestamp; ?></p>
-                        <a href="/Claim/changeClaim/<?php echo $notification->claim_id; ?>" class="btn btn-primary">Edit
+                        <a href="/Claim/edit/<?php echo $notification->claim_id; ?>" class="btn btn-primary">Edit
                             Claim</a>
                     </div><br>
                     <hr>

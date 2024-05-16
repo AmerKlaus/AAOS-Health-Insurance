@@ -33,4 +33,3 @@ $this->addRoute('Claim/submitClaim', 'Claim,submitClaim');
 $this->addRoute('Claim/claimHistory', 'Claim,claimHistory');
 $this->addRoute('User/notification', 'User,notification');
 $this->addRoute('Claim/edit/{claimId}', 'Claim,edit');
-$this->addRoute('Claim/changeClaim/{claimId}', 'Claim,changeClaim');
