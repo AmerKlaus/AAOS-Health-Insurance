@@ -39,40 +39,90 @@
     <section id="knowledge-base">
         <div class="container">
             <h2><?php echo __("Industry News - Knowledge Base"); ?></h2>
-            <p><?php echo __("Welcome to our knowledge base! Here, you can find the latest news and updates related to the insurance industry."); ?></p>
+            <p><?php echo __("Welcome to our knowledge base! Here, you can find the latest news and updates related to the insurance industry."); ?>
+            </p>
 
             <!-- Detailed Information -->
             <h3><?php echo __("Recent Articles:"); ?></h3>
-            <p><?php echo __("Stay up-to-date with the latest developments in the insurance sector through our curated articles:"); ?></p>
+            <p><?php echo __("Stay up-to-date with the latest developments in the insurance sector through our curated articles:"); ?>
+            </p>
             <ul>
-                <li><?php echo __("Explore how emerging technologies like artificial intelligence are transforming claims processing and underwriting. Stay informed about the latest trends shaping the insurance landscape and understand how these advancements impact policyholders."); ?></li>
-                <li><?php echo __("Learn about the impact of regulatory changes on insurance policies and coverage options. Our articles provide insights into recent legislative updates and regulatory shifts affecting insurance providers and consumers, helping you navigate the evolving regulatory environment."); ?></li>
-                <li><?php echo __("Discover trends in the insurance market, from innovative product offerings to shifts in consumer behavior. Our articles analyze market trends, emerging risks, and opportunities in the insurance sector, providing valuable insights for industry professionals and consumers alike."); ?></li>
+                <li><?php echo __("Explore how emerging technologies like artificial intelligence are transforming claims processing and underwriting. Stay informed about the latest trends shaping the insurance landscape and understand how these advancements impact policyholders."); ?>
+                </li>
+                <li><?php echo __("Learn about the impact of regulatory changes on insurance policies and coverage options. Our articles provide insights into recent legislative updates and regulatory shifts affecting insurance providers and consumers, helping you navigate the evolving regulatory environment."); ?>
+                </li>
+                <li><?php echo __("Discover trends in the insurance market, from innovative product offerings to shifts in consumer behavior. Our articles analyze market trends, emerging risks, and opportunities in the insurance sector, providing valuable insights for industry professionals and consumers alike."); ?>
+                </li>
             </ul>
 
             <h3><?php echo __("Industry Updates:"); ?></h3>
-            <p><?php echo __("Keep informed about recent developments and trends shaping the insurance industry:"); ?></p>
+            <p><?php echo __("Keep informed about recent developments and trends shaping the insurance industry:"); ?>
+            </p>
             <ul>
-                <li><?php echo __("Get insights into the latest mergers and acquisitions in the insurance sector and their implications for policyholders. Our updates cover industry consolidation, partnership agreements, and strategic alliances, helping you understand how these developments may impact your insurance coverage and options."); ?></li>
-                <li><?php echo __("Stay informed about changes in healthcare legislation and their effects on insurance providers and consumers. We provide updates on healthcare policy reforms, regulatory initiatives, and legislative changes affecting health insurance coverage, ensuring you stay informed about important developments in the healthcare sector."); ?></li>
-                <li><?php echo __("Find out about upcoming industry events and conferences where you can network and learn about the latest industry trends. Our updates highlight key industry events, conferences, and seminars, providing opportunities for industry professionals to connect, share insights, and stay ahead of the curve."); ?></li>
+                <li><?php echo __("Get insights into the latest mergers and acquisitions in the insurance sector and their implications for policyholders. Our updates cover industry consolidation, partnership agreements, and strategic alliances, helping you understand how these developments may impact your insurance coverage and options."); ?>
+                </li>
+                <li><?php echo __("Stay informed about changes in healthcare legislation and their effects on insurance providers and consumers. We provide updates on healthcare policy reforms, regulatory initiatives, and legislative changes affecting health insurance coverage, ensuring you stay informed about important developments in the healthcare sector."); ?>
+                </li>
+                <li><?php echo __("Find out about upcoming industry events and conferences where you can network and learn about the latest industry trends. Our updates highlight key industry events, conferences, and seminars, providing opportunities for industry professionals to connect, share insights, and stay ahead of the curve."); ?>
+                </li>
             </ul>
         </div>
     </section>
 
-    <footer>
-            <div class="container">
-                <h2><?php echo __("Contact Us"); ?></h2>
-                <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
-                </p>
-                <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-                <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
-                <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
-            </div>
-        </footer>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/9d85be25-4f92-441b-a9d8-9eba09ec2430/webchat/config.js"
+        defer></script>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <footer>
+        <div class="container">
+            <h2><?php echo __("Contact Us"); ?></h2>
+            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
+            </p>
+            <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+            <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
+            <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
+
+            <!-- Language change form -->
+            <form id="language-form">
+                <label><?php echo __("Select Language:"); ?></label>
+                <input type="radio" id="lang-en" name="language" value="en" checked>
+                <label for="lang-en">English</label>
+                <input type="radio" id="lang-fr" name="language" value="fr">
+                <label for="lang-fr">French</label>
+                <button type="button" onclick="changeLanguage()"><?php echo __("Change Language"); ?></button>
+            </form>
+        </div>
+    </footer>
+    <script>
+        function changeLanguage() {
+            var selectedLanguage;
+            if (document.getElementById("lang-en").checked) {
+                selectedLanguage = "en";
+            } else if (document.getElementById("lang-fr").checked) {
+                selectedLanguage = "fr";
+            }
+
+            // Modify the URL based on the selected language
+            var currentUrl = window.location.href;
+            var newUrl;
+            if (currentUrl.includes("?")) {
+                newUrl = currentUrl.replace(/(lang=)[^\&]+/, '$1' + selectedLanguage);
+            } else {
+                newUrl = currentUrl + "?lang=" + selectedLanguage;
+            }
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+    </script>
+
+
+
 </body>
 
 </html>

@@ -44,7 +44,8 @@
         <section id="profile">
             <h2><?php echo __("Profile"); ?></h2>
             <div class="profile-container">
-                <img id="profile_picture" src="<?php echo $data['profile']->profile_picture; ?>" alt="<?php echo __("Profile Picture"); ?>">
+                <img id="profile_picture" src="<?php echo $data['profile']->profile_picture; ?>"
+                    alt="<?php echo __("Profile Picture"); ?>">
                 <div class="profile-info">
                     <label for="username"><?php echo __("Username"); ?>:</label>
                     <p id="username"><?php echo $data['user']->username; ?></p>
@@ -70,18 +71,57 @@
         </section>
     </div>
 
-    <footer>
-            <div class="container">
-                <h2><?php echo __("Contact Us"); ?></h2>
-                <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
-                </p>
-                <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-                <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
-                <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
-            </div>
-        </footer>
+
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/9d85be25-4f92-441b-a9d8-9eba09ec2430/webchat/config.js"
+        defer></script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <footer>
+        <div class="container">
+            <h2><?php echo __("Contact Us"); ?></h2>
+            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
+            </p>
+            <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+            <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
+            <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
+
+            <!-- Language change form -->
+            <form id="language-form">
+                <label><?php echo __("Select Language:"); ?></label>
+                <input type="radio" id="lang-en" name="language" value="en" checked>
+                <label for="lang-en">English</label>
+                <input type="radio" id="lang-fr" name="language" value="fr">
+                <label for="lang-fr">French</label>
+                <button type="button" onclick="changeLanguage()"><?php echo __("Change Language"); ?></button>
+            </form>
+        </div>
+    </footer>
+    <script>
+        function changeLanguage() {
+            var selectedLanguage;
+            if (document.getElementById("lang-en").checked) {
+                selectedLanguage = "en";
+            } else if (document.getElementById("lang-fr").checked) {
+                selectedLanguage = "fr";
+            }
+
+            // Modify the URL based on the selected language
+            var currentUrl = window.location.href;
+            var newUrl;
+            if (currentUrl.includes("?")) {
+                newUrl = currentUrl.replace(/(lang=)[^\&]+/, '$1' + selectedLanguage);
+            } else {
+                newUrl = currentUrl + "?lang=" + selectedLanguage;
+            }
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+    </script>
+
 </body>
 
 </html>

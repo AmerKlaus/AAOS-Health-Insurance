@@ -67,6 +67,12 @@ class Home extends \app\core\Controller
         $this->view('Home/industryNews');
     }
 
+    public function claimTutorial()
+    {
+        $this->view('Home/claimTutorial');
+    }
+
+
     public function loginSelection()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

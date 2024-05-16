@@ -77,7 +77,7 @@ class User extends \app\core\Controller
         }
     }
 
-    //Fix
+    
     public function setup2fa()
     {
         $options = new AuthenticatorOptions();

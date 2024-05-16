@@ -369,3 +369,44 @@ msgstr "Notes"
 
 msgid "Approve Claim"
 msgstr "Approve Claim"
+
+msgid "Claim Submission and Viewing Tutorial"
+msgstr "Claim Submission and Viewing Tutorial"
+
+msgid "How to Submit a Claim"
+msgstr "How to Submit a Claim"
+
+msgid "Follow these steps to submit a claim:"
+msgstr "Follow these steps to submit a claim:"
+
+msgid "Step 1: Log in to your account."
+msgstr "Step 1: Log in to your account."
+
+msgid "Step 2: Navigate to the Claim Submission page."
+msgstr "Step 2: Navigate to the Claim Submission page."
+
+msgid "Step 3: Fill out the necessary details in the submission form."
+msgstr "Step 3: Fill out the necessary details in the submission form."
+
+msgid "Step 4: Review your submission and click 'Submit'."
+msgstr "Step 4: Review your submission and click 'Submit'."
+
+msgid "How to View Submitted Claims"
+msgstr "How to View Submitted Claims"
+
+msgid "To view your submitted claims, follow these steps:"
+msgstr "To view your submitted claims, follow these steps:"
+
+msgid "Step 2: Navigate to the Claim History page."
+msgstr "Step 2: Navigate to the Claim History page."
+
+msgid "Step 3: Here you will find a list of all your submitted claims and their statuses."
+msgstr "Step 3: Here you will find a list of all your submitted claims and their statuses."
+
+msgid "Step 4: Click on a claim to view more details."
+msgstr "Step 4: Click on a claim to view more details."
+
+msgid "Would you like assistance with submitting a claim or viewing your submitted claims? Check out our tutorial below:"
+msgstr "Would you like assistance with submitting a claim or viewing your submitted claims? Check out our tutorial below:"
+
+
