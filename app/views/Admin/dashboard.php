@@ -30,7 +30,7 @@
     <div class="pending-claims">
         <h2><?php echo __("Pending Claims"); ?></h2>
         <div class="sort-options">
-    <label for="sort">Sort By:</label>
+        <label for="sort"><?php echo __("Sort By:"); ?></label>
     <select id="sort" onchange="changeSort(this)">
         <option value="/Admin/dashboard?sort=id" <?php if (!isset($_GET['sort']) || $_GET['sort'] == 'id') echo 'selected'; ?>>ID</option>
         <option value="/Admin/dashboard?sort=type" <?php if (!isset($_GET['sort']) || $_GET['sort'] == 'type') echo 'selected'; ?>>Type</option>

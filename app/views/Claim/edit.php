@@ -12,7 +12,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Custom CSS -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -71,12 +71,46 @@
     <footer>
         <div class="container">
             <h2><?php echo __("Contact Us"); ?></h2>
-            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?></p>
-            <p><?php echo __("Email:"); ?> <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-            <p><?php echo __("Phone:"); ?> 1-800-555-1234</p>
+            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
+            </p>
+            <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+            <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
             <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
+
+            <!-- Language change form -->
+            <form id="language-form">
+                <label><?php echo __("Select Language:"); ?></label>
+                <input type="radio" id="lang-en" name="language" value="en" checked>
+                <label for="lang-en">English</label>
+                <input type="radio" id="lang-fr" name="language" value="fr">
+                <label for="lang-fr">French</label>
+                <button type="button" onclick="changeLanguage()"><?php echo __("Change Language"); ?></button>
+            </form>
         </div>
     </footer>
+    <script>
+        function changeLanguage() {
+            var selectedLanguage;
+            if (document.getElementById("lang-en").checked) {
+                selectedLanguage = "en";
+            } else if (document.getElementById("lang-fr").checked) {
+                selectedLanguage = "fr";
+            }
+
+            // Modify the URL based on the selected language
+            var currentUrl = window.location.href;
+            var newUrl;
+            if (currentUrl.includes("?")) {
+                newUrl = currentUrl.replace(/(lang=)[^\&]+/, '$1' + selectedLanguage);
+            } else {
+                newUrl = currentUrl + "?lang=" + selectedLanguage;
+            }
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+    </script>
+
 </body>
 
 </html>

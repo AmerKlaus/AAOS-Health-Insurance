@@ -53,12 +53,46 @@
     <footer>
         <div class="container">
             <h2><?php echo __("Contact Us"); ?></h2>
-            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?></p>
-            <p><?php echo __("Email:"); ?> <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-            <p><?php echo __("Phone:"); ?> 1-800-555-1234</p>
+            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
+            </p>
+            <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+            <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
             <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
+
+            <!-- Language change form -->
+            <form id="language-form">
+                <label><?php echo __("Select Language:"); ?></label>
+                <input type="radio" id="lang-en" name="language" value="en" checked>
+                <label for="lang-en">English</label>
+                <input type="radio" id="lang-fr" name="language" value="fr">
+                <label for="lang-fr">French</label>
+                <button type="button" onclick="changeLanguage()"><?php echo __("Change Language"); ?></button>
+            </form>
         </div>
     </footer>
+    <script>
+        function changeLanguage() {
+            var selectedLanguage;
+            if (document.getElementById("lang-en").checked) {
+                selectedLanguage = "en";
+            } else if (document.getElementById("lang-fr").checked) {
+                selectedLanguage = "fr";
+            }
+
+            // Modify the URL based on the selected language
+            var currentUrl = window.location.href;
+            var newUrl;
+            if (currentUrl.includes("?")) {
+                newUrl = currentUrl.replace(/(lang=)[^\&]+/, '$1' + selectedLanguage);
+            } else {
+                newUrl = currentUrl + "?lang=" + selectedLanguage;
+            }
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+    </script>
+
 </body>
 
 </html>

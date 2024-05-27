@@ -104,7 +104,7 @@ msgid "Password Reset Success"
 msgstr "Réinitialisation du mot de passe réussie"
 
 msgid "A link has been sent to your email to reset your password."
-msgstr "Un lien a été envoyé à votre email pour réinitialiser votre mot de passe."
+msgstr "Un lien a été envoyé à votre courriel  pour réinitialiser votre mot de passe."
 
 msgid "You can now"
 msgstr "Vous pouvez maintenant"
@@ -448,3 +448,114 @@ msgstr "Renseignez-vous sur les prochains événements et conférences de l'indu
 
 msgid "© 2024 AAOS Insurance. All rights reserved."
 msgstr "© 2024 Assurance AAOS. Tous droits réservés."
+
+msgid "Claim Submission and Viewing Tutorial"
+msgstr "Tutoriel de soumission et de visualisation de réclamations"
+
+msgid "Would you like assistance with submitting a claim or viewing your submitted claims? Check out our tutorial below:"
+msgstr "Souhaitez-vous obtenir de l'aide pour soumettre une réclamation ou consulter vos réclamations soumises ? Consultez notre tutoriel ci-dessous :"
+
+msgid "How to Submit a Claim"
+msgstr "Comment soumettre une réclamation"
+
+msgid "Follow these steps to submit a claim:"
+msgstr "Suivez ces étapes pour soumettre une réclamation :"
+
+msgid "Step 1: Log in to your account."
+msgstr "Étape 1 : Connectez-vous à votre compte."
+
+msgid "Step 2: Navigate to the Claim Submission page."
+msgstr "Étape 2 : Accédez à la page de soumission des réclamations."
+
+msgid "Step 3: Fill out the necessary details in the submission form."
+msgstr "Étape 3 : Remplissez les détails nécessaires dans le formulaire de soumission."
+
+msgid "Step 4: Review your submission and click 'Submit'."
+msgstr "Étape 4 : Vérifiez votre soumission et cliquez sur 'Soumettre'."
+
+msgid "To view your submitted claims, follow these steps:"
+msgstr "Pour visualiser vos réclamations soumises, suivez ces étapes :"
+
+msgid "Step 3: Here you will find a list of all your submitted claims and their statuses."
+msgstr "Étape 3 : Vous trouverez ici une liste de toutes vos réclamations soumises et de leur statut."
+
+msgid "How to View Submitted Claims"
+msgstr "Comment consulter les réclamations soumises"
+
+msgid "Step 2: Navigate to the"
+msgstr "Étape 2 : Naviguer jusqu'à"
+
+msgid "Step 4: Click on a claim to view more details."
+msgstr "Étape 4 : Cliquez sur une réclamation pour afficher plus de détails."
+
+msgid "Claims"
+msgstr "Réclamations"
+
+msgid "Sort By:"
+msgstr "Trier par:"
+
+msgid "Claim Type"
+msgstr "Type de réclamation"
+
+msgid "Go back to home page"
+msgstr "Retour à la page d'accueil"
+
+msgid "Request Additional Info"
+msgstr "Demander des informations supplémentaires"
+
+msgid "Review Claim"
+msgstr "Examiner la réclamation"
+
+msgid "Request Additional Information"
+msgstr "Demander des informations supplémentaires"
+
+msgid "Enter Missing Information:"
+msgstr "Saisir les informations manquantes :"
+
+msgid "Submit"
+msgstr "Soumettre"
+
+msgid "Add Notes"
+msgstr "Ajouter des notes"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Approve Claim"
+msgstr "Approuver la réclamation"
+
+msgid "Deny Claim"
+msgstr "Refuser la réclamation"
+
+msgid "Claim ID:"
+msgstr "Identifiant de la réclamation:"
+
+msgid "Policy Number:"
+msgstr "Numéro de police:"
+
+msgid "Claim Status:"
+msgstr "État de la réclamation:"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "Strong password"
+msgstr "Mot de passe fort"
+
+msgid "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+msgstr "Le mot de passe doit contenir au moins 8 caractères et comporter au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial."
+
+msgid "Weak password"
+msgstr "Mot de passe faible"
+
+msgid "Email:"
+msgstr "Courriel: "
+
+msgid "Submit the 6-digit code for this site from your Authenticator app."
+msgstr "Soumettez le code à 6 chiffres pour ce site à partir de votre application d'authentification."
+
+msgid "Current code"
+msgstr "Code actuel "
+
+msgid "Password Reset"
+msgstr "Réinitialisation du mot de passe"
