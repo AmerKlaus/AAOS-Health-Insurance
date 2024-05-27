@@ -18,6 +18,8 @@ class User
     public string $phone;
     public string $address;
     public ?string $secret;
+    public ?string $reset_token_hash;
+    public ?string $reset_token_expires_at;
 
     public static function createUser(PDO $db_conn, string $username, string $pwd_hash, string $email, string $role_id, string $full_name, string $phone, string $address)
     {
@@ -62,6 +64,7 @@ class User
         return $STMT->fetch();
     }
 
+    // Couldn't the other update() method be used for this?
     public static function updateUser(PDO $db_conn, $newProfileData)
     {
         $user_id = $newProfileData['user_id'];
@@ -87,7 +90,7 @@ class User
 
     public function update(PDO $db_conn)
     {
-        $SQL = 'UPDATE User SET username = :username, pwd_hash = :pwd_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret WHERE user_id = :user_id';
+        $SQL = 'UPDATE User SET username = :username, pwd_hash = :pwd_hash, email = :email, role_id = :role_id, full_name = :full_name, phone = :phone, address = :address, secret = :secret, reset_token_hash = :reset_token_hash, reset_token_expires_at = :reset_token_expires_at WHERE user_id = :user_id';
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute((array) $this);
     }

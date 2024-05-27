@@ -12,7 +12,7 @@ class Claim
     public $claim_details;
     public $submission_date;
     public $status;
-    public $health_card_number;
+    public $health_insurance_number;
 
     // Insert a new claim into the database
     public function insert(PDO $db_conn)
@@ -26,7 +26,7 @@ class Claim
             'submission_date' => $this->submission_date,
             'status' => $this->status,
             'claim_details' => $this->claim_details,
-            'health_insurance_number' => $this->health_card_number
+            'health_insurance_number' => $this->health_insurance_number
         ];
         $STMT->execute($data);
     }
@@ -41,6 +41,33 @@ class Claim
         return $STMT->fetchAll();
     }
 
+    public function getPendingClaimDocumentsByID(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status order by claim_id';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
+    public function getPendingClaimDocumentsByType(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status order by claim_type';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
+    public function getPendingClaimDocumentsByDate(PDO $db_conn)
+    {
+        // Implement logic to retrieve pending claim documents for review
+        $SQL = 'SELECT * FROM Claim WHERE status = :status order by submission_date';
+        $STMT = $db_conn->prepare($SQL);
+        $STMT->execute(['status' => 'Pending']);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
+        return $STMT->fetchAll();
+    }
     public static function getClaimById(PDO $db_conn, $claimId)
     {
         $SQL = 'SELECT * FROM Claim WHERE claim_id = :claimId';
@@ -63,7 +90,13 @@ class Claim
         $STMT = $db_conn->prepare($SQL);
         $STMT->execute(['user_id' => $user_id]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Claim');
-        return $STMT->fetchAll();
+        $result = $STMT->fetchAll();
+
+        if ($result) {
+            return $result;
+        } else {
+            return null;
+        }
     }
 
     public function update(PDO $db_conn)
@@ -74,7 +107,7 @@ class Claim
             'claim_type' => $this->claim_type,
             'claim_details' => $this->claim_details,
             'submission_date' => $this->submission_date,
-            'health_insurance_number' => $this->health_card_number,
+            'health_insurance_number' => $this->health_insurance_number,
             'claim_id' => $this->claim_id,
         ]);
     }

@@ -23,18 +23,12 @@
         </div>
     </header>
     <div class="container">
-        <form action="/User/register" method="post" class="register-form">
-            <h2><?= __('User Register') ?></h2>
-            <label for="full_name"><?= __('Full Name') ?>:</label>
-            <input type="text" id="full_name" name="full_name" required>
+        <form action="/Admin/registerAdmin" method="post" class="register-form">
+            <h2><?= __('Admin Register') ?></h2>
             <label for="username"><?= __('Username') ?>:</label>
             <input type="text" id="username" name="username" required>
             <label for="email"><?= __('Email') ?>:</label>
             <input type="email" id="email" name="email" required>
-            <label for="phone"><?= __('Phone') ?>:</label>
-            <input type="text" id="phone" name="phone" required>
-            <label for="address"><?= __('Address') ?>:</label>
-            <input type="text" id="address" name="address" required>
             <label for="password"><?= __('Password') ?>:</label>
             <input type="password" id="password" name="password" required>
             <label for="confirm_password"><?= __('Confirm Password') ?>:</label>
@@ -43,15 +37,14 @@
         </form>
     </div>
     <footer>
-            <div class="container">
-                <h2><?php echo __("Contact Us"); ?></h2>
-                <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?>
-                </p>
-                <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-                <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
-                <p>&copy; 2024 <?php echo __("AAOS Insurance"); ?>. <?php echo __("All rights reserved."); ?></p>
-            </div>
-        </footer>
+        <div class="container">
+            <h2><?= __('Contact Us') ?></h2>
+            <p><?= __('If you have any questions or need assistance, our support team is here to help.') ?></p>
+            <p><?= __('Email') ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+            <p><?= __('Phone') ?>: 1-800-555-1234</p>
+            <p>&copy; <?= __('2024 AAOS Insurance. All rights reserved.') ?></p>
+        </div>
+    </footer>
 </body>
 
 </html>

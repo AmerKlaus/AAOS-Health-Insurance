@@ -1,5 +1,11 @@
 <?php
 //defined a few routes "url"=>"controller,method"
+
+
+// Debug/test route, for development only
+$this->addRoute('Home/debug', 'Home,debug');
+
+
 $this->addRoute('User/login', 'User,login');
 $this->addRoute('User/forgotPassword', 'User,forgotPassword');
 $this->addRoute('User/resetPassword', 'User,resetPassword');

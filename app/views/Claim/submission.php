@@ -5,7 +5,7 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Claim</title>
+    <title><?php echo __("Submit Claim"); ?></title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,56 +17,58 @@
 <body>
     <header>
         <div class="container">
-            <h1>AAOS Insurance</h1>
+            <h1><?php echo __("AAOS Insurance"); ?></h1>
         </div>
     </header>
     <nav>
         <div class="container">
             <ul>
-                <li><a href="/Home/index">Home</a></li>
-                <li><a href="/ProfileController/index">Profile</a></li>
-                <li><a href="/Claim/claimSubmission">Claim Submission</a></li>
-                <li><a href="/Claim/claimHistory">Claim History</a></li>
-                <li><a href="/User/notification">Notifications</a></li>
-                <li><a href="/Home/customerSupport">Customer Support</a></li>
-                <li><a href="/Home/loginSelection">Go to Login/Register</a></li>
+                <li><a href="/Home/index"><?php echo __("Home"); ?></a></li>
+                <li><a href="/ProfileController/index"><?php echo __("Profile"); ?></a></li>
+                <li><a href="/Claim/claimSubmission"><?php echo __("Claim Submission"); ?></a></li>
+                <li><a href="/Claim/claimHistory"><?php echo __("Claim History"); ?></a></li>
+                <li><a href="/User/notification"><?php echo __("Notifications"); ?></a></li>
+                <li><a href="/Home/customerSupport"><?php echo __("Customer Support"); ?></a></li>
+                <li><a href="/Home/loginSelection"><?php echo __("Go to Login/Register"); ?></a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
         <section id="claim-submission">
-            <h2>Claim Submission</h2>
+            <h2><?php echo __("Claim Submission"); ?></h2>
             <form action="/Claim/submitClaim" method="POST" class="claim-form">
-                <label for="claim_type">Claim Type:</label>
+                <label for="claim_type"><?php echo __("Claim Type:"); ?></label>
                 <select id="claim_type" class="form-control" name="claim_type" required>
-                    <option value="health">Health</option>
+                    <option value="health"><?php echo __("Health"); ?></option>
                 </select>
 
-                <label for="claim_details">Claim Details:</label>
-                <textarea id="claim_details" class="form-control" name="claim_details" rows="4" required></textarea>
+                <label for="claim_details"><?php echo __("Claim Details:"); ?></label>
+                <textarea id="claim_details" class="form-control" name="claim_details" rows="4"
+                    required></textarea>
 
-                <label for="claim_date">Claim Date:</label>
+                <label for="claim_date"><?php echo __("Claim Date:"); ?></label>
                 <input type="datetime-local" class="form-control" id="claim_date" name="claim_date" required>
 
-                <label for="health_card_number">Health Insurance Card Number:</label>
+                <label for="health_card_number"><?php echo __("Health Insurance Card Number:"); ?></label>
                 <input type="text" class="form-control" id="health_card_number" name="health_card_number"
                     class="health-card-input" required>
 
-                <button type="submit">Submit Claim</button>
+                <button type="submit"><?php echo __("Submit Claim"); ?></button>
             </form>
 
-            
+
             <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-            <script src="https://mediafiles.botpress.cloud/9d85be25-4f92-441b-a9d8-9eba09ec2430/webchat/config.js" defer></script>
+            <script src="https://mediafiles.botpress.cloud/9d85be25-4f92-441b-a9d8-9eba09ec2430/webchat/config.js"
+                defer></script>
         </section>
     </div>
     <footer>
         <div class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or need assistance, our support team is here to help.</p>
-            <p>Email: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
-            <p>Phone: 1-800-555-1234</p>
-            <p>&copy; 2024 AAOS Insurance. All rights reserved.</p>
+            <h2><?php echo __("Contact Us"); ?></h2>
+            <p><?php echo __("If you have any questions or need assistance, our support team is here to help."); ?></p>
+            <p><?php echo __("Email"); ?>: <a href="mailto:aaos.coo@gmail.com">aaos.coo@gmail.com</a></p>
+            <p><?php echo __("Phone"); ?>: 1-800-555-1234</p>
+            <p>&copy; 2024 <?php echo __("AAOS Insurance. All rights reserved."); ?></p>
         </div>
     </footer>
 </body>

@@ -36,9 +36,6 @@ class Claim extends Controller
             $claim_date = $_POST['claim_date'];
             $health_card_number = $_POST['health_card_number'];
 
-            // Get the current user ID from session
-            $user_id = $_SESSION['user_id'];
-
             // Create a new Claim instance
             $claim = new \app\models\Claim();
             $claim->user_id = $user_id; // Assign current user's ID
@@ -46,7 +43,7 @@ class Claim extends Controller
             $claim->claim_details = $claim_details;
             $claim->submission_date = $claim_date;
             $claim->status = "Pending"; // Default status set to "Pending"
-            $claim->health_card_number = $health_card_number;
+            $claim->health_insurance_number = $health_card_number;
 
             // Insert the claim into the database
             $claim->insert($this->db_conn);
@@ -92,7 +89,6 @@ class Claim extends Controller
         // Load the view with the claims data
         $this->view('Claim/history', ['claims' => $claims, 'profile' => $profile]);
     }
-
     public function edit($claimId)
     {
         // Check if claim ID is provided
@@ -126,18 +122,20 @@ class Claim extends Controller
             // Update the claim data
             $claim->claim_type = $claim_type;
             $claim->claim_details = $claim_details;
-            $claim->claim_date = $claim_date;
-            $claim->health_card_number = $health_card_number;
+            $claim->submission_date = $claim_date;
+            $claim->health_insurance_number = $health_card_number;
 
             // Save changes to the database
             $claim->update($this->db_conn);
 
             $notificationModel = new \app\models\Notification($this->db_conn);
             $notificationModel->removeNotification($this->db_conn, $claimId);
+            $notifications = $notificationModel->getNotificationsByUserId($user_id);
 
-            // Redirect to claim details page
-            $this->view('/Claim/details', ['claim' => $claim, 'profile' => $profile]);
+            header('location:/User/notification');
             exit;
+        } else {
+            $this->view('Claim/edit', ['claim' => $claim]);
         }
 
         $this->view('Claim/edit', ['claim' => $claim]);

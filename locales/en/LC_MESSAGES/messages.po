@@ -28,9 +28,6 @@ msgstr "User Register"
 msgid "Full Name:"
 msgstr "Full Name:"
 
-msgid "Username:"
-msgstr "Username:"
-
 msgid "Email:"
 msgstr "Email:"
 
@@ -39,9 +36,6 @@ msgstr "Phone:"
 
 msgid "Address:"
 msgstr "Address:"
-
-msgid "Password:"
-msgstr "Password:"
 
 msgid "Confirm Password:"
 msgstr "Confirm Password:"
@@ -55,11 +49,323 @@ msgstr "Contact Us"
 msgid "If you have any questions or need assistance, our support team is here to help."
 msgstr "If you have any questions or need assistance, our support team is here to help."
 
-msgid "Email"
-msgstr "Email"
-
-msgid "Phone"
-msgstr "Phone"
-
 msgid "2024 AAOS Insurance. All rights reserved."
 msgstr "2024 AAOS Insurance. All rights reserved."
+
+msgid "Please enter your email address below to reset your password."
+msgstr "Please enter your email address below to reset your password."
+
+msgid "Reset Password"
+msgstr "Reset Password"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "Profile"
+msgstr "Profile"
+
+msgid "Claim Submission"
+msgstr "Claim Submission"
+
+msgid "Claim History"
+msgstr "Claim History"
+
+msgid "Customer Support"
+msgstr "Customer Support"
+
+msgid "Go to Login/Register"
+msgstr "Go to Login/Register"
+
+msgid "Type:"
+msgstr "Type:"
+
+msgid "Content:"
+msgstr "Content:"
+
+msgid "Timestamp:"
+msgstr "Timestamp:"
+
+msgid "Edit Claim"
+msgstr "Edit Claim"
+
+msgid "Reset Your Password"
+msgstr "Reset Your Password"
+
+msgid "New Password:"
+msgstr "New Password:"
+
+msgid "Password Reset Success"
+msgstr "Password Reset Success"
+
+msgid "A link has been sent to your email to reset your password."
+msgstr "A link has been sent to your email to reset your password."
+
+msgid "You can now"
+msgstr "You can now"
+
+msgid "log in"
+msgstr "log in"
+
+msgid "with your new password."
+msgstr "with your new password."
+
+msgid "Setup 2FA"
+msgstr "Setup 2FA"
+
+msgid "Scan the above QR-code with your mobile Authenticator app, such as Google Authenticator. The authenticator app will generate codes that are valid for 30 seconds only. Enter such a code and submit it while it is still valid to apply the 2-factor authentication protection to your account."
+msgstr "Scan the above QR-code with your mobile Authenticator app, such as Google Authenticator. The authenticator app will generate codes that are valid for 30 seconds only. Enter such a code and submit it while it is still valid to apply the 2-factor authentication protection to your account."
+
+msgid "Current code:"
+msgstr "Current code:"
+
+msgid "Verify code"
+msgstr "Verify code"
+
+msgid "Create Profile"
+msgstr "Create Profile"
+
+msgid "Birthdate:"
+msgstr "Birthdate:"
+
+msgid "Please provide a valid birthdate."
+msgstr "Please provide a valid birthdate."
+
+msgid "Policy Number:"
+msgstr "Policy Number:"
+
+msgid "Please provide a policy number."
+msgstr "Please provide a policy number."
+
+msgid "Profile Picture:"
+msgstr "Profile Picture:"
+
+msgid "Please upload a profile picture."
+msgstr "Please upload a profile picture."
+
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Coverage Options - Knowledge Base"
+msgstr "Coverage Options - Knowledge Base"
+
+msgid "AAOS Insurance Customer Support"
+msgstr "AAOS Insurance Customer Support"
+
+msgid "Health Coverage:"
+msgstr "Health Coverage:"
+
+msgid "Doctor's visits and consultations:"
+msgstr "Doctor's visits and consultations:"
+
+msgid "Hospital stays and surgeries:"
+msgstr "Hospital stays and surgeries:"
+
+msgid "Prescription medications:"
+msgstr "Prescription medications:"
+
+msgid "Lab tests and diagnostic procedures:"
+msgstr "Lab tests and diagnostic procedures:"
+
+msgid "Preventive care services:"
+msgstr "Preventive care services:"
+
+msgid "Knowledge Base"
+msgstr "Knowledge Base"
+
+msgid "Categories:"
+msgstr "Categories:"
+
+msgid "Insurance Claims"
+msgstr "Insurance Claims"
+
+msgid "Welcome to AAOS Health Insurance"
+msgstr "Welcome to AAOS Health Insurance"
+
+msgid "Providing comprehensive health coverage for your peace of mind."
+msgstr "Providing comprehensive health coverage for your peace of mind."
+
+msgid "Your Profile"
+msgstr "Your Profile"
+
+msgid "Manage your personal information and policy details easily."
+msgstr "Manage your personal information and policy details easily."
+
+msgid "Go to Profile"
+msgstr "Go to Profile"
+
+msgid "Submit and track your health insurance claims with convenience."
+msgstr "Submit and track your health insurance claims with convenience."
+
+msgid "Go to Claims"
+msgstr "Go to Claims"
+
+msgid "Industry News - Knowledge Base"
+msgstr "Industry News - Knowledge Base"
+
+msgid "Welcome to our knowledge base! Here, you can find the latest news and updates related to the insurance industry."
+msgstr "Welcome to our knowledge base! Here, you can find the latest news and updates related to the insurance industry."
+
+msgid "Recent Articles:"
+msgstr "Recent Articles:"
+
+msgid "Stay up-to-date with the latest developments in the insurance sector through our curated articles:"
+msgstr "Stay up-to-date with the latest developments in the insurance sector through our curated articles:"
+
+msgid "Explore how emerging technologies like artificial intelligence are transforming"
+msgstr "Explore how emerging technologies like artificial intelligence are transforming"
+
+msgid "Insurance Claims - Knowledge Base"
+msgstr "Insurance Claims - Knowledge Base"
+
+msgid "Articles:"
+msgstr "Articles:"
+
+msgid "Here are some articles to help you understand insurance claims:"
+msgstr "Here are some articles to help you understand insurance claims:"
+
+msgid "Understanding the Insurance Claims Process:"
+msgstr "Understanding the Insurance Claims Process:"
+
+msgid "Learn about the steps involved in filing an insurance claim and what to expect."
+msgstr "Learn about the steps involved in filing an insurance claim and what to expect."
+
+msgid "Tips for Filing Insurance Claims:"
+msgstr "Tips for Filing Insurance Claims:"
+
+msgid "Discover useful tips and strategies to ensure a smooth and successful insurance claim process."
+msgstr "Discover useful tips and strategies to ensure a smooth and successful insurance claim process."
+
+msgid "Common Mistakes to Avoid in Insurance Claims:"
+msgstr "Common Mistakes to Avoid in Insurance Claims:"
+
+msgid "Avoid pitfalls and mistakes that could jeopardize your insurance claim."
+msgstr "Avoid pitfalls and mistakes that could jeopardize your insurance claim."
+
+msgid "Resources:"
+msgstr "Resources:"
+
+msgid "Check out these resources for more information:"
+msgstr "Check out these resources for more information:"
+
+msgid "Sample Claim Forms:"
+msgstr "Sample Claim Forms:"
+
+msgid "Download sample claim forms to help you fill out your insurance claim accurately."
+msgstr "Download sample claim forms to help you fill out your insurance claim accurately."
+
+msgid "Guide to Insurance Claim Documentation:"
+msgstr "Guide to Insurance Claim Documentation:"
+
+msgid "Understand the documentation requirements for different types of insurance claims."
+msgstr "Understand the documentation requirements for different types of insurance claims."
+
+msgid "FAQs on Insurance Claims:"
+msgstr "FAQs on Insurance Claims:"
+
+msgid "Find answers to frequently asked questions about insurance claims."
+msgstr "Find answers to frequently asked questions about insurance claims."
+
+msgid "Login Selection"
+msgstr "Login Selection"
+
+msgid "Login as:"
+msgstr "Login as:"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Claim Details"
+msgstr "Claim Details"
+
+msgid "Claim Type:"
+msgstr "Claim Type:"
+
+msgid "Claim Details:"
+msgstr "Claim Details:"
+
+msgid "Claim Amount:"
+msgstr "Claim Amount:"
+
+msgid "Claim Date:"
+msgstr "Claim Date:"
+
+msgid "Back to Dashboard"
+msgstr "Back to Dashboard"
+
+msgid "All rights reserved."
+msgstr "All rights reserved."
+
+msgid "Submit Claim"
+msgstr "Submit Claim"
+
+msgid "Health Insurance Card Number:"
+msgstr "Health Insurance Card Number:"
+
+msgid "Admin Dashboard"
+msgstr "Admin Dashboard"
+
+msgid "Pending Claims"
+msgstr "Pending Claims"
+
+msgid "Claim ID"
+msgstr "Claim ID"
+
+msgid "User ID"
+msgstr "User ID"
+
+msgid "Submission Date"
+msgstr "Submission Date"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Request Additional Info"
+msgstr "Request Additional Info"
+
+msgid "Review Claim"
+msgstr "Review Claim"
+
+msgid "Go back to home page"
+msgstr "Go back to home page"
+
+msgid "Admin Login"
+msgstr "Admin Login"
+
+msgid "Request Additional Information"
+msgstr "Request Additional Information"
+
+msgid "Enter Missing Information:"
+msgstr "Enter Missing Information:"
+
+msgid "Submit"
+msgstr "Submit"
+
+msgid "No claim data available"
+msgstr "No claim data available"
+
+msgid "Add Notes"
+msgstr "Add Notes"
+
+msgid "Notes"
+msgstr "Notes"
+
+msgid "Approve Claim"
+msgstr "Approve Claim"

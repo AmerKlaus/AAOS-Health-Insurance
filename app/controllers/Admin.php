@@ -12,9 +12,26 @@ class Admin extends \app\core\Controller
             header('Location: /Admin/login');
             exit;
         }
+        //the claim will be sorted by id by default
+        $sortBy = isset($_GET['sort']) ? $_GET['sort'] : 'id';
+
         // Retrieve and display pending claims for review
         $claimModel = new \app\models\Claim();
-        $claimModel = $claimModel->getPendingClaimDocuments($this->db_conn);
+
+        switch ($sortBy) {
+            case 'id':
+                $claimModel = $claimModel->getPendingClaimDocumentsById($this->db_conn);
+                break;
+            case 'type':
+                $claimModel = $claimModel->getPendingClaimDocumentsByType($this->db_conn);
+                break;
+            case 'date':
+                $claimModel = $claimModel->getPendingClaimDocumentsByDate($this->db_conn);
+                break;
+            default:
+                $claimModel = $claimModel->getPendingClaimDocumentsById($this->db_conn);
+                break;
+        }
 
         $this->view('Admin/dashboard', $claimModel);
 
